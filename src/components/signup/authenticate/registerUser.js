@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from "react-native";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../store/actions/authActions.js';
+import { useDispatch, useSelector } from 'react-redux';
+import showToast from './../../../utils/showToast.js';
+import { registerUser, clearAuthError } from '../../../store/actions/authActions.js';
 
 const RegisterUser = (props) => {
 
     const dispatch = useDispatch();
+    const loginError = useSelector(state => state.auth.error);
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(()=>{
+        if(loginError){
+            showToast('error','Sorry',loginError);
+            setLoading(false);
+            dispatch(clearAuthError());
+        }
+    },[loginError]);
 
     const SignUpSchema = Yup.object().shape({
         firstName: Yup.string()
@@ -19,7 +31,7 @@ const RegisterUser = (props) => {
         email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
-        mobile: Yup.string()
+        phone: Yup.string()
             .min(6, 'Mobile must be at least 7 characters')
             .max(10, 'Mobile must be at max 10 characters')
             .required('Mobile is required'),
@@ -33,7 +45,7 @@ const RegisterUser = (props) => {
 
 
     const handleSubmit = (values) => {
-        console.log('test' , values);
+        setLoading(true);
         dispatch(registerUser(values));
     }
 
@@ -48,27 +60,7 @@ const RegisterUser = (props) => {
                     password:'',
                     confirmPassword:''
                 }}
-                /* validationSchema={
-                    Yup.object().shape({
-                        firstName: Yup.string()
-                            .required('First Name is required'),
-                        lastName: Yup.string()
-                            .required('Last Name is required'),
-                        email: Yup.string()
-                            .email('Email is invalid')
-                            .required('Email is required'),
-                        mobile: Yup.string()
-                            .min(6, 'Mobile must be at least 7 characters')
-                            .max(10, 'Mobile must be at max 10 characters')
-                            .required('Mobile is required'),
-                        password: Yup.string()
-                            .min(6, 'Password must be at least 6 characters')
-                            .required('Password is required'),
-                        confirmPassword: Yup.string()
-                            .oneOf([Yup.ref('password'), null], 'Passwords must match')
-                            .required('Confirm Password is required')
-                    })
-                } */
+                validationSchema={ SignUpSchema } 
                 onSubmit={values => handleSubmit(values)}>
                     {({handleChange, handleBlur, handleSubmit, values, touched, errors})=>(
                         <View style={{padding:'10%'}}>
@@ -137,6 +129,7 @@ const RegisterUser = (props) => {
 
                             <Button
                                 title="Sign up"
+                                loading={loading}
                                 onPress={handleSubmit}/>
                         </View>
                 )}

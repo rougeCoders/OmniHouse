@@ -18,7 +18,7 @@ const LoginUser = (props) => {
     const [confirm, setConfirm] = useState(null);
     const [code, setCode] = useState('');
     const [securEntry, setSecurEntry] = useState(true);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
         if(loginError){
@@ -87,7 +87,7 @@ const LoginUser = (props) => {
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             value={values.password}
-                            secureTextEntry={true}
+                            secureTextEntry={securEntry}
                             renderErrorMessage={errors.password && touched.password}
                             errorStyle={{ color: 'red' }}
                             errorMessage={errors.password} />
