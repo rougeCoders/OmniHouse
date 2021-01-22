@@ -6,6 +6,12 @@ export const registerUser = (values) => ({
     payload: api.registerUser(values)
 })
 
+
+export const addUserType = (values, user) => ({
+    type: AuthActionTypes.AutherizeUser,
+    payload: api.addUserType(values, user)
+})
+
 export const loginUser = (values) => ({
     type: AuthActionTypes.AutherizeUser,
     payload: api.loginUser(values)

@@ -14,7 +14,22 @@ export const registerUser = async({ firstName,lastName,phone,email,password }) =
         await usersCollection.doc(user.uid).set(userProfile);
         return { isAuth: true, user:userProfile }
     }catch(error){
-        return { error:error.message }
+        return { error: {errorCode: error.code, errorMessage: error.message} }
+    }
+}
+
+export const addUserType = async(type, user) =>{
+    try{
+        const collection = usersCollection.doc(user.uid);
+        const update = await collection.update({userType: type});
+
+        const newUser = {
+            ...user,
+            ...{userType: type}
+        }
+        return { user: newUser, userType: type, error: null }
+    }catch(error){
+        return { user: user, error: {errorCode: error.code, errorMessage: error.message} }
     }
 }
 
@@ -24,9 +39,9 @@ export const loginUser = async({ email,password }) =>{
         .signInWithEmailAndPassword(email,password);
         const userProfile = await usersCollection.doc(response.user.uid).get();
         const data = userProfile.data();
-        return { isAuth: true, user:data }
+        return { isAuth: true, userType: data.userType, user:data }
     }catch(error){
-        return { error:error.message }
+        return { error: {errorCode: error.code, errorMessage: error.message} }
     }
 }
 
@@ -59,6 +74,6 @@ export const updateUserData = async(values,user) => {
         }
         return { user: newUser, error: null }
     }catch(error){
-        return { user: user, error: error }
+        return { user: user, error: {errorCode: error.code, errorMessage: error.message} }
     }
 }

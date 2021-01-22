@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput } from "react-native";
-import { useFocusEffect } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { firebase } from './../../../firebase/firebase.js';
 import * as Yup from 'yup';
@@ -21,8 +20,8 @@ const LoginUser = (props) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
-        if(loginError){
-            showToast('error','Sorry',loginError);
+        if(loginError.errorMessage){
+            showToast('error','Sorry',loginError.errorMessage);
             setLoading(false);
             dispatch(clearAuthError());
         }

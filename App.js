@@ -8,10 +8,11 @@ import {LogBox} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import RegisterUser from './src/components/signup/authenticate/registerUser.js';
 import VideoScreen from './src/components/home/videos/index.js';
-import HomeScreen from './src/components/home/articles/index.js';
+import HomeScreen from './src/components/home/home.js';
 import SelectSignUpType from './src/components/signup/signuptype/index.js';
 import { autoSignIn } from './src/store/actions/authActions.js';
 import LoginUser from './src/components/signup/authenticate/loginUser.js';
+import RegisterUserType from './src/components/signup/authenticate/userType.js';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -28,7 +29,6 @@ const App = (props) => {
   // props.dispatch(autoSignIn());
 
   LogBox.ignoreAllLogs("value");
-  console.log(props);
   useEffect(() => {
     RNBootSplash.hide({ duration: 250 });
   },[]);
@@ -38,13 +38,14 @@ const App = (props) => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SelectSignUpType">
         {    
-          props.auth.isAuth?
-            <Stack.Screen name="Home" component={SelectSignUpType} />
+          props.auth.isAuth && props.auth.userType !== null?
+            <Stack.Screen name="Home" component={HomeScreen} />
           :
           <>
             <Stack.Screen name="Sign In" component={SelectSignUpType} />
             <Stack.Screen name="LoginUser" component={LoginUser} />
             <Stack.Screen name="RegisterUser" component={RegisterUser} />
+            <Stack.Screen name="RegisterUserType" component={RegisterUserType} />
           </>
         }
       </Stack.Navigator>

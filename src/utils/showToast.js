@@ -2,7 +2,6 @@ import Toast from 'react-native-toast-message';
 
 
 const showToast = (type,text1,text2) => {
-    console.log(type);
     switch(type){
         case 'info':
             Toast.show({

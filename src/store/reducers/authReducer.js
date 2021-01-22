@@ -3,7 +3,11 @@ import AuthActionTypes from '../actionTypes/authActionTypes.js';
 const INITIAL_STATE = {
     user:[],
     isAuth: false,
-    error: null
+    userType: null,
+    error: {
+        errorCode: null,
+        errorMessage: null
+    }
 }
 
 export default function AuthReducer(state= INITIAL_STATE, action){
@@ -11,9 +15,12 @@ export default function AuthReducer(state= INITIAL_STATE, action){
         case AuthActionTypes.AutherizeUser:
             return {...state, ...action.payload}
         case AuthActionTypes.LogoutUser:
-            return {...state, user:[], isAuth: false}
+            return {...state, user:[], userType: null, isAuth: false}
         case AuthActionTypes.ClearAuthError:
-            return {...state, error: null}
+            return {...state, error: {
+                errorCode: null,
+                errorMessage: null
+            }}
         case AuthActionTypes.UpdateUserData:
             return {...state, ...action.payload }
         default:

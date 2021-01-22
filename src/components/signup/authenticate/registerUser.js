@@ -4,24 +4,15 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import showToast from './../../../utils/showToast.js';
 import { registerUser, clearAuthError } from '../../../store/actions/authActions.js';
 
 const RegisterUser = (props) => {
 
     const dispatch = useDispatch();
-    const loginError = useSelector(state => state.auth.error);
 
     const [loading, setLoading] = useState(false);
-
-    useEffect(()=>{
-        if(loginError){
-            showToast('error','Sorry',loginError);
-            setLoading(false);
-            dispatch(clearAuthError());
-        }
-    },[loginError]);
 
     const SignUpSchema = Yup.object().shape({
         firstName: Yup.string()
@@ -46,7 +37,18 @@ const RegisterUser = (props) => {
 
     const handleSubmit = (values) => {
         setLoading(true);
-        dispatch(registerUser(values));
+        dispatch(registerUser(values)).then(({payload})=>{
+            setLoading(false);
+            if(payload.error){
+                showToast('error','Ups !!','Try again later');
+                dispatch(clearAuthError());
+            } else {
+                showToast('success','Congratulations','Your profile was updated');
+                props.navigation.navigate('RegisterUserType',{
+                    user:payload.user
+                })
+            }
+        });
     }
 
     return(
