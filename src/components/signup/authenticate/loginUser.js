@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, TextInput } from "react-native";
+import { useFocusEffect } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { firebase } from './../../../firebase/firebase.js';
 import * as Yup from 'yup';
 import { Input, Button } from 'react-native-elements';
 import constants from './../../../constants.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from './../../../store/actions/authActions.js';
+import showToast from './../../../utils/showToast.js';
+import { loginUser, clearAuthError } from './../../../store/actions/authActions.js';
 
 const LoginUser = (props) => {
 
     const dispatch = useDispatch();
+    const loginError = useSelector(state => state.auth.error);
 
     const [confirm, setConfirm] = useState(null);
     const [code, setCode] = useState('');
+    const [securEntry, setSecurEntry] = useState(true);
+    const [loading, setLoading] = useState(false)
+
+    useEffect(()=>{
+        if(loginError){
+            showToast('error','Sorry',loginError);
+            setLoading(false);
+            dispatch(clearAuthError());
+        }
+    },[loginError]);
 
     const handleSubmit = (values) => {
+        setLoading(true);
         dispatch(loginUser(values));
     }
 
     async function handleMobileSubmit(phoneNumber) {
-        console.log(phoneNumber);
         var reCaptcha = firebase.auth.RecaptchaVerifier();
         const confirmation = await firebase.auth().signInWithPhoneNumber(phoneNumber, reCaptcha);
         setConfirm(confirmation);
@@ -47,7 +60,6 @@ const LoginUser = (props) => {
                     .email('Email is invalid')
                     .required('Email is required'),
                 password: Yup.string()
-                    .min(6, 'Password must be at least 6 characters')
                     .required('Password is required')
             })}
             onSubmit={ values => handleSubmit(values)}>
@@ -67,6 +79,11 @@ const LoginUser = (props) => {
                         <Input
                             placeholder="Enter your password"
                             leftIcon={{type:'MaterialIcons', name:'fingerprint'}}
+                            rightIcon={{
+                                type:'antdesign',
+                                name:securEntry ? 'eye':'eyeo',
+                                onPress:()=> setSecurEntry(!securEntry)
+                            }}
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             value={values.password}
@@ -77,6 +94,7 @@ const LoginUser = (props) => {
 
                         <Button
                             title="Log In"
+                            loading={loading}
                             onPress={handleSubmit}/>
                     </View>
              )}
