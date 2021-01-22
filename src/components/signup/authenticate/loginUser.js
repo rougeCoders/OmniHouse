@@ -20,7 +20,9 @@ const LoginUser = (props) => {
     }
 
     async function handleMobileSubmit(phoneNumber) {
-        const confirmation = await firebase.auth().signInWithPhoneNumber(phoneNumber);
+        console.log(phoneNumber);
+        var reCaptcha = firebase.auth.RecaptchaVerifier();
+        const confirmation = await firebase.auth().signInWithPhoneNumber(phoneNumber, reCaptcha);
         setConfirm(confirmation);
     }
     async function confirmCode() {
@@ -113,7 +115,7 @@ const LoginUser = (props) => {
 
                         <Button
                             title="Log In"
-                            onPress={handleMobileSubmit}/>
+                            onPress={handleSubmit}/>
                     </View>
              )}
         </Formik>

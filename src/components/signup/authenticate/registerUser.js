@@ -43,7 +43,7 @@ const RegisterUser = (props) => {
                 initialValues={{
                     firstName:'',
                     lastName:'',
-                    mobile:'',
+                    phone:'',
                     email:'',
                     password:'',
                     confirmPassword:''
