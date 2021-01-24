@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import {LogBox} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import RegisterUser from './src/components/signup/authenticate/registerUser.js';
-import HomeScreen from './src/components/home/home.js';
 import SelectSignUpType from './src/components/signup/signuptype/index.js';
 import { autoSignIn } from './src/store/actions/authActions.js';
 import LoginUser from './src/components/signup/authenticate/loginUser.js';
 import RegisterUserType from './src/components/signup/authenticate/userType.js';
+import HomeStack from './src/screens/home/homeStack.js';
 
 const Stack = createStackNavigator();
 
@@ -25,7 +25,7 @@ const App = (props) => {
 
   return(
     props.auth.isAuth && props.auth.userType !== null?
-    <HomeScreen />
+    <HomeStack />
     :
     <NavigationContainer>
     <Stack.Navigator initialRouteName="SelectSignUpType">
