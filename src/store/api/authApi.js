@@ -29,19 +29,19 @@ export const addUserType = async(type, user) =>{
         }
         return { user: newUser, userType: type, error: null }
     }catch(error){
-        return { user: user, error: {errorCode: error.code, errorMessage: error.message} }
+        return { user: user, error: error.code }
     }
 }
 
 export const loginUser = async({ email,password }) =>{
     try{
-        const response =await firebase.auth()
+        const response = await firebase.auth()
         .signInWithEmailAndPassword(email,password);
         const userProfile = await usersCollection.doc(response.user.uid).get();
         const data = userProfile.data();
         return { isAuth: true, userType: data.userType, user:data }
     }catch(error){
-        return { error: {errorCode: error.code, errorMessage: error.message} }
+        return { error: error.code }
     }
 }
 
@@ -74,6 +74,6 @@ export const updateUserData = async(values,user) => {
         }
         return { user: newUser, error: null }
     }catch(error){
-        return { user: user, error: {errorCode: error.code, errorMessage: error.message} }
+        return { user: user, error: error.code }
     }
 }

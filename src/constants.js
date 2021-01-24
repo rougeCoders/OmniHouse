@@ -10,5 +10,13 @@ export default {
     Labels: {
         Landlord: 'Landlord',
         Tenant: 'Tenant'
-    }
+    },
+
+
+    Errors: [
+        {
+            errorCode:'test',
+            errorMsg: 'test'
+        }
+    ]
 }

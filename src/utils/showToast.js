@@ -1,5 +1,10 @@
 import Toast from 'react-native-toast-message';
+import constants from'../constants.js';
 
+const getErrorMessage = (error) => {
+    const errorObj = constants.Errors.filter(er => er.errorCode === error)[0];
+    return errorObj !== undefined ? errorObj.errorMsg : error;
+}
 
 const showToast = (type,text1,text2) => {
     switch(type){
@@ -29,7 +34,7 @@ const showToast = (type,text1,text2) => {
             Toast.show({
                 type: 'error',
                 text1,
-                text2,
+                text2: getErrorMessage(text2),
                 position: 'bottom',
                 visibilityTime: 4000,
                 autoHide: true,

@@ -20,8 +20,8 @@ const LoginUser = (props) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
-        if(loginError.errorMessage){
-            showToast('error','Sorry',loginError.errorMessage);
+        if(loginError !== null){
+            showToast('error',loginError, loginError);
             setLoading(false);
             dispatch(clearAuthError());
         }
