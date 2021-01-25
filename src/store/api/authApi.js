@@ -14,7 +14,7 @@ export const registerUser = async({ firstName,lastName,phone,email,password }) =
         await usersCollection.doc(user.uid).set(userProfile);
         return { isAuth: true, user:userProfile }
     }catch(error){
-        return { error: {errorCode: error.code, errorMessage: error.message} }
+        return { error: error.code }
     }
 }
 

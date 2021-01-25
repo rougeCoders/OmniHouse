@@ -4,6 +4,7 @@ import { Text } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonCard from '../../components/cards/buttonCard/index.js';
 import styles from './home.style.js';
+import constants from './../../constants.js';
 
 const HomeScreen = (props) => {
 
@@ -11,7 +12,7 @@ const HomeScreen = (props) => {
     const mockData = [
         {
             Title: 'My Properties',
-            ScreenLink: 'My Properties'
+            ScreenLink: constants.ScreenNames.MyProperty
         },
         {
             Title: 'Marketplace'

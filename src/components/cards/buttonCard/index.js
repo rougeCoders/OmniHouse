@@ -4,8 +4,7 @@ import { Text } from 'react-native-elements';
 import styles from './buttonCard.style.js';
 
 const ButtonCard = (props) => {
-
-    console.log(props);
+    
     const handlePress = () => {
         if(props.ScreenLink !== undefined && props.ScreenLink !== '') {
             props.navigation.navigate(props.ScreenLink);

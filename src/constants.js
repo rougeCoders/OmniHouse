@@ -12,6 +12,26 @@ export default {
         Tenant: 'Tenant'
     },
 
+    PropertyType:{
+        Studio: 'Studio',
+        Flat: 'Flat',
+        DetachedHouse: 'Detached house',
+        SemiDetachedHouse: 'Semi Detached house',
+        TerracedHouse: 'Terraced house',
+        Other: 'Other'
+    },
+
+    FurnishingType:{
+        Furnished: 'Furnished',
+        PartFurnished: 'Part furnished',
+        Unfurnished: 'Unfurnished'
+    },
+
+    ScreenNames: {
+        MyProperty: 'My Properties',
+        AddProperty: 'Add Property'
+    },
+
 
     Errors: [
         {
