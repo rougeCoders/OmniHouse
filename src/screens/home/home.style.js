@@ -3,9 +3,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     container :{
-        padding:'10%',
+        padding: 10,
     },
-    headingStyle:{
-        margin: '10 0',
+    welcomeText:{
+        marginTop:20,
+        marginBottom: 20,
+        fontWeight: 'bold'
     }
 });

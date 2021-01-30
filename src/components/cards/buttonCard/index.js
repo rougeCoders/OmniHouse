@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, TouchableOpacity } from "react-native";
-import { Text } from 'react-native-elements';
+import { View } from "react-native";
+import { Image, Text } from 'react-native-elements';
 import styles from './buttonCard.style.js';
 
 const ButtonCard = (props) => {
@@ -9,13 +9,13 @@ const ButtonCard = (props) => {
         if(props.ScreenLink !== undefined && props.ScreenLink !== '') {
             props.navigation.navigate(props.ScreenLink);
         }
-
     } 
     return(
         <View style={styles.buttonContainer} >
-            <TouchableOpacity onPress={ handlePress }>
-                <Text>{props.Title}</Text>
-            </TouchableOpacity>
+                <Image source={props.ImageUri}
+                    style={styles.imageIcon}
+                    onPress={handlePress} />
+            <Text>{props.Title}</Text>
         </View>
     )
 }

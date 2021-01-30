@@ -2,15 +2,13 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
-    buttonContainer :{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+    buttonContainer: {
       alignItems: 'center',
-      padding: 25,
-      margin: 2,
-      borderRadius: 20,
-      borderColor: '#2a4944',
-      borderWidth: 1,
-      backgroundColor: '#d2f7f1'
     },
+
+    imageIcon: {
+      borderRadius:10,
+      width: 80,
+      height: 80
+    }
 });

@@ -9,10 +9,15 @@ const Stack = createStackNavigator();
 
 const HomeStack = () => {
     return(
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="HomeScreen">
-              <Stack.Screen name="Home" component={HomeScreen} />
-              <Stack.Screen name={constants.ScreenNames.MyProperty} component={PropertyListing} />
+        <NavigationContainer independent={true}>
+          <Stack.Navigator initialRouteName="HomeScreen"
+            screenOptions={{headerTitle:''}}>
+              <Stack.Screen name="Home"
+                component={HomeScreen}
+                options={{headerShown: false}}/>
+              <Stack.Screen name={constants.ScreenNames.MyProperty}
+                component={PropertyListing}
+                 />
           </Stack.Navigator>  
         </NavigationContainer>
 

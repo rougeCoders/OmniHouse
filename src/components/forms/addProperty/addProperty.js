@@ -63,7 +63,6 @@ const AddPropertyForm = (props) => {
     }
 
     const handleCloseClick = () => {
-        console.log('test');
         props.handleCallback();
     }
 
