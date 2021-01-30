@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
+    container:{
+      padding:5,
+      paddingRight:10,
+      flexDirection:'row',
+    },
     buttonContainer: {
       padding:5,
       marginBottom:20,
@@ -10,6 +15,7 @@ export default StyleSheet.create({
       justifyContent:'space-between',
       backgroundColor:'#554050',
       borderRadius:10,
+      width:'100%'
     },
     progrssBarContainer:{
       width:180,
@@ -23,4 +29,7 @@ export default StyleSheet.create({
       backgroundColor:'#93227F'
     },
     progressText:{},
+    badge:{
+      width:0
+    }
 });

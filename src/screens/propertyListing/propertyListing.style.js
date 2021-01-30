@@ -8,12 +8,19 @@ export default StyleSheet.create({
     headingText:{
         marginBottom:20,
     },
+    searchTab:{
+        flexDirection:'row',
+        justifyContent:'flex-end',
+        marginBottom:15
+    },
     buttonBottom:{
-        bottom: 0,
+        borderRadius:50,
+        paddingLeft:20,
+        paddingRight:20
     },
     addProp:{
         flexDirection: 'row',
-        alignItems: 'flex-end'
+        justifyContent: 'flex-end'
     }
 
 });

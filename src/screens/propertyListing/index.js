@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Modal } from "react-native";
-import { Text, Button } from 'react-native-elements';
+import { Text, Icon, Button } from 'react-native-elements';
 import AddPropertyForm from '../../components/forms/addProperty/addProperty';
 import styles from './propertyListing.style.js';
 import PropertyCard from './../../components/cards/propertyCard/index.js';
@@ -31,15 +31,38 @@ const PropertyListing = (props) => {
     return(
         <View style={styles.container}>
             <Text h2 style={styles.headingText}>My properties</Text>
+            <View style={styles.searchTab}>
+                    <Icon
+                        name='search'
+                        type='materialicons'
+                        color='#517fa4'
+                        size={30}
+                        iconStyle={{marginRight:15}}
+                    />
+                    <Icon
+                        name='more-vert'
+                        type='materialicons'
+                        color='#517fa4'
+                        size={30}
+                    />
+            </View>
             <ScrollView>
                 {
                     getproperties.map((property, index) => (
                         <PropertyCard key={index} {...property}/>
-                    ))}
+                ))}
             </ScrollView>
             <View style={styles.addProp}>
-                <Button style={styles.buttonBottom}
-                    title="Add Property"
+                <Button buttonStyle={styles.buttonBottom}
+                    icon={
+                        <Icon
+                          name='add'
+                          type='ionicons'
+                          size={30}
+                          color="white"
+                        />
+                    }
+                    title="ADD A PROPERTY"
                     onPress={() => setModalVisible(true)} />
             </View>
             <View>
