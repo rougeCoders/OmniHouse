@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
-import { Text, Header, Icon, Button } from 'react-native-elements';
+import React, { useState } from 'react';
+import { Header, Icon, Button } from 'react-native-elements';
 import styles from './addProperty.style.js';
 import Screen1 from './screens/screen1.js';
 import Screen2 from './screens/screen2.js';
@@ -28,22 +27,30 @@ const AddPropertyForm = (props) => {
 
     const BackButton = () => {
         return(
-            <View>
-                <Button title="Back" onPress={handleBackPress} />
-            </View>
+            <Button
+                icon={
+                    <Icon
+                      name='navigate-before'
+                      type='materialicons'
+                      size={30}
+                      color="white"
+                    />
+                }
+                title="Back"
+                onPress={handleBackPress} />
         )
     }
 
     const CloseButton = () => {
         return (
-            <View>
                 <Icon
-                    name='sc-telegram'
-                    type='evilicon'
-                    color='#000000'
+                    name='close'
+                    type='ionicons'
+                    size={28}
+                    color="white"
+                    iconStyle={{marginTop:10}}
                     onPress={handleCloseClick}
                 />   
-            </View>
         )
     }
 
