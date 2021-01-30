@@ -10,5 +10,10 @@ export default StyleSheet.create({
     },
     buttonBottom:{
         bottom: 0,
+    },
+    addProp:{
+        flexDirection: 'row',
+        alignItems: 'flex-end'
     }
+
 });

@@ -24,17 +24,17 @@ const App = (props) => {
   },[]);
 
   return(
-    props.auth.isAuth && props.auth.userType !== null?
-    <HomeStack />
-    :
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName="SelectSignUpType">
-          <Stack.Screen name="Sign In" component={SelectSignUpType} />
-          <Stack.Screen name="LoginUser" component={LoginUser} />
-          <Stack.Screen name="RegisterUser" component={RegisterUser} />
-          <Stack.Screen name="RegisterUserType" component={RegisterUserType} />
-    </Stack.Navigator>  
-  </NavigationContainer> 
+      props.auth.isAuth && props.auth.userType !== null?
+      <HomeStack />
+      :
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="SelectSignUpType">
+              <Stack.Screen name="Sign In" component={SelectSignUpType} />
+              <Stack.Screen name="LoginUser" component={LoginUser} />
+              <Stack.Screen name="RegisterUser" component={RegisterUser} />
+              <Stack.Screen name="RegisterUserType" component={RegisterUserType} />
+        </Stack.Navigator>  
+      </NavigationContainer>
   )
 }
 

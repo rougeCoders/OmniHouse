@@ -37,7 +37,11 @@ const PropertyListing = (props) => {
                         <PropertyCard key={index} {...property}/>
                     ))}
             </ScrollView>
-            <Button style={styles.buttonBottom} title="Add Property" onPress={() => setModalVisible(true)} />
+            <View style={styles.addProp}>
+                <Button style={styles.buttonBottom}
+                    title="Add Property"
+                    onPress={() => setModalVisible(true)} />
+            </View>
             <View>
                 <Modal 
                     animationType="slide"
