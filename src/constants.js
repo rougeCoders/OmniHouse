@@ -16,7 +16,7 @@ export default {
         Studio: 'Studio',
         Flat: 'Flat',
         DetachedHouse: 'Detached house',
-        SemiDetachedHouse: 'Semi Detached house',
+        SemiDetachedHouse: 'Semi detached',
         TerracedHouse: 'Terraced house',
         Other: 'Other'
     },

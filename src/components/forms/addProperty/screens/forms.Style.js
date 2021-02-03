@@ -14,7 +14,7 @@ export default StyleSheet.create({
     conditionText:{
         marginBottom:10,
         marginTop:10,
-        alignContent:'center'
+        textAlign:'center',
     },
     buttonContainer:{
         flexDirection:'row-reverse'

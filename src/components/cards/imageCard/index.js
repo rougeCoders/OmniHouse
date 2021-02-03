@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from "react-native";
 import { Image, Text } from 'react-native-elements';
-import styles from './buttonCard.style.js';
+import styles from './imageCard.style.js';
 
-const ButtonCard = (props) => {
+const ImageCard = (props) => {
     
     const handlePress = () => {
         if(props.ScreenLink !== undefined && props.ScreenLink !== '') {
@@ -20,4 +20,4 @@ const ButtonCard = (props) => {
     )
 }
 
-export default ButtonCard;
+export default ImageCard;

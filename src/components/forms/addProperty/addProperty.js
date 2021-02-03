@@ -6,6 +6,7 @@ import Screen2 from './screens/screen2.js';
 import Screen3 from './screens/screen3.js';
 import Screen4 from './screens/screen4.js';
 import Screen5 from './screens/screen5.js';
+import Screen6 from './screens/screen6.js';
 
 const AddPropertyForm = (props) => {
 
