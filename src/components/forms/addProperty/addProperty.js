@@ -14,7 +14,7 @@ const AddPropertyForm = (props) => {
         addressLine1: '',
         addressLine2: '',
         city: '',
-        pincode:'',
+        postcode:'',
         monthlyRent:'',
         isOccupied: false,
         propertyType:'',
