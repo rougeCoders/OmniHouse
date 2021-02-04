@@ -14,7 +14,7 @@ const IconButton = (props) => {
             style={[styles.buttonContainer,
                 {...(props.backgroundColor !== undefined
                     && { backgroundColor: props.backgroundColor})}]}
-            onPress={handlePress}>
+                onPress={handlePress}>
             {
                 props.icon !== undefined && (
                     <Icon
