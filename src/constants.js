@@ -9,7 +9,9 @@ export default {
 
     Labels: {
         Landlord: 'Landlord',
-        Tenant: 'Tenant'
+        Tenant: 'Tenant',
+        Yes: 'Yes',
+        No: 'No'
     },
 
     PropertyType:{
