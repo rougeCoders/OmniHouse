@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { View,FlatList,ScrollView,TouchableOpacity } from 'react-native';
+import { View,FlatList,ScrollView,TouchableOpacity,Dimensions } from 'react-native';
 import { Text, Button,Icon } from 'react-native-elements';
 import IconButton from './../../../cards/iconButton/index.js';
 import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
 import CalendarPicker from 'react-native-calendar-picker';
 
+
+
 const Screen4 = (props) => {
 
+    const width = Dimensions.get('window').width; 
     const [isNotOccupied, setIsNotOccupied] = useState(false);
     const [isTenants, setIsTenants] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
+    const [adjustedWidth, setAdjustedwidth] = useState(width - (20/100*width));
 
     const handleTenantSelection = (content) => {
         setIsTenants(content);
@@ -29,6 +33,11 @@ const Screen4 = (props) => {
 
     }
 
+    Dimensions.addEventListener('change', () => {
+        const windowwidth = Dimensions.get('window').width;
+        setAdjustedwidth( windowwidth - (20/100*windowwidth));
+    });
+   
     const propertyTypeData = [
         {
             index:1,
@@ -45,8 +54,8 @@ const Screen4 = (props) => {
     ];
 
     return (
-        <View style={styles.formContainer}>
-            <ScrollView style={{padding:'10%'}}>
+        <View style={[styles.formContainer,{padding: '10%'}]}>
+            <ScrollView>
                 <Text h4>Do you currently have tenants?</Text>
                 <FlatList
                     style={{alignSelf:'center', marginBottom:2 ,padding : 20}}
@@ -61,10 +70,9 @@ const Screen4 = (props) => {
                     keyExtractor={item => item.index}
                     numColumns={2}
                 />
-                
-                
+                 
                     { isNotOccupied && (
-                        <View style={{marginBottom:20}}>
+                        <View style={{marginBottom:20, width: '100%'}}>
                             <Text style={{marginBottom:20, fontSize: 20}}>When is property available for rent?</Text>
                             <TouchableOpacity
                                 onPress={() => setShowCalendar(true)}
@@ -80,8 +88,13 @@ const Screen4 = (props) => {
                             { showCalendar && (
                                 <CalendarPicker
                                  onDateChange={onDateChange}
+                                 width = {adjustedWidth}
+                                 headerWrapperStyle ={{
+                                     width: '90%'
+                                 }}
                                 />
                             )}
+                            <Text>We will post your completed property on our listing portal all year round to help you avoid the tenant void!</Text>
                         </View>
                     )}
                 
