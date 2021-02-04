@@ -7,7 +7,7 @@ import styles from './forms.Style.js';
 
 const Screen6 = (props) => {
 
-    const [propertyFurnishing, setPropertyFurnishing] = useState('');
+    const [propertyFurnishing, setPropertyFurnishing] = useState(props.propertyDetails.propertyFurnishing);
 
     const handlePropertyFurnishingSelection = (content) => {
         setPropertyFurnishing(content);
@@ -17,22 +17,24 @@ const Screen6 = (props) => {
         props.nextStep({propertyFurnishing: propertyFurnishing,
             step: props.propertyDetails.step + 1});
     }
-    console.log(props.propertyDetails);
 
     const propertyFurnishingData = [
         {
             index:1,
             title: constants.FurnishingType.Furnished,
+            value: constants.FurnishingType.Furnished,
             icon: {type: 'ionicons', name: 'home'},
         },
         {
             index:2,
             title: constants.FurnishingType.PartFurnished,
+            value: constants.FurnishingType.PartFurnished,
             icon: {type: 'ionicons', name: 'home'},
         },
         {
             index:3,
             title: constants.FurnishingType.Unfurnished,
+            value: constants.FurnishingType.Unfurnished,
             icon: {type: 'ionicons', name: 'home'},
         }
       ]
@@ -42,11 +44,14 @@ const Screen6 = (props) => {
             <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>How is the property furnished?</Text>
             <FlatList
+                style={{alignSelf:'center', marginBottom:25}}
                 data={propertyFurnishingData}
                 renderItem={({ item }) => 
                     <IconButton title={item.title}
+                    value={item.value}
                     icon={item.icon}
-                    buttonPress={handlePropertyFurnishingSelection} />}
+                    buttonPress={handlePropertyFurnishingSelection}
+                    {...(propertyFurnishing === item.value && { backgroundColor: 'purple'})} />}
                 keyExtractor={item => item.index}
                 numColumns={3}
                 />

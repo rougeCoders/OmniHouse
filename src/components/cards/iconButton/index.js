@@ -6,14 +6,17 @@ import styles from './iconButton.style.js';
 const IconButton = (props) => {
 
     const handlePress = () => {
-        console.log(props.title);
-        props.buttonPress(props.title);
+        props.buttonPress(props.value);
     } 
 
     return(
-        <TouchableOpacity  style={styles.buttonContainer} onPress={handlePress}>
+        <TouchableOpacity       
+            style={[styles.buttonContainer,
+                {...(props.backgroundColor !== undefined
+                    && { backgroundColor: props.backgroundColor})}]}
+            onPress={handlePress}>
             {
-                (
+                props.icon !== undefined && (
                     <Icon
                         name={props.icon.name}
                         type={props.icon.type}

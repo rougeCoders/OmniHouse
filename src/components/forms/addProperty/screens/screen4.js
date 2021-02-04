@@ -15,9 +15,9 @@ const Screen4 = (props) => {
             <Text h4>Do you currently have tenants?</Text>
             <Button title="I have tenants" onPress={()=> setIsOccupied(true)}/>
             <Button title="I don't have tenants" onPress={()=> setIsOccupied(false)}/>
-            <Text style={{marginTop:30}}>When is porperty available for rent?</Text>
+            <Text style={{marginTop:30}}>When is property available for rent?</Text>
             <Button title="Calender" />
-            <Button buttonStyle={{marginTop:10}} title="Next" onPress={() => handleSubmit}/>
+            <Button buttonStyle={{marginTop:10}} title="Next" onPress={handleSubmit}/>
         </View>
     )
 }
