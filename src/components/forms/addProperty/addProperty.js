@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Animated } from "react-native";
+import { View, Animated } from "react-native";
 import { Header, Icon, Button } from 'react-native-elements';
 import styles from './addProperty.style.js';
 import Screen1 from './screens/screen1.js';
@@ -8,6 +8,8 @@ import Screen3 from './screens/screen3.js';
 import Screen4 from './screens/screen4.js';
 import Screen5 from './screens/screen5.js';
 import Screen6 from './screens/screen6.js';
+import Screen7 from './screens/screen7.js';
+import Screen8 from './screens/screen8.js';
 
 const AddPropertyForm = (props) => {
 
@@ -17,11 +19,15 @@ const AddPropertyForm = (props) => {
         addressLine2: '',
         city: '',
         postcode:'',
-        monthlyRent:'',
+        rentDetails:{
+            amount:'',
+            frequency:'',
+        },
         isOccupied: false,
+        occupationType:'',
         propertyType:'',
         propertyFurnishing:'',
-        billsIncluded:false,
+        billsIncluded:'',
         bills:[],
     };
 
@@ -110,6 +116,10 @@ const AddPropertyForm = (props) => {
                 return <Screen5 nextStep={handleNextPress} propertyDetails={propertyState} />;
             case 6:
                 return <Screen6 nextStep={handleNextPress} propertyDetails={propertyState} />;
+            case 7:
+                return <Screen7 nextStep={handleNextPress} propertyDetails={propertyState} />;
+            case 8:
+                return <Screen8 nextStep={handleNextPress} propertyDetails={propertyState} />;  
             }
         }
     }

@@ -12,6 +12,11 @@ export default {
         Tenant: 'Tenant'
     },
 
+    RentFrequency: {
+        PerWeek: 'PER WEEK',
+        PerMonth: 'PER MONTH',
+    },
+
     PropertyType:{
         Studio: 'Studio',
         Flat: 'Flat',

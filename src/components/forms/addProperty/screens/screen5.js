@@ -8,13 +8,19 @@ import styles from './forms.Style.js';
 const Screen5 = (props) => {
 
     const [propertyType, setPropertyType] = useState(props.propertyDetails.propertyType);
+    const [occupationType, setOccupationType] = useState(props.propertyDetails.occupationType);
 
     const handlePropertyTypeSelection = (content) => {
         setPropertyType(content);
     }
 
+    const handleOccupationTypeSelection = (content) => {
+        setOccupationType(content);
+    }
+
     const handleSubmit = () => {
         props.nextStep({propertyType: propertyType,
+            occupationType: occupationType,
             step: props.propertyDetails.step + 1});
     }
 
@@ -55,7 +61,20 @@ const Screen5 = (props) => {
             value: constants.PropertyType.Other,
             icon: {type: 'ionicons', name: 'home'},
         }
-      ]
+      ];
+
+    const occupationTypeData = [
+        {
+            index:1,
+            title: 'YES',
+            value: true,
+        },
+        {
+            index:1,
+            title: 'NO',
+            value: false,
+        },
+    ];
 
     return (
         <View  style={styles.formContainer}>
@@ -74,6 +93,21 @@ const Screen5 = (props) => {
                 keyExtractor={item => item.index}
                 numColumns={2}
                 />
+
+                <Text h4 style={styles.headText}>Is the property an HMO (House in Multiple Occupation)</Text>
+
+                <FlatList
+                    style={{alignSelf:'center', marginBottom:25}}
+                    data={occupationTypeData}
+                    renderItem={({ item }) => 
+                        <IconButton title={item.title}
+                            value={item.value}
+                            buttonPress={handleOccupationTypeSelection}
+                            {...(occupationType === item.value && { backgroundColor: 'purple'})}
+                        />}
+                    keyExtractor={item => item.index}
+                    numColumns={2}
+                    />
 
                 <View style={styles.buttonContainer}>
                     <Button
