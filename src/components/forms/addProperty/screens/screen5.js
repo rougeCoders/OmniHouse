@@ -70,7 +70,7 @@ const Screen5 = (props) => {
             value: true,
         },
         {
-            index:1,
+            index:2,
             title: 'NO',
             value: false,
         },

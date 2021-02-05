@@ -10,6 +10,8 @@ import Screen5 from './screens/screen5.js';
 import Screen6 from './screens/screen6.js';
 import Screen7 from './screens/screen7.js';
 import Screen8 from './screens/screen8.js';
+import Screen9 from './screens/screen9.js';
+import Screen10 from './screens/screen10.js';
 
 const AddPropertyForm = (props) => {
 
@@ -22,17 +24,19 @@ const AddPropertyForm = (props) => {
         rentDetails:{
             amount:'',
             frequency:'',
+            billsIncluded:'',
+            bills:[],
+            isZeroDepositScheme:'',
+            depositDuration:1,
         },
         isOccupied: false,
         occupationType:'',
         propertyType:'',
         propertyFurnishing:'',
-        billsIncluded:'',
-        bills:[],
     };
 
     const [propertyState, setPropertyState] = useState(defaultState);
-    const screensCount = 8;
+    const screensCount = 16;
 
     const BackButton = () => {
         return(
@@ -120,6 +124,10 @@ const AddPropertyForm = (props) => {
                 return <Screen7 nextStep={handleNextPress} propertyDetails={propertyState} />;
             case 8:
                 return <Screen8 nextStep={handleNextPress} propertyDetails={propertyState} />;  
+            case 9:
+                return <Screen9 nextStep={handleNextPress} propertyDetails={propertyState} />;  
+            case 10:
+                return <Screen10 nextStep={handleNextPress} propertyDetails={propertyState} />;  
             }
         }
     }

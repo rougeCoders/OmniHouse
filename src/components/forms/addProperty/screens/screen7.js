@@ -6,13 +6,10 @@ import styles from './forms.Style.js';
 
 const Screen7 = (props) => {
 
-    let rentDetails = {
-        amount:'',
-        frequency:''
-    };
+    let rentDetails = props.propertyDetails.rentDetails;
 
-    const [frequency, setFrequency] = useState(props.propertyDetails.rentDetails.frequency);
-    const [rent, setRent] = useState(props.propertyDetails.rentDetails.amount);
+    const [frequency, setFrequency] = useState(rentDetails.frequency);
+    const [rent, setRent] = useState(rentDetails.amount);
 
     const handleSubmit = () => {
         rentDetails.amount = rent;
