@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator,HeaderBackButton } from '@react-navigation/stack';
+import { Icon } from 'react-native-elements';
 import Screen1 from '../components/forms/addProperty/screens/screen1.js';
 import Screen2 from '../components/forms/addProperty/screens/screen2.js';
 import Screen3 from '../components/forms/addProperty/screens/screen3.js';
@@ -28,7 +29,18 @@ const AddPropertyNavigator = (propsparent) => {
                     headerTintColor: 'white',
                     headerStyle: { backgroundColor: 'blue' },
                     headerBackTitle:'Back',
-                    headerBackTitleVisible: true
+                    headerBackTitleVisible: true,
+                    headerRight:() => (
+                        <Icon
+                            name='close'
+                            type= 'ionicon'
+                            color='#fff'
+                            onPress={() => {
+                                propsparent.handleCallback()
+                            }}
+                        />
+                    ),
+                    headerRightContainerStyle:{marginRight:15,padding:5}
                 }}
               > 
                 <Stack.Screen name="Screen1"
