@@ -5,12 +5,16 @@ import IconButton from '../../../cards/iconButton/index.js';
 import CircleButton from '../../../cards/circleButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { securityDepositDetails } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen10 = (props) => {
 
-    const roomsDetails = props.propertyDetails.roomsDetails;
-    const [isZeroDepositScheme, setIsZeroDepositScheme] = useState(rentDetails.isZeroDepositScheme);
-    const [depositDuration, setDepositDuration] = useState(rentDetails.depositDuration);
+    const dispatch = useDispatch();
+
+    const rentDetails = {};
+    const [isZeroDepositScheme, setIsZeroDepositScheme] = useState();
+    const [depositDuration, setDepositDuration] = useState();
 
     const handleDepositSchemeSelection = (content) => {
         setIsZeroDepositScheme(content);
@@ -23,8 +27,8 @@ const Screen10 = (props) => {
     }
 
     const handleSubmit = () => {
-        props.nextStep({rentDetails: rentDetails,
-            step: props.propertyDetails.step + 1});
+        dispatch(securityDepositDetails(rentDetails))
+        props.navigation.navigate('Screen11');
     }
 
     const depositSchemeData = [

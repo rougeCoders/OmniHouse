@@ -4,12 +4,16 @@ import { Text, Button, Icon } from 'react-native-elements';
 import IconButton from '../../../cards/iconButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
+import { addPropertyBillDetails } from '../../../../store/actions/addPropertyAction.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Screen8 = (props) => {
 
-    const rentDetails = props.propertyDetails.rentDetails;
-    const [billsIncluded, setBillsIncluded] = useState(rentDetails.billsIncluded);
-    const [billsList, setBillsList] = useState(rentDetails.bills);
+    const dispatch = useDispatch();
+
+    const rentDetails = {};
+    const [billsIncluded, setBillsIncluded] = useState();
+    const [billsList, setBillsList] = useState([]);
 
     const handleBillIncludedSelection = (content) => {
         setBillsIncluded(content);
@@ -32,8 +36,8 @@ const Screen8 = (props) => {
     const handleSubmit = () => {
         rentDetails.billsIncluded = billsIncluded;
         rentDetails.bills = billsList;
-        props.nextStep({rentDetails: rentDetails,
-            step: props.propertyDetails.step + 1});
+        dispatch(addPropertyBillDetails(rentDetails))
+        props.navigation.navigate('Screen9');
     }
 
     const billsIncludedData = [

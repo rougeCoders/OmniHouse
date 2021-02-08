@@ -5,6 +5,7 @@ import AddPropertyForm from '../../components/forms/addProperty/addProperty';
 import styles from './propertyListing.style.js';
 import PropertyCard from './../../components/cards/propertyCard/index.js';
 import image from './../../assets/logo.png';
+import AddPropertyNavigator from '../../navigation/addProperty.js'
 
 const PropertyListing = (props) => {
 
@@ -71,7 +72,7 @@ const PropertyListing = (props) => {
                     transparent={false}
                     visible={modalVisible}
                     onRequestClose={handleCloseCallback}>
-                    <AddPropertyForm handleCallback={handleCloseCallback} />
+                    <AddPropertyNavigator handleCallback={handleCloseCallback}/>
                 </Modal>    
             </View>
         </View>

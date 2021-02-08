@@ -3,19 +3,23 @@ import { View, FlatList, TouchableOpacity } from 'react-native';
 import { Text, Input, Icon, Button } from 'react-native-elements';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPropertyRentalDetails } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen7 = (props) => {
 
-    let rentDetails = props.propertyDetails.rentDetails;
+    const dispatch = useDispatch();
 
-    const [frequency, setFrequency] = useState(rentDetails.frequency);
-    const [rent, setRent] = useState(rentDetails.amount);
+    let rentDetails = {};
+
+    const [frequency, setFrequency] = useState();
+    const [rent, setRent] = useState();
 
     const handleSubmit = () => {
         rentDetails.amount = rent;
         rentDetails.frequency = frequency;
-
-        props.nextStep({rentDetails: rentDetails, step: props.propertyDetails.step + 1});
+        dispatch(addPropertyRentalDetails(rentDetails))
+        props.navigation.navigate('Screen8');
     }
 
     const frequencyData = [

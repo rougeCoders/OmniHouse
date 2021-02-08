@@ -3,22 +3,27 @@ import { View } from 'react-native';
 import { Text, Input, Button, Icon } from 'react-native-elements';
 import { Formik } from 'formik';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen3 = (props) => {
 
+    const propertyAddress = useSelector(state => state.addProperty);
+    const dispatch = useDispatch();
+
     const handleSubmit = (values) => {
-        props.nextStep(values);
+        dispatch(addPropertyAddress(values))
+        props.navigation.navigate('Screen4');
     }
 
     return (
         <View style={styles.formContainer}>
             <Formik
                 initialValues={{
-                    step: props.propertyDetails.step + 1,
-                    addressLine1: props.propertyDetails.addressLine1,
-                    addressLine2: props.propertyDetails.addressLine2,
-                    city: props.propertyDetails.city,
-                    postcode: props.propertyDetails.postcode
+                    addressLine1: propertyAddress.address.addressLine1,
+                    addressLine2: propertyAddress.address.addressLine2,
+                    city: propertyAddress.address.city,
+                    postcode: propertyAddress.address.postcode
                 }}
                 onSubmit={ values => handleSubmit(values)} >
                     {({handleChange, handleBlur, handleSubmit, setFieldValue, values})=>(

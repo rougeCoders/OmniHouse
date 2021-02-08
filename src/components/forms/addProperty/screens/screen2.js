@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
 import DropDownPicker from 'react-native-dropdown-picker';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen2 = (props) => {
 
+    const dispatch = useDispatch();
+
     const initialValues = {
-        step: props.propertyDetails.step + 1,
         addressLine1: '',
         addressLine2: '',
         city: ''
@@ -20,7 +23,8 @@ const Screen2 = (props) => {
     }
 
     const handleSubmit = () => {
-        props.nextStep(address);
+        dispatch(addPropertyAddress(address))
+        props.navigation.navigate('Screen3');
     }
 
     let items=[
