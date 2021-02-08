@@ -8,13 +8,13 @@ import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { securityDepositDetails } from '../../../../store/actions/addPropertyAction.js';
 
-const Screen10 = (props) => {
+const Screen9 = (props) => {
 
     const dispatch = useDispatch();
 
     const rentDetails = {};
-    const [isZeroDepositScheme, setIsZeroDepositScheme] = useState();
-    const [depositDuration, setDepositDuration] = useState();
+    const [isZeroDepositScheme, setIsZeroDepositScheme] = useState(rentDetails.isZeroDepositScheme);
+    const [depositDuration, setDepositDuration] = useState(1);
 
     const handleDepositSchemeSelection = (content) => {
         setIsZeroDepositScheme(content);
@@ -28,7 +28,7 @@ const Screen10 = (props) => {
 
     const handleSubmit = () => {
         dispatch(securityDepositDetails(rentDetails))
-        props.navigation.navigate('Screen11');
+        props.navigation.navigate('Screen10');
     }
 
     const depositSchemeData = [
@@ -62,16 +62,16 @@ const Screen10 = (props) => {
                 />
 
                 <Text h4 style={styles.headText}>Otherwise, how many weeks of rent do you require for a Secuirty Deposit?</Text>
-                <View>
+                <View style={{flexDirection:'row', alignItems:'center', alignSelf:'center'}}>
                     <CircleButton 
                         value={depositDuration === 1? depositDuration : depositDuration - 1}
-                        icon={{type: 'ionicons', name: 'home'}}
-                        {...(depositDuration === 1 && { disabled })}
+                        icon={{type: 'ionicons', name: 'remove'}}
+                        {...(depositDuration === 1 && { disabled: true })}
                         buttonPress={handleDepositDurationSelection}/>
-                    <Text>{depositDuration}</Text>
+                    <Text h4>{depositDuration}</Text>
                     <CircleButton
                         value={depositDuration + 1}
-                        icon={{type: 'ionicons', name: 'home'}}
+                        icon={{type: 'ionicons', name: 'add'}}
                         buttonPress={handleDepositDurationSelection}/>
                 </View>
 
@@ -97,4 +97,4 @@ const Screen10 = (props) => {
     )
 }
 
-export default Screen10;
+export default Screen9;

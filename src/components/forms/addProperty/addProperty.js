@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View, Animated } from "react-native";
 import { Header, Icon, Button } from 'react-native-elements';
 import styles from './addProperty.style.js';
 import Screen1 from './screens/screen1.js';
@@ -7,6 +8,10 @@ import Screen3 from './screens/screen3.js';
 import Screen4 from './screens/screen4.js';
 import Screen5 from './screens/screen5.js';
 import Screen6 from './screens/screen6.js';
+import Screen7 from './screens/screen7.js';
+import Screen8 from './screens/screen8.js';
+import Screen9 from './screens/screen9.js';
+import Screen10 from './screens/screen10.js';
 
 const AddPropertyForm = (props) => {
 
@@ -16,15 +21,22 @@ const AddPropertyForm = (props) => {
         addressLine2: '',
         city: '',
         postcode:'',
-        monthlyRent:'',
+        rentDetails:{
+            amount:'',
+            frequency:'',
+            billsIncluded:'',
+            bills:[],
+            isZeroDepositScheme:'',
+            depositDuration:1,
+        },
         isOccupied: false,
+        occupationType:'',
         propertyType:'',
         propertyFurnishing:'',
-        billsIncluded:false,
-        bills:[],
     };
 
     const [propertyState, setPropertyState] = useState(defaultState);
+    const screensCount = 16;
 
     const BackButton = () => {
         return(
@@ -39,6 +51,23 @@ const AddPropertyForm = (props) => {
                 }
                 title="Back"
                 onPress={handleBackPress} />
+        )
+    }
+
+    const ProgressBar = () => {
+
+        const perDone = (propertyState.step * 100)/screensCount;
+
+        return (
+            <View style={{flexDirection:'row'}}>
+                        <View style={styles.progrssBarContainer}>
+                            <Animated.View style={[styles.progressBar,
+                                {width: perDone + '%'}]} />
+                        </View>
+                        <Animated.Text style={styles.progressText}>
+                            {perDone}%
+                        </Animated.Text>
+                    </View>
         )
     }
 
@@ -91,6 +120,14 @@ const AddPropertyForm = (props) => {
                 return <Screen5 nextStep={handleNextPress} propertyDetails={propertyState} />;
             case 6:
                 return <Screen6 nextStep={handleNextPress} propertyDetails={propertyState} />;
+            case 7:
+                return <Screen7 nextStep={handleNextPress} propertyDetails={propertyState} />;
+            case 8:
+                return <Screen8 nextStep={handleNextPress} propertyDetails={propertyState} />;  
+            case 9:
+                return <Screen9 nextStep={handleNextPress} propertyDetails={propertyState} />;  
+            case 10:
+                return <Screen10 nextStep={handleNextPress} propertyDetails={propertyState} />;  
             }
         }
     }
@@ -100,6 +137,8 @@ const AddPropertyForm = (props) => {
         <Header
             barStyle='light-content'
             leftComponent={BackButton}
+            centerComponent={ProgressBar}
+            centerContainerStyle={{flexDirection:'column',justifyContent: 'space-around', alignItems:'space-around'}}
             rightComponent={CloseButton}
          />
             {formStep()}

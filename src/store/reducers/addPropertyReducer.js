@@ -7,13 +7,13 @@ const INITIAL_STATE = {
     isPropertyNotOccupied:'',
     propertyType:'',
     propertyFurnished:'',
-    propertyImages:[]
+    propertyImages:[],
+    propertyRentalDetails:{}
 }
 
 export default function AddPropertyReducer(state= INITIAL_STATE, action){
     console.log(action.type);
     console.log(action.payload);
-    console.log('ChiragTest');
     switch(action.type){
         case AddPropertyActionTypes.AddPinCode:
             return {...state, pincode: action.payload}
@@ -26,13 +26,16 @@ export default function AddPropertyReducer(state= INITIAL_STATE, action){
         case AddPropertyActionTypes.PropertyFurnished:
             return {...state, propertyFurnished: action.payload}
         case AddPropertyActionTypes.PropertyImages:
-            console.log("Chiragw3ewTerst");
-            console.log(state);
-            const propertyUpdatedImages = [...state.propertyImages];
+            const propertyUpdatedImages = [...state.propertyImages]
             propertyUpdatedImages.push(action.payload);
-            console.log("Chirag");
-            console.log(propertyUpdatedImages);
+            console.log(state.propertyImages);
             return {...state, propertyImages: propertyUpdatedImages}
+        case AddPropertyActionTypes.PropertyRentalDetails:
+            return {...state, propertyRentalDetails: action.payload}
+        case AddPropertyActionTypes.PropertyBillDetails:
+            return {...state, propertyBillDetails: action.payload}
+        case AddPropertyActionTypes.SecurityDepositDetails:
+            return {...state, propertyBillDetails: action.payload}
         default:
             return state
     }

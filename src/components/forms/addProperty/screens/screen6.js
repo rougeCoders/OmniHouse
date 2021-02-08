@@ -18,7 +18,7 @@ const Screen6 = (props) => {
 
     const handleSubmit = () => {
         dispatch(propertyFurnished(propertyFurnishing))
-        props.navigation.navigate('Screen10');
+        props.navigation.navigate('Screen7');
     }
 
     const propertyFurnishingData = [

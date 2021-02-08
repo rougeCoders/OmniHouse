@@ -14,6 +14,20 @@ export default {
         No: 'No'
     },
 
+    RentFrequency:{
+        PerWeek: 'PER WEEK',
+        PerMonth: 'PER MONTH',
+    },
+
+    BillTypes:{
+        Electricity: 'Electricity',
+        Gas: 'Gas',
+        Water: 'Water',
+        Internet: 'Internet',
+        TVLicense: 'TV License',
+        Other: 'Other'
+    },
+
     PropertyType:{
         Studio: 'Studio',
         Flat: 'Flat',

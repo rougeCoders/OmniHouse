@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, TouchableOpacity, Animated } from "react-native";
-import { Avatar, Badge, Image, Text } from 'react-native-elements';
+import { Avatar, Badge, Text } from 'react-native-elements';
 import styles from './propertyCard.style.js';
 
 const PropertyCard = (props) => {
     
     const handlePress = () => {
-        alert('pressed');
     } 
     return(
         <View style={styles.container}>

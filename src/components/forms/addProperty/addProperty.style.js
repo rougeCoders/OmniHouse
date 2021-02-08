@@ -9,5 +9,21 @@ export default StyleSheet.create({
     },
     buttonBottom:{
         bottom: 0,
-    }
+    },
+    progrssBarContainer:{
+        marginTop:7,
+        width:180,
+        height:5,
+        borderRadius:20,
+        backgroundColor:'#E6C3E0',
+    },
+    progressBar:{
+        height:5,
+        borderRadius:20,
+        backgroundColor:'#93227F'
+      },
+    progressText:{
+        marginLeft:5,
+        color:'white'
+    },
 });

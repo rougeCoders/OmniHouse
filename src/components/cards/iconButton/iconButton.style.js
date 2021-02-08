@@ -12,6 +12,10 @@ export default StyleSheet.create({
       height:90,
       width:90,
     },
+    buttonFlat:{
+      width: '98%',
+      height:50,
+    },
 
     imageIcon: {
       borderRadius:10,

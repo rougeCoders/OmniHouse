@@ -29,3 +29,18 @@ export const addPropertyImages = (values) => ({
     type: AddPropertyActionTypes.PropertyImages,
     payload: values
 })
+
+export const addPropertyRentalDetails = (values) => ({
+    type: AddPropertyActionTypes.PropertyRentalDetails,
+    payload: values
+})
+
+export const addPropertyBillDetails = (values) => ({
+    type: AddPropertyActionTypes.PropertyBillDetails,
+    payload: values
+})
+
+export const securityDepositDetails = (values) => ({
+    type: AddPropertyActionTypes.SecurityDepositDetails,
+    payload: values
+})

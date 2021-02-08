@@ -1,17 +1,17 @@
 import React from 'react';
 import { TouchableOpacity } from "react-native";
-import { Icon, Image, Text } from 'react-native-elements';
-import styles from './iconButton.style.js';
+import { Icon } from 'react-native-elements';
+import styles from './circleButton.style.js';
 
-const IconButton = (props) => {
-
+const CircleButton = (props) => {
+    buttonStyle = styles(props);
     const handlePress = () => {
         props.buttonPress(props.value);
     } 
 
     return(
         <TouchableOpacity       
-            style={[styles.buttonContainer, props.FlatButton && styles.buttonFlat,
+            style={[buttonStyle.buttonContainer, props.disabled && buttonStyle.disabled,
                 {...(props.backgroundColor !== undefined
                     && { backgroundColor: props.backgroundColor})}]}
                 onPress={handlePress}>
@@ -24,15 +24,8 @@ const IconButton = (props) => {
                         />
                 )
             }
-            {    
-                props.Image && (
-                    <Image source={props.image.imageUri}
-                        style={styles.imageIcon} />
-                )
-            }
-            <Text h5 style={styles.titleText}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
 
-export default IconButton;
+export default CircleButton;
