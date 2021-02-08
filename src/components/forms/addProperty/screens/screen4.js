@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View,FlatList,ScrollView,TouchableOpacity,Dimensions } from 'react-native';
+import { View,FlatList,ScrollView,TouchableOpacity,Dimensions,StyleSheet } from 'react-native';
 import { Text, Button,Icon } from 'react-native-elements';
 import IconButton from './../../../cards/iconButton/index.js';
 import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
 import CalendarPicker from 'react-native-calendar-picker';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { isPropertyNotOccupied } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen4 = (props) => {
 
@@ -15,6 +15,9 @@ const Screen4 = (props) => {
     const [isTenants, setIsTenants] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
     const [adjustedWidth, setAdjustedwidth] = useState(width - (20/100*width));
+    
+
+    const dispatch = useDispatch();
 
     const handleTenantSelection = (content) => {
         setIsTenants(content);
@@ -26,7 +29,8 @@ const Screen4 = (props) => {
     }
 
     const handleSubmit = () => {
-        props.nextStep({isNotOccupied: isNotOccupied, step: props.propertyDetails.step + 1});
+        dispatch(isPropertyNotOccupied(isNotOccupied))
+        props.navigation.navigate('Screen5');
     }
 
     const onDateChange = (date) => {
@@ -54,8 +58,9 @@ const Screen4 = (props) => {
     ];
 
     return (
-        <View style={[styles.formContainer,{padding: '10%'}]}>
-            <ScrollView>
+        
+        <ScrollView contentContainerStyle={isTenantScreen.containerStyle}>
+            <View style={isTenantScreen.containerChildStyle}>
                 <Text h4>Do you currently have tenants?</Text>
                 <FlatList
                     style={{alignSelf:'center', marginBottom:2 ,padding : 20}}
@@ -90,7 +95,7 @@ const Screen4 = (props) => {
                                  onDateChange={onDateChange}
                                  width = {adjustedWidth}
                                  headerWrapperStyle ={{
-                                     width: '90%'
+                                     width: '100%'
                                  }}
                                 />
                             )}
@@ -116,10 +121,22 @@ const Screen4 = (props) => {
                     title="Next"
                     onPress={handleSubmit}/>
                 </View>
-
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     )
 }
+
+const isTenantScreen = StyleSheet.create({
+    containerStyle:{
+        justifyContent:'center', 
+        flexGrow:1
+    },
+    containerChildStyle:{
+        padding: '10%',
+        marginBottom:25 
+    }
+});
+ 
+
 
 export default Screen4;

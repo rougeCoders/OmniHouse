@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Text, Input, Button, Icon } from 'react-native-elements';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPincode } from '../../../../store/actions/addPropertyAction.js';
+import { cos } from 'react-native-reanimated';
 
 const Screen1 = (props) => {
 
+    const dispatch = useDispatch();
+
     const handleSubmit = (values) => {
-        props.nextStep(values);
+        dispatch(addPincode(values.postcode));
+        props.navigation.navigate('Screen2');
     }
 
     return (
         <View style={styles.formContainer}>
             <Formik
                 initialValues={{
-                    step: props.propertyDetails.step + 1,
                     postcode: ''
                 }}
                 validationSchema={
@@ -26,7 +31,7 @@ const Screen1 = (props) => {
                 onSubmit={ values => handleSubmit(values)} >
                     {({handleChange, handleBlur, handleSubmit, values, touched, errors})=>(
                         <View style={{padding:'10%'}}>
-                            <Text h4 style={styles.headText}>Enter postcode of the property</Text>
+                            <Text h4 style={styles.headText}>Enter postcode of the  property </Text>
                             <Input
                                 placeholder="e.g.  SW13 7NP"
                                 onChangeText={handleChange('postcode')}

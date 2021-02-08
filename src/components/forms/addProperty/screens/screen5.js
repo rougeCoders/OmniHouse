@@ -4,18 +4,21 @@ import { Text, Button, Icon } from 'react-native-elements';
 import IconButton from './../../../cards/iconButton/index.js';
 import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { typeOfProperty } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen5 = (props) => {
 
-    const [propertyType, setPropertyType] = useState(props.propertyDetails.propertyType);
+    const [propertyType, setPropertyType] = useState();
+    const dispatch = useDispatch();
 
     const handlePropertyTypeSelection = (content) => {
         setPropertyType(content);
     }
 
     const handleSubmit = () => {
-        props.nextStep({propertyType: propertyType,
-            step: props.propertyDetails.step + 1});
+        dispatch(typeOfProperty(propertyType))
+        props.navigation.navigate('Screen6');
     }
 
     const propertyTypeData = [
