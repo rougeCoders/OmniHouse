@@ -33,6 +33,7 @@ const AddPropertyForm = (props) => {
         occupationType:'',
         propertyType:'',
         propertyFurnishing:'',
+        roomsDetails:[],
     };
 
     const [propertyState, setPropertyState] = useState(defaultState);

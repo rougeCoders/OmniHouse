@@ -1,4 +1,3 @@
-import { act } from 'react-test-renderer';
 import AddPropertyActionTypes from '../actionTypes/addPropertyActionTypes.js';
 
 const INITIAL_STATE = {
