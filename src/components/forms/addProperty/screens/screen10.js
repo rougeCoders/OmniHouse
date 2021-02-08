@@ -8,7 +8,7 @@ import styles from './forms.Style.js';
 
 const Screen10 = (props) => {
 
-    const rentDetails = props.propertyDetails.rentDetails;
+    const roomsDetails = props.propertyDetails.roomsDetails;
     const [isZeroDepositScheme, setIsZeroDepositScheme] = useState(rentDetails.isZeroDepositScheme);
     const [depositDuration, setDepositDuration] = useState(rentDetails.depositDuration);
 
@@ -43,7 +43,7 @@ const Screen10 = (props) => {
     return (
         <View  style={styles.formContainer}>
         <View style={{padding:'10%'}}>
-            <Text h4 style={styles.headText}>Are you happy for the tenant to use a Zero Deposit Scheme? </Text>
+            <Text h4 style={styles.headText}>Please add the rooms within the property by pressing the plus icon</Text>
             <FlatList
                 style={{alignSelf:'center', marginBottom:25}}
                 data={depositSchemeData}
@@ -58,16 +58,16 @@ const Screen10 = (props) => {
                 />
 
                 <Text h4 style={styles.headText}>Otherwise, how many weeks of rent do you require for a Secuirty Deposit?</Text>
-                <View>
+                <View style={{flexDirection:'row', alignItems:'center', alignSelf:'center'}}>
                     <CircleButton 
                         value={depositDuration === 1? depositDuration : depositDuration - 1}
-                        icon={{type: 'ionicons', name: 'home'}}
-                        {...(depositDuration === 1 && { disabled })}
+                        icon={{type: 'ionicons', name: 'remove'}}
+                        {...(depositDuration === 1 && { disabled: true })}
                         buttonPress={handleDepositDurationSelection}/>
-                    <Text>{depositDuration}</Text>
+                    <Text h4>{depositDuration}</Text>
                     <CircleButton
                         value={depositDuration + 1}
-                        icon={{type: 'ionicons', name: 'home'}}
+                        icon={{type: 'ionicons', name: 'add'}}
                         buttonPress={handleDepositDurationSelection}/>
                 </View>
 

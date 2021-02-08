@@ -41,6 +41,27 @@ export default {
         Unfurnished: 'Unfurnished'
     },
 
+    RoomType:{
+        Bedroom: 'Bedroom',
+        Bathroom: 'Bathroom',
+        Livingroom: 'Living Room',
+    },
+
+    RoomAttributes:{
+        Bedroom:{
+            Single: 'Single',
+            Double: 'Double',
+            Ensuite: 'Ensuite',
+        },
+        Bathroom: {
+            Shower: 'Shower',
+            Bath: 'Bath',
+        },
+        Livingroom: {
+            OpenPlanKitchen: 'Open plan kitchen',
+        },
+    },
+
     ScreenNames: {
         MyProperty: 'My Properties',
         AddProperty: 'Add Property'
