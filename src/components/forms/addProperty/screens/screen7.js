@@ -9,14 +9,13 @@ import { addPropertyRentalDetails } from '../../../../store/actions/addPropertyA
 const Screen7 = (props) => {
 
     const dispatch = useDispatch();
-
-    let rentDetails = useSelector(state => state.addProperty.propertyRentalDetails);
+    const rentDetails = useSelector(state => state.addProperty.propertyRentalDetails);
 
     const [frequency, setFrequency] = useState(rentDetails.frequency);
     const [amount, setAmount] = useState(rentDetails.amount);
 
     const handleSubmit = () => {
-        rentDetails.amount = rent;
+        rentDetails.amount = amount;
         rentDetails.frequency = frequency;
         dispatch(addPropertyRentalDetails(rentDetails))
         props.navigation.navigate('Screen8');

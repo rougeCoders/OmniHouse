@@ -11,10 +11,10 @@ import { securityDepositDetails } from '../../../../store/actions/addPropertyAct
 const Screen9 = (props) => {
 
     const dispatch = useDispatch();
+    const rentDetails = useSelector(state => state.addProperty.propertyRentalDetails);
 
-    const rentDetails = {};
     const [isZeroDepositScheme, setIsZeroDepositScheme] = useState(rentDetails.isZeroDepositScheme);
-    const [depositDuration, setDepositDuration] = useState(1);
+    const [depositDuration, setDepositDuration] = useState(rentDetails.depositDuration);
 
     const handleDepositSchemeSelection = (content) => {
         setIsZeroDepositScheme(content);
@@ -27,6 +27,8 @@ const Screen9 = (props) => {
     }
 
     const handleSubmit = () => {
+        rentDetails.isZeroDepositScheme = isZeroDepositScheme;
+        rentDetails.depositDuration = depositDuration;
         dispatch(securityDepositDetails(rentDetails))
         props.navigation.navigate('Screen10');
     }

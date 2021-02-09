@@ -10,10 +10,10 @@ import { useDispatch, useSelector } from 'react-redux';
 const Screen8 = (props) => {
 
     const dispatch = useDispatch();
+    const rentDetails = useSelector(state => state.addProperty.propertyRentalDetails);
 
-    const rentDetails = {};
-    const [billsIncluded, setBillsIncluded] = useState();
-    const [billsList, setBillsList] = useState([]);
+    const [billsIncluded, setBillsIncluded] = useState(rentDetails.billsIncluded);
+    const [billsList, setBillsList] = useState(rentDetails.bills);
 
     const handleBillIncludedSelection = (content) => {
         setBillsIncluded(content);
@@ -110,7 +110,7 @@ const Screen8 = (props) => {
                 
                 <>
                 <Text h4 style={styles.headText}>Which ones?</Text>
-                <View>
+                <View style={{marginBottom:40}}>
                 {
                     billsListData.map((item, index) => (
                         <IconButton key={index} title={item.title}
