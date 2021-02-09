@@ -8,7 +8,7 @@ import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.
 
 const Screen3 = (props) => {
 
-    const propertyAddress = useSelector(state => state.addProperty);
+    const propertyAddress = useSelector(state => state.addProperty.address);
     const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
@@ -20,10 +20,10 @@ const Screen3 = (props) => {
         <View style={styles.formContainer}>
             <Formik
                 initialValues={{
-                    addressLine1: propertyAddress.address.addressLine1,
-                    addressLine2: propertyAddress.address.addressLine2,
-                    city: propertyAddress.address.city,
-                    postcode: propertyAddress.address.postcode
+                    addressLine1: propertyAddress.addressLine1,
+                    addressLine2: propertyAddress.addressLine2,
+                    city: propertyAddress.city,
+                    postcode: propertyAddress.postcode
                 }}
                 onSubmit={ values => handleSubmit(values)} >
                     {({handleChange, handleBlur, handleSubmit, setFieldValue, values})=>(

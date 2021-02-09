@@ -8,12 +8,13 @@ import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.
 
 const Screen2 = (props) => {
 
+    const propertyAddress = useSelector(state => state.addProperty.address);
     const dispatch = useDispatch();
-
     const initialValues = {
         addressLine1: '',
         addressLine2: '',
-        city: ''
+        city: '',
+        postcode: propertyAddress.postcode
     }
 
     const [address, setAddress] = useState(initialValues);

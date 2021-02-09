@@ -1,7 +1,7 @@
 import AddPropertyActionTypes from '../actionTypes/addPropertyActionTypes.js';
 
-export const addPincode = (values) => ({
-    type: AddPropertyActionTypes.AddPinCode,
+export const addPostcode = (values) => ({
+    type: AddPropertyActionTypes.AddPostCode,
     payload: values
 })
 

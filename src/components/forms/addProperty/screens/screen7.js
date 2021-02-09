@@ -10,10 +10,10 @@ const Screen7 = (props) => {
 
     const dispatch = useDispatch();
 
-    let rentDetails = {};
+    let rentDetails = useSelector(state => state.addProperty.propertyRentalDetails);
 
-    const [frequency, setFrequency] = useState();
-    const [rent, setRent] = useState();
+    const [frequency, setFrequency] = useState(rentDetails.frequency);
+    const [amount, setAmount] = useState(rentDetails.amount);
 
     const handleSubmit = () => {
         rentDetails.amount = rent;
@@ -40,8 +40,8 @@ const Screen7 = (props) => {
             <View style={{padding:'10%'}}>
                 <Text h4 style={styles.headText}>Rental price?</Text>
                 <Input placeholder='e.g. £ 1800 pcm'
-                    onChangeText={(text) => setRent(text)}
-                    value={rent} />
+                    onChangeText={(text) => setAmount(text)}
+                    value={amount} />
 
                 <FlatList
                     style={{alignSelf:'center', marginBottom:25}}

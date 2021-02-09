@@ -9,7 +9,7 @@ import { propertyFurnished } from '../../../../store/actions/addPropertyAction.j
 
 const Screen6 = (props) => {
 
-    const [propertyFurnishing, setPropertyFurnishing] = useState();
+    const [propertyFurnishing, setPropertyFurnishing] = useState(useSelector(state => state.addProperty.propertyFurnishing));
 
     const handlePropertyFurnishingSelection = (content) => {
         setPropertyFurnishing(content);

@@ -14,6 +14,8 @@ const PropertyListing = (props) => {
     const handleCloseCallback = () => {
         setModalVisible(false);
     }
+    const disableBackButton = () => {}
+
     const getproperties = [
         {
             ImageUri:image,
@@ -71,7 +73,7 @@ const PropertyListing = (props) => {
                     animationType="slide"
                     transparent={false}
                     visible={modalVisible}
-                    onRequestClose={handleCloseCallback}>
+                    onRequestClose={disableBackButton}>
                     <AddPropertyNavigator handleCallback={handleCloseCallback}/>
                 </Modal>    
             </View>

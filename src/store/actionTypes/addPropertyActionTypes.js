@@ -1,5 +1,5 @@
 export default {
-    AddPinCode: 'Add_Pincode',
+    AddPostCode: 'Add_Postcode',
     AddPropertyAddress: 'Add_Property_Address',
     IsPropertyNotOccupied: 'Is_Property_Not_Occuppied',
     PropertyType:'Property_Type',

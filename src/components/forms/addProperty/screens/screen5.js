@@ -9,9 +9,8 @@ import { typeOfProperty } from '../../../../store/actions/addPropertyAction.js';
 
 const Screen5 = (props) => {
 
-    
-    const [propertyType, setPropertyType] = useState();
-    const [occupationType, setOccupationType] = useState();
+    const [propertyType, setPropertyType] = useState(useSelector(state => state.addProperty.propertyType));
+    const [hasMultipleOccupation, setHasMultipleOccupation] = useState(useSelector(state => state.addProperty.hasMultipleOccupation));
     const dispatch = useDispatch();
 
     const handlePropertyTypeSelection = (content) => {
@@ -19,11 +18,11 @@ const Screen5 = (props) => {
     }
 
     const handleOccupationTypeSelection = (content) => {
-        setOccupationType(content);
+        setHasMultipleOccupation(content);
     }
 
     const handleSubmit = () => {
-        dispatch(typeOfProperty(occupationType));
+        dispatch(typeOfProperty({propertyType: propertyType, hasMultipleOccupation: hasMultipleOccupation}));
         props.navigation.navigate('Screen6');
     }
 
@@ -106,7 +105,7 @@ const Screen5 = (props) => {
                         <IconButton title={item.title}
                             value={item.value}
                             buttonPress={handleOccupationTypeSelection}
-                            {...(occupationType === item.value && { backgroundColor: 'purple'})}
+                            {...(hasMultipleOccupation === item.value && { backgroundColor: 'purple'})}
                         />}
                     keyExtractor={item => item.index}
                     numColumns={2}

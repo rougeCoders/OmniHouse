@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPincode } from '../../../../store/actions/addPropertyAction.js';
+import { addPostcode } from '../../../../store/actions/addPropertyAction.js';
 import { cos } from 'react-native-reanimated';
 
 const Screen1 = (props) => {
@@ -13,7 +13,8 @@ const Screen1 = (props) => {
     const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
-        dispatch(addPincode(values.postcode));
+        const address = { postcode: values.postcode}
+        dispatch(addPostcode(address));
         props.navigation.navigate('Screen2');
     }
 
@@ -26,7 +27,7 @@ const Screen1 = (props) => {
                 validationSchema={
                     Yup.object().shape({
                         postcode: Yup.string()
-                        .required('Pincode is required')
+                        .required('Postcode is required')
                 })}
                 onSubmit={ values => handleSubmit(values)} >
                     {({handleChange, handleBlur, handleSubmit, values, touched, errors})=>(

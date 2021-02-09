@@ -1,27 +1,36 @@
 import AddPropertyActionTypes from '../actionTypes/addPropertyActionTypes.js';
 
 const INITIAL_STATE = {
-    pincode:'',
     address:{},
-    isPropertyNotOccupied:'',
+    propertyRentalDetails:{
+        amount:'',
+        frequency:'',
+        billsIncluded:'',
+        bills:[],
+        isZeroDepositScheme:'',
+        depositDuration:1,
+    },
+    isOccupied: false,
+    hasMultipleOccupation:'',
     propertyType:'',
-    propertyFurnished:'',
-    propertyImages:[],
-    propertyRentalDetails:{}
+    propertyFurnishing:'',
+    roomsDetails:[],
+    isPropertyNotOccupied:'',
+    propertyImages:[]
 }
 
 export default function AddPropertyReducer(state= INITIAL_STATE, action){
     console.log(action.type);
     console.log(action.payload);
     switch(action.type){
-        case AddPropertyActionTypes.AddPinCode:
-            return {...state, pincode: action.payload}
+        case AddPropertyActionTypes.AddPostCode:
+            return {...state, address: action.payload}
         case AddPropertyActionTypes.AddPropertyAddress:
             return {...state, address: action.payload}
         case AddPropertyActionTypes.IsPropertyNotOccupied:
             return {...state, isPropertyNotOccupied: action.payload}
         case AddPropertyActionTypes.PropertyType:
-            return {...state, propertyType: action.payload}
+            return {...state, ...action.payload}
         case AddPropertyActionTypes.PropertyFurnished:
             return {...state, propertyFurnished: action.payload}
         case AddPropertyActionTypes.PropertyImages:
