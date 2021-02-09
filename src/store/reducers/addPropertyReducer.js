@@ -42,6 +42,9 @@ export default function AddPropertyReducer(state= INITIAL_STATE, action){
             return {...state, propertyRentalDetails: action.payload}
         case AddPropertyActionTypes.PropertyBillDetails:
             return {...state, propertyBillDetails: action.payload}
+        case AddPropertyActionTypes.RoomsDetails:
+            console.log(action.payload);
+            return {...state, roomDetails: action.payload}
         case AddPropertyActionTypes.SecurityDepositDetails:
             return {...state, propertyBillDetails: action.payload}
         default:

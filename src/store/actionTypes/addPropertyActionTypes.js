@@ -7,5 +7,6 @@ export default {
     PropertyImages:'Property_Images',
     PropertyRentalDetails: 'Property_Rental_Details',
     PropertyBillDetails: 'Property_Bill_Details',
+    RoomsDetails: 'Rooms_Details',
     SecurityDepositDetails: 'Security_Deposit_Details'
 }

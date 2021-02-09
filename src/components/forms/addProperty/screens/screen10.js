@@ -1,79 +1,74 @@
 import React, { useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
-import IconButton from '../../../cards/iconButton/index.js';
-import CircleButton from '../../../cards/circleButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { securityDepositDetails } from '../../../../store/actions/addPropertyAction.js';
+import { addRoomsDetails } from '../../../../store/actions/addPropertyAction.js';
+import RoomCard from '../../../cards/roomCard/index.js';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Screen10 = (props) => {
 
     const dispatch = useDispatch();
+    const rooms = useSelector(state => state.addProperty.roomsDetails);
+    const [roomsList, setRoomsList] = useState(rooms);
 
-    const rentDetails = {};
-    const [isZeroDepositScheme, setIsZeroDepositScheme] = useState();
-    const [depositDuration, setDepositDuration] = useState();
-
-    const handleDepositSchemeSelection = (content) => {
-        setIsZeroDepositScheme(content);
+    const handleRoomAddition = (content) => {
+        roomsList.push(content);
+        setRoomsList(roomsList);
     }
-    const handleDepositDurationSelection = (content) => {
-        if(content !== depositDuration)
-        {
-            setDepositDuration(content);
-        }
+    const handleRoomDeletion = (index) => {
+        roomsList.splice(index, 1);
+        //setRoomsList(roomsList);
     }
 
     const handleSubmit = () => {
-        dispatch(securityDepositDetails(rentDetails))
+        dispatch(addRoomsDetails(roomsList))
         props.navigation.navigate('Screen11');
     }
 
-    const depositSchemeData = [
+    const roomTypesData = [
         {
-            index:1,
-            title: 'YES',
-            value: true,
+            title:constants.RoomType.Bedroom,
+            roomType:constants.RoomType.Bedroom,
+            bedroomType:constants.RoomAttributes.Bedroom.Double,
+            isBedroomEnsuite:false,
         },
         {
-            index:1,
-            title: 'NO',
-            value: false,
+            title:constants.RoomType.Bathroom,
+            roomType:constants.RoomType.Bathroom,
+            hasShower: false,
+            hasBath: false,
         },
+        {
+            title:constants.RoomType.Livingroom,
+            roomType:constants.RoomType.Livingroom,
+            hasOpenPlanKitchen: false,
+        }
     ];
 
     return (
         <View  style={styles.formContainer}>
         <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>Please add the rooms within the property by pressing the plus icon</Text>
-            <FlatList
-                style={{alignSelf:'center', marginBottom:25}}
-                data={depositSchemeData}
-                renderItem={({ item }) => 
-                    <IconButton title={item.title}
-                        value={item.value}
-                        buttonPress={handleDepositSchemeSelection}
-                        {...(isZeroDepositScheme === item.value && { backgroundColor: 'purple'})}
-                    />}
-                keyExtractor={item => item.index}
-                numColumns={2}
-                />
 
-                <Text h4 style={styles.headText}>Otherwise, how many weeks of rent do you require for a Secuirty Deposit?</Text>
-                <View style={{flexDirection:'row', alignItems:'center', alignSelf:'center'}}>
-                    <CircleButton 
-                        value={depositDuration === 1? depositDuration : depositDuration - 1}
-                        icon={{type: 'ionicons', name: 'remove'}}
-                        {...(depositDuration === 1 && { disabled: true })}
-                        buttonPress={handleDepositDurationSelection}/>
-                    <Text h4>{depositDuration}</Text>
-                    <CircleButton
-                        value={depositDuration + 1}
-                        icon={{type: 'ionicons', name: 'add'}}
-                        buttonPress={handleDepositDurationSelection}/>
-                </View>
+            {
+                roomTypesData.map((item, index) => (
+                    <RoomCard key={index} roomData={item}
+                        addSelectedRoom={handleRoomAddition}
+                        Editable={true}
+                        //{...(billsList.indexOf(item.value) >= 0 && { backgroundColor: 'purple'})}
+                    />))
+            }
+            <ScrollView>
+            {
+                roomsList.map((item, index) => (
+                    <RoomCard key={index} index={index} roomData={item}
+                        deleteSelectedRoom={handleRoomDeletion}
+                    />))
+            }
+            </ScrollView>
 
                 <View style={styles.buttonContainer}>
                     <Button

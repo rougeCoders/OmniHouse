@@ -6,26 +6,44 @@ import styles from './roomCard.style.js';
 
 const RoomCard = (props) => {
 
+    const roomData = props.roomData;
     const singleBedroom = constants.RoomAttributes.Bedroom.Single;
     const doubleBedroom = constants.RoomAttributes.Bedroom.Double;
 
-    const [title,setTitle] = useState(props.title);
-    const [bedroomType, setBedroomType] = useState(props.bedroomType);
-    const [isBedroomEnsuite, setIsBedroomEnsuite] = useState(props.isBedroomEnsuite);
-    const [hasShower, setHasShower] = useState(props.hasShower);
-    const [hasBath, setHasBath] = useState(props.hasBath);
-    const [hasOpenPlanKitchen, setHasOpenPlanKitchen] = useState(props.hasOpenPlanKitchen);
+    const [title,setTitle] = useState(roomData.title);
+    const [bedroomType, setBedroomType] = useState(roomData.bedroomType);
+    const [isBedroomEnsuite, setIsBedroomEnsuite] = useState(roomData.isBedroomEnsuite);
+    const [hasShower, setHasShower] = useState(roomData.hasShower);
+    const [hasBath, setHasBath] = useState(roomData.hasBath);
+    const [hasOpenPlanKitchen, setHasOpenPlanKitchen] = useState(roomData.hasOpenPlanKitchen);
 
     const addRoom = () => {
-        props.addSelectedRoom(props.value);
+        const roomType = roomData.roomType;
+        {
+            switch(roomType) {
+                case constants.RoomType.Bedroom:
+                    roomData.bedroomType = bedroomType;
+                    roomData.isBedroomEnsuite = isBedroomEnsuite;
+                    break;
+                case constants.RoomType.Bathroom:
+                    roomData.hasShower = hasShower;
+                    roomData.hasBath = hasBath;
+                    break;
+                case constants.RoomType.Livingroom:
+                    roomData.hasOpenPlanKitchen = hasOpenPlanKitchen;
+                    break;
+            }
+        }
+        props.addSelectedRoom(roomData);
     }
 
     const deleteRoom = () => {
+        console.log(props.index);
         props.deleteSelectedRoom(props.value);
     }
 
     const handleBedroomTypeSelection = () => {
-        if(props.Editable)
+        if(props.Editable === true)
         {
             if(bedroomType === singleBedroom)
             {
@@ -39,57 +57,50 @@ const RoomCard = (props) => {
     };
 
     const roomAttributes = () => {
-    const roomType = props.roomType;
+        const roomType = roomData.roomType;
         {
             switch(roomType) {
             case constants.RoomType.Bedroom:
-                return (<View>
-                        <TouchableOpacity onPress={handleBedroomTypeSelection}>
-                            <Text style={{...(bedroomType === singleBedroom && { backgroundColor: 'purple'})}}>{singleBedroom}</Text>
-                            <Text style={{...(bedroomType === doubleBedroom && { backgroundColor: 'purple'})}}>{doubleBedroom}</Text>
+                return (<View style={{flexDirection:'row'}}>
+                        <TouchableOpacity style={{flexDirection:'row'}} onPress={handleBedroomTypeSelection}>
+                            <Text style={[styles.text, styles.textLeft,{...(bedroomType === singleBedroom && { backgroundColor: 'green'})}]}>{singleBedroom}</Text>
+                            <Text style={[styles.text, styles.textRight,{...(bedroomType === doubleBedroom && { backgroundColor: 'green'})}]}>{doubleBedroom}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=> props.Editable !== undefined && setIsBedroomEnsuite(!isBedroomEnsuite)}>
-                            <Text style={{...(isBedroomEnsuite && { backgroundColor: 'purple'})}}>{constants.RoomAttributes.Bedroom.Ensuite}</Text>
+                        <TouchableOpacity onPress={()=> props.Editable === true && setIsBedroomEnsuite(!isBedroomEnsuite)}>
+                            <Text style={[styles.text,{...(isBedroomEnsuite && { backgroundColor: 'green'})}]}>{constants.RoomAttributes.Bedroom.Ensuite}</Text>
                         </TouchableOpacity>
                         </View>);
 
             case constants.RoomType.Bathroom:
-                return (<View>
-                        <TouchableOpacity onPress={()=> props.Editable !== undefined && setHasShower(!hasShower)}>
-                        <Text style={{...(hasShower && { backgroundColor: 'purple'})}}>{constants.RoomAttributes.Bathroom.Shower}</Text>
+                return (<View style={{flexDirection:'row'}}>
+                        <TouchableOpacity onPress={()=> props.Editable === true && setHasShower(!hasShower)}>
+                            <Text style={[styles.text,{...(hasShower && { backgroundColor: 'green'})}]}>{constants.RoomAttributes.Bathroom.Shower}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=> props.Editable !== undefined && setHasBath(!hasBath)}>
-                            <Text style={{...(hasBath && { backgroundColor: 'purple'})}}>{constants.RoomAttributes.Bathroom.Bath}</Text>
+                        <TouchableOpacity onPress={()=> props.Editable === true && setHasBath(!hasBath)}>
+                            <Text style={[styles.text,{...(hasBath && { backgroundColor: 'green'})}]}>{constants.RoomAttributes.Bathroom.Bath}</Text>
                         </TouchableOpacity>
                         </View>);
 
             case constants.RoomType.Livingroom:
-                return (<View>
-                        <TouchableOpacity onPress={()=> props.Editable !== undefined && setHasOpenPlanKitchen(!hasOpenPlanKitchen)}>
-                            <Text style={{...(hasOpenPlanKitchen && { backgroundColor: 'purple'})}}>{constants.RoomAttributes.Livingroom.OpenPlanKitchen}</Text>
+                return (<View style={{flexDirection:'row'}}>
+                        <TouchableOpacity onPress={()=> props.Editable === true && setHasOpenPlanKitchen(!hasOpenPlanKitchen)}>
+                            <Text style={[styles.text,{...(hasOpenPlanKitchen && { backgroundColor: 'green'})}]}>{constants.RoomAttributes.Livingroom.OpenPlanKitchen}</Text>
                         </TouchableOpacity>
                         </View>);
             }
         }
     }
     return(
-        <View style={{flexDirection:'row'}}>
+        <View style={styles.container}>
             <View>
-            {
-                props.Editable !== undefined?
-                (
-                <Input
-                    onChangeText={(text) => setTitle(text)}
-                    value={title} />
-                ):
-                (<Text>{title}</Text>)
-            }
+                <Text style={{fontSize:18, color:'white'}}>{title}</Text>
             </View>
+            <View style={styles.buttonsContainer}>
             {
                 roomAttributes()
             }
             {
-                props.Editable !== undefined?
+                props.Editable === true?
                 (<Icon
                     name='add'
                     type='ionicons'
@@ -97,12 +108,13 @@ const RoomCard = (props) => {
                     onPress={addRoom}
                     />)
                 :(<Icon
-                    name='delete_forever'
+                    name='delete'
                     type='materialicons'
                     color='white'
                     onPress={deleteRoom}
                     />)
-            }
+                }
+            </View>
         </View>
     )
 
