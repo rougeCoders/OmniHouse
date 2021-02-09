@@ -47,13 +47,11 @@ const Screen4 = (props) => {
             index:1,
             title: constants.Labels.Yes,
             value: constants.Labels.Yes,
-            icon: {},
         },
         {
             index:2,
             title: constants.Labels.No,
             value: constants.Labels.No,
-            icon: {},
         }
     ];
 
