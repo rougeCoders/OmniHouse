@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, Animated } from "react-native";
 import { Avatar, Badge, Text } from 'react-native-elements';
 import styles from './propertyCard.style.js';
+import OmniHouseTheme from '../../../styles/theme.js';
 
 const PropertyCard = (props) => {
     
@@ -12,13 +13,13 @@ const PropertyCard = (props) => {
             <TouchableOpacity style={styles.buttonContainer} >
                 <View>
                     <Avatar rounded
-                        size='medium'
+                        size={OmniHouseTheme.spacing(7.5)}
                         source={props.ImageUri} />
                 </View>
                 <View>
-                    <Text h4>{props.Address}</Text>
-                    <View style={{flexDirection:'row'}}>
-                        <View style={styles.progrssBarContainer}>
+                    <Text h4 style={styles.buttonText}>{props.Address}</Text>
+                    <View style={styles.subContainer}>
+                        <View style={styles.progressBarContainer}>
                             <Animated.View style={[styles.progressBar,
                                 {width: props.PerCompleted + '%'}]} />
                         </View>
@@ -28,7 +29,7 @@ const PropertyCard = (props) => {
                     </View>
                 </View>
                 <View>
-                    <Text h5>LIVE</Text>
+                    <Text style={styles.labelText}>LIVE</Text>
                 </View>
                 
             </TouchableOpacity>
@@ -36,9 +37,10 @@ const PropertyCard = (props) => {
                 <View style={styles.badge}>
                         <Badge
                             status='error'
-                            size="large"
                             value={props.Notifications}
-                            containerStyle={{ position: 'absolute', top: -5, right: -6 }}
+                            badgeStyle={styles.badgeStyle}
+                            textStyle={{fontSize: OmniHouseTheme.spacing(2)}}
+                            containerStyle={styles.badgeContainerStyle}
                         />
                 </View>
             )}

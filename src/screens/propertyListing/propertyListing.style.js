@@ -19,7 +19,10 @@ export default StyleSheet.create({
     buttonBottom:{
         borderRadius:OmniHouseTheme.spacing(6),
         paddingLeft:OmniHouseTheme.spacing(2.5),
-        paddingRight:OmniHouseTheme.spacing(2.5)
+        paddingRight:OmniHouseTheme.spacing(2.5),
+        borderColor: '#4a3d45',
+        borderWidth: OmniHouseTheme.spacing(0.25),
+        backgroundColor: OmniHouseTheme.palette.primary.main,
     },
     addProp:{
         flexDirection: 'row',
