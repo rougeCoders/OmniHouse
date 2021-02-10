@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, ScrollView, FlatList } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
 import IconButton from './../../../cards/iconButton/index.js';
 import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { typeOfProperty } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen5 = (props) => {
 
@@ -79,18 +80,19 @@ const Screen5 = (props) => {
     ];
 
     return (
-        <View  style={styles.formContainer}>
+        <ScrollView>
         <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>What type of property is it?</Text>
             <FlatList
-                style={{alignSelf:'center', marginBottom:25}}
+                style={styles.flatListContainer}
                 data={propertyTypeData}
                 renderItem={({ item }) => 
                     <IconButton title={item.title}
                         value={item.value}  
                         icon={item.icon}
                         buttonPress={handlePropertyTypeSelection}
-                        {...(propertyType === item.value && { backgroundColor: 'purple'})}
+                        {...(propertyType === item.value &&
+                            { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                     />}
                 keyExtractor={item => item.index}
                 numColumns={2}
@@ -99,13 +101,14 @@ const Screen5 = (props) => {
                 <Text h4 style={styles.headText}>Is the property an HMO (House in Multiple Occupation)</Text>
 
                 <FlatList
-                    style={{alignSelf:'center', marginBottom:25}}
+                    style={styles.flatListContainer}
                     data={occupationTypeData}
                     renderItem={({ item }) => 
                         <IconButton title={item.title}
                             value={item.value}
                             buttonPress={handleOccupationTypeSelection}
-                            {...(hasMultipleOccupation === item.value && { backgroundColor: 'purple'})}
+                            {...(hasMultipleOccupation === item.value &&
+                                { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                         />}
                     keyExtractor={item => item.index}
                     numColumns={2}
@@ -117,19 +120,19 @@ const Screen5 = (props) => {
                             <Icon
                                 name='navigate-next'
                                 type='materialicons'
-                                size={30}
-                                color="white"
+                                size={OmniHouseTheme.spacing(4)}
+                                color={OmniHouseTheme.palette.primary.font}
                             />
                         }
                     iconRight
                     type="clear"
-                    titleStyle={{color:'white'}}
+                    titleStyle={styles.nextButtonTitle}
                     buttonStyle={styles.nextButton}
                     title="Next"
                     onPress={handleSubmit}/>
                 </View>
         </View>
-        </View>
+        </ScrollView>
     )
 }
 

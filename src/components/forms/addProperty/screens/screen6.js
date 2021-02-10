@@ -6,6 +6,7 @@ import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { propertyFurnished } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen6 = (props) => {
 
@@ -47,14 +48,15 @@ const Screen6 = (props) => {
             <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>How is the property furnished?</Text>
             <FlatList
-                style={{alignSelf:'center', marginBottom:25}}
+                style={styles.flatListContainer}
                 data={propertyFurnishingData}
                 renderItem={({ item }) => 
                     <IconButton title={item.title}
                     value={item.value}
                     icon={item.icon}
                     buttonPress={handlePropertyFurnishingSelection}
-                    {...(propertyFurnishing === item.value && { backgroundColor: 'purple'})} />}
+                    {...(propertyFurnishing === item.value &&
+                        { backgroundColor: OmniHouseTheme.palette.primary.vector})} />}
                 keyExtractor={item => item.index}
                 numColumns={3}
                 />
@@ -65,13 +67,13 @@ const Screen6 = (props) => {
                             <Icon
                                 name='navigate-next'
                                 type='materialicons'
-                                size={30}
-                                color="white"
+                                size={OmniHouseTheme.spacing(4)}
+                                color={OmniHouseTheme.palette.primary.font}
                             />
                         }
                     iconRight
                     type="clear"
-                    titleStyle={{color:'white'}}
+                    titleStyle={styles.nextButtonTitle}
                     buttonStyle={styles.nextButton}
                     title="Next"
                     onPress={handleSubmit}/>

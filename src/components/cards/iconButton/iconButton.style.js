@@ -1,30 +1,34 @@
 import { StyleSheet } from 'react-native';
+import OmniHouseTheme from '../../../styles/theme.js';
 
 export default StyleSheet.create({
 
     buttonContainer: {
-      padding:5,
-      margin:5,
-      borderRadius:10,
+      padding: OmniHouseTheme.spacing(0.75),
+      margin: OmniHouseTheme.spacing(0.75),
+      borderRadius: OmniHouseTheme.spacing(1.25),
       alignItems: 'center',
       justifyContent:'center',
-      backgroundColor: 'grey',
-      height:90,
-      width:90,
+      backgroundColor: OmniHouseTheme.palette.secondary.accent,
+      height: OmniHouseTheme.spacing(11.5),
+      width: OmniHouseTheme.spacing(11.5),
     },
     buttonFlat:{
       width: '98%',
-      height:50,
+      height: OmniHouseTheme.spacing(6.5),
     },
-
     imageIcon: {
-      borderRadius:10,
-      width: 80,
-      height: 80
+      borderRadius: OmniHouseTheme.spacing(1.25),
+      width: OmniHouseTheme.spacing(10),
+      height: OmniHouseTheme.spacing(10),
     },
-
-    titleText:{
+    titleText: {
       textAlign:'center',
-      color:'white'
+      color: OmniHouseTheme.palette.primary.font
+    },
+    supportText: {
+      textAlign:'center',
+      width: OmniHouseTheme.spacing(19.5),
+      color: OmniHouseTheme.palette.primary.font
     }
 });

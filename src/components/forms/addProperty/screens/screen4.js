@@ -5,8 +5,9 @@ import IconButton from './../../../cards/iconButton/index.js';
 import constants from './../../../../constants.js';
 import styles from './forms.Style.js';
 import CalendarPicker from 'react-native-calendar-picker';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { isPropertyNotOccupied } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen4 = (props) => {
 
@@ -47,11 +48,13 @@ const Screen4 = (props) => {
             index:1,
             title: constants.Labels.Yes,
             value: constants.Labels.Yes,
+            text:'I’m here for Omnihouse’s awsome property management tools',
         },
         {
             index:2,
             title: constants.Labels.No,
             value: constants.Labels.No,
+            text:'Find me superior tenants',
         }
     ];
 
@@ -59,33 +62,33 @@ const Screen4 = (props) => {
         
         <ScrollView contentContainerStyle={isTenantScreen.containerStyle}>
             <View style={isTenantScreen.containerChildStyle}>
-                <Text h4>Do you currently have tenants?</Text>
+                <Text h4 style={styles.headText}>Do you currently have tenants?</Text>
                 <FlatList
-                    style={{alignSelf:'center', marginBottom:2 ,padding : 20}}
+                    style={styles.flatListContainer}
                     data={propertyTypeData}
-                    renderItem={({ item }) => 
+                    renderItem={({ item }) => (
                         <IconButton title={item.title}
-                            value={item.value}  
-                            icon={item.icon}
+                            {...item}
                             buttonPress={handleTenantSelection}
-                            {...(isTenants === item.value && { backgroundColor: 'purple'})}
-                        />}
+                            {...(isTenants === item.value &&
+                                { backgroundColor: OmniHouseTheme.palette.primary.vector})}
+                        />)}
                     keyExtractor={item => item.index}
                     numColumns={2}
                 />
                  
                     { isNotOccupied && (
                         <View style={{marginBottom:20, width: '100%'}}>
-                            <Text style={{marginBottom:20, fontSize: 20}}>When is property available for rent?</Text>
+                            <Text h4 style={styles.headText}>When is property available for rent?</Text>
                             <TouchableOpacity
                                 onPress={() => setShowCalendar(true)}
-                                style={{backgroundColor: "#DDDDDD", padding: 20, marginBottom: 20, flexDirection: 'row', alignItems: 'center'}}>
+                                style={styles.calenderButtonContainer}>
                                     <Icon
-                                    name='calendar'
-                                    type= 'ionicon'
-                                    color='#517fa4'
+                                    name='today'
+                                    type= 'ionicons'
+                                    color= {OmniHouseTheme.palette.primary.font}
                                     />
-                                    <Text style={[styles.appButtonText,{marginLeft:10, fontSize: 16}]}>Please select date</Text>
+                                    <Text h5 style={styles.calenderText}>Please select date</Text>
                             </TouchableOpacity>
                             
                             { showCalendar && (
@@ -97,7 +100,7 @@ const Screen4 = (props) => {
                                  }}
                                 />
                             )}
-                            <Text>We will post your completed property on our listing portal all year round to help you avoid the tenant void!</Text>
+                            <Text style={styles.headText}>We will post your completed property on our listing portal all year round to help you avoid the tenant void!</Text>
                         </View>
                     )}
                 
@@ -108,13 +111,13 @@ const Screen4 = (props) => {
                             <Icon
                                 name='navigate-next'
                                 type='materialicons'
-                                size={30}
-                                color="white"
+                                size={OmniHouseTheme.spacing(4)}
+                                color={OmniHouseTheme.palette.primary.font}
                             />
                         }
                     iconRight
                     type="clear"
-                    titleStyle={{color:'white'}}
+                    titleStyle={styles.nextButtonTitle}
                     buttonStyle={styles.nextButton}
                     title="Next"
                     onPress={handleSubmit}/>

@@ -7,6 +7,12 @@ export default OmniHouseTheme = {
             accent: '#2f2f2f',
             vector: '#93227F',
         },
+        secondary: {
+            main: '#1C1A1B',
+            font: '#F9F3FA',
+            accent: '#524b51',
+            vector: '#93227F',
+        },
         icons: {
             main: '#F2F0F0',
         }

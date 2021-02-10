@@ -27,6 +27,7 @@ export default StyleSheet.create({
         padding: OmniHouseTheme.spacing(2),
         borderTopLeftRadius: OmniHouseTheme.spacing(1),
         borderTopRightRadius: OmniHouseTheme.spacing(1),
+        marginBottom: OmniHouseTheme.spacing(-0.25),
         borderBottomColor: OmniHouseTheme.palette.primary.vector,
         borderBottomWidth: OmniHouseTheme.spacing(0.25),
         backgroundColor: OmniHouseTheme.palette.primary.accent,
@@ -69,6 +70,10 @@ export default StyleSheet.create({
     dropDownPickerItem:{
         justifyContent: 'flex-start',
     },
+    flatListContainer:{
+        alignSelf: 'center',
+        marginBottom: OmniHouseTheme.spacing(0.25),
+    },
     buttonContainer:{
         flexDirection:'row-reverse'
     },
@@ -77,5 +82,20 @@ export default StyleSheet.create({
     },
     nextButtonTitle:{
         color: OmniHouseTheme.palette.primary.font,
-    }
+    },
+    calenderButtonContainer:{
+        borderTopLeftRadius: OmniHouseTheme.spacing(1),
+        borderTopRightRadius: OmniHouseTheme.spacing(1),
+        backgroundColor: OmniHouseTheme.palette.primary.accent,
+        padding: OmniHouseTheme.spacing(2.5),
+        marginBottom: OmniHouseTheme.spacing(2.5),
+        flexDirection: 'row',
+        borderBottomColor: OmniHouseTheme.palette.primary.vector,
+        borderBottomWidth: OmniHouseTheme.spacing(0.25),
+    },
+    calenderText:{
+        color: OmniHouseTheme.palette.primary.font,
+        marginLeft: OmniHouseTheme.spacing(1),
+        fontWeight: 'bold'
+    },
 });
