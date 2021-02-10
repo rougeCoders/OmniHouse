@@ -15,7 +15,7 @@ const ImageCard = (props) => {
                 <Image source={props.ImageUri}
                     style={styles.imageIcon}
                     onPress={handlePress} />
-            <Text>{props.Title}</Text>
+            <Text style={styles.buttonText}>{props.Title}</Text>
         </View>
     )
 }

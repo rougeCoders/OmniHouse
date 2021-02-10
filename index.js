@@ -2,7 +2,7 @@
  * @format
  */
 import {AppRegistry, View, Text} from 'react-native';
-import App from './App';
+import App from './src/App';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -27,8 +27,8 @@ const toastConfig = {
 
 const reduxApp = () => (
     <Provider store={createStoreWithMiddleware}>
-        <App/>
-        <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
+          <App/>
+          <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
     </Provider>
 )
 
