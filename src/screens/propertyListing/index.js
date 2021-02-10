@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Modal } from "react-native";
 import { Text, Icon, Button } from 'react-native-elements';
-import AddPropertyForm from '../../components/forms/addProperty/addProperty';
 import styles from './propertyListing.style.js';
 import PropertyCard from './../../components/cards/propertyCard/index.js';
 import image from './../../assets/logo.png';
-import AddPropertyNavigator from '../../navigation/addProperty.js'
+import AddPropertyNavigator from '../../navigation/addProperty.js';
+import OmniHouseTheme from '../../styles/theme.js';
 
 const PropertyListing = (props) => {
 
@@ -38,15 +38,15 @@ const PropertyListing = (props) => {
                     <Icon
                         name='search'
                         type='materialicons'
-                        color='#517fa4'
-                        size={30}
-                        iconStyle={{marginRight:15}}
+                        color={OmniHouseTheme.palette.icons.main}
+                        size={OmniHouseTheme.spacing(4)}
+                        iconStyle={{marginRight:OmniHouseTheme.spacing(2)}}
                     />
                     <Icon
                         name='more-vert'
                         type='materialicons'
-                        color='#517fa4'
-                        size={30}
+                        color={OmniHouseTheme.palette.icons.main}
+                        size={OmniHouseTheme.spacing(4)}
                     />
             </View>
             <ScrollView>
