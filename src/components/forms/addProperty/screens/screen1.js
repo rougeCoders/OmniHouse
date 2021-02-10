@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Text, Input, Button, Icon } from 'react-native-elements';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './forms.Style.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPostcode } from '../../../../store/actions/addPropertyAction.js';
-import { cos } from 'react-native-reanimated';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen1 = (props) => {
 
@@ -34,6 +34,7 @@ const Screen1 = (props) => {
                         <View style={{padding:'10%'}}>
                             <Text h4 style={styles.headText}>Enter postcode of the  property </Text>
                             <Input
+                                style={styles.inputBox}
                                 placeholder="e.g.  SW13 7NP"
                                 onChangeText={handleChange('postcode')}
                                 onBlur={handleBlur('postcode')}
@@ -48,13 +49,13 @@ const Screen1 = (props) => {
                                         <Icon
                                         name='navigate-next'
                                         type='materialicons'
-                                        size={30}
-                                        color="white"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         />
                                     }
                                     iconRight
                                     type="clear"
-                                    titleStyle={{color:'white'}}
+                                    titleStyle={styles.nextButtonTitle}
                                     buttonStyle={styles.nextButton}
                                     title="Next"
                                     onPress={handleSubmit}/>

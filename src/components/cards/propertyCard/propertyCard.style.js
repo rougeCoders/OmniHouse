@@ -5,16 +5,16 @@ export default StyleSheet.create({
 
     container:{
       padding: OmniHouseTheme.spacing(0.75),
-      flexDirection:'row',
+      flexDirection: 'row',
     },
     buttonContainer: {
-      padding:OmniHouseTheme.spacing(1.5),
-      marginBottom:OmniHouseTheme.spacing(2.5),
+      padding: OmniHouseTheme.spacing(1.5),
+      marginBottom: OmniHouseTheme.spacing(2.5),
       alignItems: 'center',
-      flexDirection:'row',
-      justifyContent:'space-between',
-      backgroundColor:'#4a3d45',
-      borderRadius:OmniHouseTheme.spacing(1.25),
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      backgroundColor: OmniHouseTheme.palette.primary.accent,
+      borderRadius: OmniHouseTheme.spacing(1.25),
       width:'100%'
     },
     buttonText:{
@@ -35,7 +35,7 @@ export default StyleSheet.create({
     progressBar:{
       height:OmniHouseTheme.spacing(0.5),
       borderRadius:OmniHouseTheme.spacing(2.5),
-      backgroundColor:'#962d6f'
+      backgroundColor: OmniHouseTheme.palette.primary.vector,
     },
     progressText:{
       marginLeft: OmniHouseTheme.spacing(1.5),

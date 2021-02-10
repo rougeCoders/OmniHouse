@@ -20,7 +20,7 @@ export default StyleSheet.create({
         borderRadius:OmniHouseTheme.spacing(6),
         paddingLeft:OmniHouseTheme.spacing(2.5),
         paddingRight:OmniHouseTheme.spacing(2.5),
-        borderColor: '#4a3d45',
+        borderColor: OmniHouseTheme.palette.primary.accent,
         borderWidth: OmniHouseTheme.spacing(0.25),
         backgroundColor: OmniHouseTheme.palette.primary.main,
     },

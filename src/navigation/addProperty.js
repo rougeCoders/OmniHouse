@@ -2,6 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator,HeaderBackButton } from '@react-navigation/stack';
 import { Icon } from 'react-native-elements';
+import stackStyle from '../styles/stack.style.js';
+import OmniHouseTheme from '../styles/theme.js';
 import Screen1 from '../components/forms/addProperty/screens/screen1.js';
 import Screen2 from '../components/forms/addProperty/screens/screen2.js';
 import Screen3 from '../components/forms/addProperty/screens/screen3.js';
@@ -25,11 +27,12 @@ const AddPropertyNavigator = (propsparent) => {
           <Stack.Navigator 
                 initialRouteName="Home"
                 screenOptions={{
-                    title: '',
-                    headerTintColor: 'white',
-                    headerStyle: { backgroundColor: 'blue' },
+                    headerTitle: '',
                     headerBackTitle:'Back',
                     headerBackTitleVisible: true,
+                    headerStyle: stackStyle.headerStyle,
+                    headerTintColor: OmniHouseTheme.palette.primary.font,
+                    cardStyle: stackStyle.cardStyle,
                     headerRight:() => (
                         <Icon
                             name='close'

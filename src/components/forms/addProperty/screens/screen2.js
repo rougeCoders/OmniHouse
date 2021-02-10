@@ -5,6 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen2 = (props) => {
 
@@ -55,13 +56,13 @@ const Screen2 = (props) => {
                             <Icon
                                 name='navigate-next'
                                 type='materialicons'
-                                size={30}
-                                color="white"
+                                size={OmniHouseTheme.spacing(4)}
+                                color={OmniHouseTheme.palette.primary.font}
                             />
                             }
                         iconRight
                         type="clear"
-                        titleStyle={{color:'white'}}
+                        titleStyle={styles.nextButtonTitle}
                         buttonStyle={styles.nextButton}
                         title="Next"
                         onPress={handleSubmit}/>

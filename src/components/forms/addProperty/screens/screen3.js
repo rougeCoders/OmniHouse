@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen3 = (props) => {
 
@@ -30,6 +31,11 @@ const Screen3 = (props) => {
                         <View style={{padding:'10%'}}>
                             <Text h4 style={styles.headText}>Address of property</Text>
                             <Input
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                label="1st Line of Address"
                                 placeholder="1st Line of Address"
                                 onChangeText={handleChange('addressLine1')}
                                 onBlur={handleBlur('addressLine1')}
@@ -38,14 +44,19 @@ const Screen3 = (props) => {
                                     <Icon
                                         name='close'
                                         type='ionicons'
-                                        size={28}
-                                        color="black"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         onPress={() => setFieldValue('addressLine1', '')}
                                     />
                                 )}
                              />
                             
                             <Input
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                label="2nd Line of Address"
                                 placeholder="2nd Line of Address"
                                 onChangeText={handleChange('addressLine2')}
                                 onBlur={handleBlur('addressLine2')}
@@ -54,14 +65,19 @@ const Screen3 = (props) => {
                                     <Icon
                                         name='close'
                                         type='ionicons'
-                                        size={28}
-                                        color="black"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         onPress={() => setFieldValue('addressLine2', '')}
                                     />
                                 )}
                              />
 
                             <Input
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                label="City"
                                 placeholder="City"
                                 onChangeText={handleChange('city')}
                                 onBlur={handleBlur('city')}
@@ -70,15 +86,20 @@ const Screen3 = (props) => {
                                     <Icon
                                         name='close'
                                         type='ionicons'
-                                        size={28}
-                                        color="black"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         onPress={() => setFieldValue('city', '')}
                                     />
                                 )}
                              />
 
                             <Input
-                                placeholder="Pincode"
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                label="Postcode"
+                                placeholder="Postcode"
                                 onChangeText={handleChange('postcode')}
                                 onBlur={handleBlur('postcode')}
                                 value={values.postcode}
@@ -86,8 +107,8 @@ const Screen3 = (props) => {
                                     <Icon
                                         name='close'
                                         type='ionicons'
-                                        size={28}
-                                        color="black"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         onPress={() => setFieldValue('postcode', '')}
                                     />
                                 )}
@@ -98,13 +119,13 @@ const Screen3 = (props) => {
                                         <Icon
                                         name='navigate-next'
                                         type='materialicons'
-                                        size={30}
-                                        color="white"
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
                                         />
                                     }
                                     iconRight
                                     type="clear"
-                                    titleStyle={{color:'white'}}
+                                    titleStyle={styles.nextButtonTitle}
                                     buttonStyle={styles.nextButton}
                                     title="Next"
                                     onPress={handleSubmit}/>
