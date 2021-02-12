@@ -25,7 +25,7 @@ const Screen11 = (props) => {
         <View style={styles.formContainer}>
             <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>Upload and order images of the property for prospective tenants</Text>
-            <Text>Using professional photos will boost the chances of finding a tenant by 80%. Don’t want to pay? Follow our guide to help you capture the highest quality photos. The more photos the better!</Text>
+            <Text style={styles.baseText}>Using professional photos will boost the chances of finding a tenant by 80%. Don’t want to pay? Follow our guide to help you capture the highest quality photos. The more photos the better!</Text>
             
             { propertyImages && propertyImages.length>0 && (
 

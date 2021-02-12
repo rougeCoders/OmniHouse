@@ -13,6 +13,10 @@ export default StyleSheet.create({
         marginBottom: OmniHouseTheme.spacing(1.5),
         color: OmniHouseTheme.palette.primary.font,
     },
+    baseText:{
+        color: OmniHouseTheme.palette.primary.font,
+        fontWeight: 'bold'
+    },
     inputContainer:{
         padding: OmniHouseTheme.spacing(1),
         paddingBottom: 0,
@@ -54,29 +58,18 @@ export default StyleSheet.create({
         textAlign:'center',
         fontStyle:'italic'
     },
-    dropDownPicker:{
-        backgroundColor: OmniHouseTheme.palette.primary.main,
-        color: OmniHouseTheme.palette.primary.font,
-        borderColor: OmniHouseTheme.palette.primary.vector,
-        borderWidth: OmniHouseTheme.spacing(0.25),
-        borderRadius: OmniHouseTheme.spacing(1),
-    },
-    dropDownPickerLabel:{
-        fontSize: OmniHouseTheme.spacing(2.5),
-        color: OmniHouseTheme.palette.primary.font,
-    },
-    dropDownPickerContainer:{
-        height: OmniHouseTheme.spacing(5),
-    },
-    dropDownPickerItem:{
-        justifyContent: 'flex-start',
-    },
     flatListContainer:{
         alignSelf: 'center',
         marginBottom: OmniHouseTheme.spacing(0.25),
     },
     buttonContainer:{
         flexDirection:'row-reverse'
+    },
+    selectableLabel:{
+        padding: OmniHouseTheme.spacing(0.5),
+        marginLeft: OmniHouseTheme.spacing(0.5),
+        marginRight: OmniHouseTheme.spacing(0.5),
+        borderRadius: OmniHouseTheme.spacing(1),
     },
     nextButton:{
         color: OmniHouseTheme.palette.primary.font,

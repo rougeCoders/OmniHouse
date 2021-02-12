@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity } from "react-native";
-import { Icon, Image, Input, Text } from 'react-native-elements';
+import PropTypes from 'prop-types';
+import { Icon, Text } from 'react-native-elements';
 import constants from '../../../constants.js';
 import styles from './roomCard.style.js';
 
@@ -93,7 +94,7 @@ const RoomCard = (props) => {
     return(
         <View style={styles.container}>
             <View>
-                <Text style={{fontSize:18, color:'white'}}>{title}</Text>
+                <Text style={styles.headText}>{title}</Text>
             </View>
             <View style={styles.buttonsContainer}>
             {
@@ -117,7 +118,46 @@ const RoomCard = (props) => {
             </View>
         </View>
     )
-
 }
+
+RoomCard.propTypes = {
+    /**
+     * Data about room
+     */
+    roomData: {
+        /**
+         * Title of the room
+         */
+        title: PropTypes.string,
+        /**
+         * Type of the room
+         */
+        roomType: PropTypes.string,
+        /**
+         * Type of the bedroom
+         */
+        bedroomType: PropTypes.string,
+        /**
+         * Whether bedroo is ensuite or not
+         */
+        isBedroomEnsuite: PropTypes.bool,
+        /**
+         * Whether bathroom has shower
+         */
+        hasShower: PropTypes.bool,
+        /**
+         * Whether bathroom has bathtub
+         */
+        hasBath: PropTypes.bool,
+        /**
+         * Whether living room has open plan kitchen
+         */
+        hasOpenPlanKitchen: PropTypes.bool,
+    },
+    /**
+    * Whether card is editable
+    */
+    Editable: PropTypes.bool,
+  };
 
 export default RoomCard;

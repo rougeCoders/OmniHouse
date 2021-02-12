@@ -3,10 +3,10 @@ import { View, FlatList } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
 import IconButton from '../../../cards/iconButton/index.js';
 import CircleButton from '../../../cards/circleButton/index.js';
-import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { securityDepositDetails } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen9 = (props) => {
 
@@ -51,13 +51,14 @@ const Screen9 = (props) => {
         <View style={{padding:'10%'}}>
             <Text h4 style={styles.headText}>Are you happy for the tenant to use a Zero Deposit Scheme? </Text>
             <FlatList
-                style={{alignSelf:'center', marginBottom:25}}
+                style={styles.flatListContainer}
                 data={depositSchemeData}
                 renderItem={({ item }) => 
                     <IconButton title={item.title}
                         value={item.value}
-                        buttonPress={handleDepositSchemeSelection}
-                        {...(isZeroDepositScheme === item.value && { backgroundColor: 'purple'})}
+                        onPress={handleDepositSchemeSelection}
+                        {...(isZeroDepositScheme === item.value &&
+                            { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                     />}
                 keyExtractor={item => item.index}
                 numColumns={2}
@@ -70,7 +71,7 @@ const Screen9 = (props) => {
                         icon={{type: 'ionicons', name: 'remove'}}
                         {...(depositDuration === 1 && { disabled: true })}
                         buttonPress={handleDepositDurationSelection}/>
-                    <Text h4>{depositDuration}</Text>
+                    <Text h4 style={styles.baseText}>{depositDuration}</Text>
                     <CircleButton
                         value={depositDuration + 1}
                         icon={{type: 'ionicons', name: 'add'}}
@@ -83,13 +84,13 @@ const Screen9 = (props) => {
                             <Icon
                                 name='navigate-next'
                                 type='materialicons'
-                                size={30}
-                                color="white"
+                                size={OmniHouseTheme.spacing(4)}
+                                color={OmniHouseTheme.palette.primary.font}
                             />
                         }
                     iconRight
                     type="clear"
-                    titleStyle={{color:'white'}}
+                    titleStyle={styles.nextButtonTitle}
                     buttonStyle={styles.nextButton}
                     title="Next"
                     onPress={handleSubmit}/>

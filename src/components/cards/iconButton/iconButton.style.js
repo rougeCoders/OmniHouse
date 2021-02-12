@@ -3,6 +3,11 @@ import OmniHouseTheme from '../../../styles/theme.js';
 
 export default StyleSheet.create({
 
+    container:{
+      flexDirection:'column',
+      alignItems:'center',
+      margin:OmniHouseTheme.spacing(0.5),
+    },
     buttonContainer: {
       padding: OmniHouseTheme.spacing(0.75),
       margin: OmniHouseTheme.spacing(0.75),

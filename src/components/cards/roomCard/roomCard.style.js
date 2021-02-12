@@ -1,24 +1,31 @@
 import { StyleSheet } from 'react-native';
+import OmnihouseTheme from './../../../styles/theme.js';
 
 export default StyleSheet.create({
 
     container: {
-      padding:5,
-      margin:5,
-      borderRadius:10,
+      padding: OmnihouseTheme.spacing(0.5),
+      margin: OmnihouseTheme.spacing(0.5),
+      borderRadius: OmnihouseTheme.spacing(1),
       flexDirection:'row',
       alignItems: 'center',
       justifyContent:'space-between',
-      backgroundColor: 'grey',
+      borderBottomWidth: OmnihouseTheme.spacing(0.25),
+      borderBottomColor: OmnihouseTheme.palette.secondary.accent,
+    },
+    headText:{
+      fontSize: OmnihouseTheme.spacing(2),
+      color: OmnihouseTheme.palette.primary.font,
     },
     text:{
-      minWidth:50,
-      padding:5,
-      margin:5,
-      borderRadius:10,
-      fontSize:14,
+      minWidth: OmnihouseTheme.spacing(6),
+      padding: OmnihouseTheme.spacing(0.5),
+      margin: OmnihouseTheme.spacing(0.5),
+      borderRadius: OmnihouseTheme.spacing(1),
+      fontSize: OmnihouseTheme.spacing(2),
       textAlign:'center',
-      color:'white'
+      color: OmnihouseTheme.palette.primary.font,
+      backgroundColor: OmnihouseTheme.palette.secondary.accent,
     },
     textLeft:{
       marginRight:0,

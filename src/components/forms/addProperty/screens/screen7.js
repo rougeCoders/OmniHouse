@@ -5,6 +5,7 @@ import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPropertyRentalDetails } from '../../../../store/actions/addPropertyAction.js';
+import OmniHouseTheme from '../../../../styles/theme.js';
 
 const Screen7 = (props) => {
 
@@ -39,6 +40,7 @@ const Screen7 = (props) => {
             <View style={{padding:'10%'}}>
                 <Text h4 style={styles.headText}>Rental price?</Text>
                 <Input placeholder='e.g. £ 1800 pcm'
+                    style={styles.inputBox}
                     onChangeText={(text) => setAmount(text)}
                     value={amount} />
 
@@ -47,12 +49,11 @@ const Screen7 = (props) => {
                     data={frequencyData}
                     renderItem={({ item }) => 
                         <TouchableOpacity 
-                            style={{padding:3,
-                                marginLeft:5,
-                                marginRight:5,
-                                backgroundColor: item.value === frequency?'purple':'black'}}
+                            style={[styles.selectableLabel,
+                                {...( item.value === frequency
+                                    && { backgroundColor: OmniHouseTheme.palette.primary.vector})}]}
                             onPress={() => setFrequency(item.value)}
-                            ><Text h5 style={{color:'white'}}>{item.title}</Text>
+                            ><Text h5 style={styles.baseText}>{item.title}</Text>
                         </TouchableOpacity>}
                     keyExtractor={item => item.index}
                     numColumns={2}
@@ -65,13 +66,13 @@ const Screen7 = (props) => {
                         <Icon
                             name='navigate-next'
                             type='materialicons'
-                            size={30}
-                            color="white"
+                            size={OmniHouseTheme.spacing(4)}
+                            color={OmniHouseTheme.palette.primary.font}
                         />
                     }
                 iconRight
                 type="clear"
-                titleStyle={{color:'white'}}
+                titleStyle={styles.nextButtonTitle}
                 buttonStyle={styles.nextButton}
                 title="Next"
                 onPress={handleSubmit}/>

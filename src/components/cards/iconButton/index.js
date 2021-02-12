@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, TouchableOpacity } from "react-native";
 import { Icon, Image, Text } from 'react-native-elements';
 import styles from './iconButton.style.js';
@@ -6,12 +7,11 @@ import styles from './iconButton.style.js';
 const IconButton = (props) => {
 
     const handlePress = () => {
-        props.buttonPress(props.value);
+        props.onPress(props.value);
     } 
-    console.log(props.text);
 
     return(
-        <View style={{flexDirection:'column', alignItems:'center'}}>
+        <View style={styles.container}>
             <TouchableOpacity       
                 style={[styles.buttonContainer, props.FlatButton && styles.buttonFlat,
                     {...(props.backgroundColor !== undefined
@@ -40,5 +40,49 @@ const IconButton = (props) => {
         </View>
     )
 }
+
+IconButton.propTypes = {
+    /**
+     * title of the card
+     */
+    title: PropTypes.string,
+    /**
+     * value of the card
+     */
+    value: PropTypes.string,
+    /**
+     * text below the card
+     */
+    text: PropTypes.string,
+    /**
+     * icon details
+     */
+    icon: PropTypes.shape({
+        /**
+        * name of icon
+        */
+        name: PropTypes.string,
+        /**
+        * type of icon
+        */
+        type: PropTypes.string,
+        /**
+        * color of icon
+        */
+        color: PropTypes.string,
+    }),
+    /**
+     * backgroundColor of component
+     */
+    backgroundColor: PropTypes.string,
+    /**
+     *  Returns the value
+     */
+    onPress: PropTypes.func,
+    /**
+     *  If card is rectangular
+     */
+    FlatButton: PropTypes.bool,
+  };
 
 export default IconButton;

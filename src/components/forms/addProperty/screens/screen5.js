@@ -90,7 +90,7 @@ const Screen5 = (props) => {
                     <IconButton title={item.title}
                         value={item.value}  
                         icon={item.icon}
-                        buttonPress={handlePropertyTypeSelection}
+                        onPress={handlePropertyTypeSelection}
                         {...(propertyType === item.value &&
                             { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                     />}
@@ -106,7 +106,7 @@ const Screen5 = (props) => {
                     renderItem={({ item }) => 
                         <IconButton title={item.title}
                             value={item.value}
-                            buttonPress={handleOccupationTypeSelection}
+                            onPress={handleOccupationTypeSelection}
                             {...(hasMultipleOccupation === item.value &&
                                 { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                         />}

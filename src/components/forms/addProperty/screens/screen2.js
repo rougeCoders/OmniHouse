@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDown from './../../../dropdown/index.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPropertyAddress } from '../../../../store/actions/addPropertyAction.js';
@@ -40,16 +40,9 @@ const Screen2 = (props) => {
             <View style={{padding:'10%'}}>
                 <Text h4 style={styles.headText}>Select your property’s address</Text>
 
-                <DropDownPicker
+                <DropDown
                     items={items}
-                    containerStyle={styles.dropDownPickerContainer}
-                    dropDownStyle={styles.dropDownPicker}
-                    style={styles.dropDownPicker}
-                    labelStyle={styles.dropDownPickerLabel}
-                    itemStyle={styles.dropDownPickerItem}
-                    arrowColor={OmniHouseTheme.palette.primary.font}
-                    arrowSize={OmniHouseTheme.spacing(3)}
-                    onChangeItem={item => updateAddress(item.value)}
+                    onChangeItem={value => updateAddress(value)}
                     />
                 <Text h5 style={styles.conditionText}>OR</Text>
                 <Text h5 style={styles.conditionText}>ADD ADDRESS MANUALLY</Text>

@@ -54,7 +54,7 @@ const Screen6 = (props) => {
                     <IconButton title={item.title}
                     value={item.value}
                     icon={item.icon}
-                    buttonPress={handlePropertyFurnishingSelection}
+                    onPress={handlePropertyFurnishingSelection}
                     {...(propertyFurnishing === item.value &&
                         { backgroundColor: OmniHouseTheme.palette.primary.vector})} />}
                 keyExtractor={item => item.index}

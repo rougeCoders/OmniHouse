@@ -69,7 +69,7 @@ const Screen4 = (props) => {
                     renderItem={({ item }) => (
                         <IconButton title={item.title}
                             {...item}
-                            buttonPress={handleTenantSelection}
+                            onPress={handleTenantSelection}
                             {...(isTenants === item.value &&
                                 { backgroundColor: OmniHouseTheme.palette.primary.vector})}
                         />)}
