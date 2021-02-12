@@ -58,6 +58,8 @@ export default StyleSheet.create({
         backgroundColor: OmniHouseTheme.palette.primary.main,
         color: OmniHouseTheme.palette.primary.font,
         borderColor: OmniHouseTheme.palette.primary.vector,
+        borderWidth: OmniHouseTheme.spacing(0.25),
+        borderRadius: OmniHouseTheme.spacing(1),
     },
     dropDownPickerLabel:{
         fontSize: OmniHouseTheme.spacing(2.5),
@@ -65,7 +67,6 @@ export default StyleSheet.create({
     },
     dropDownPickerContainer:{
         height: OmniHouseTheme.spacing(5),
-        backgroundColor: OmniHouseTheme.palette.primary.main,
     },
     dropDownPickerItem:{
         justifyContent: 'flex-start',

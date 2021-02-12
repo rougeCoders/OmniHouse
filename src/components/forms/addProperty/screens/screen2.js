@@ -42,10 +42,13 @@ const Screen2 = (props) => {
 
                 <DropDownPicker
                     items={items}
-                    containerStyle={{height: 40}}
-                    itemStyle={{
-                        justifyContent: 'flex-start'
-                    }}
+                    containerStyle={styles.dropDownPickerContainer}
+                    dropDownStyle={styles.dropDownPicker}
+                    style={styles.dropDownPicker}
+                    labelStyle={styles.dropDownPickerLabel}
+                    itemStyle={styles.dropDownPickerItem}
+                    arrowColor={OmniHouseTheme.palette.primary.font}
+                    arrowSize={OmniHouseTheme.spacing(3)}
                     onChangeItem={item => updateAddress(item.value)}
                     />
                 <Text h5 style={styles.conditionText}>OR</Text>
