@@ -42,7 +42,7 @@ export default StyleSheet.create({
         fontSize: OmniHouseTheme.spacing(1.5),
     },
     inputBoxText:{
-        fontSize:28,
+        fontSize:16,
         color:'white'
     },
     inputBoxContainer:{

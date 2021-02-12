@@ -16,6 +16,7 @@ import Screen9 from '../components/forms/addProperty/screens/screen9.js';
 import Screen10 from '../components/forms/addProperty/screens/screen10.js';
 import Screen11 from '../components/forms/addProperty/screens/screen11.js';
 import Screen12 from '../components/forms/addProperty/screens/screen12.js';
+import Screen13 from '../components/forms/addProperty/screens/screen13.js';
 
 
 const Stack = createStackNavigator();
@@ -91,6 +92,9 @@ const AddPropertyNavigator = (propsparent) => {
                  />
                 <Stack.Screen name="Screen12"
                     component={Screen12}
+                 />
+                 <Stack.Screen name="Screen13"
+                    component={Screen13}
                  />
           </Stack.Navigator>  
         </NavigationContainer>
