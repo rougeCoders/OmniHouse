@@ -11,7 +11,7 @@ const IconButton = (props) => {
     } 
 
     return(
-        <View>
+        <View style={styles.iconButtonContainer}>
             <TouchableOpacity       
                 style={[styles.buttonContainer, props.FlatButton && styles.buttonFlat,
                     {...(props.backgroundColor !== undefined

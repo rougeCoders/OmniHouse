@@ -8,6 +8,10 @@ export default StyleSheet.create({
       alignItems:'center',
       margin:OmniHouseTheme.spacing(0.5),
     },
+    iconButtonContainer:{
+      flexDirection:'column',
+      alignItems:'center',
+    },
     buttonContainer: {
       padding: OmniHouseTheme.spacing(0.75),
       margin: OmniHouseTheme.spacing(0.75),
