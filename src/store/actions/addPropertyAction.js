@@ -49,3 +49,18 @@ export const securityDepositDetails = (values) => ({
     type: AddPropertyActionTypes.SecurityDepositDetails,
     payload: values
 })
+
+export const addPropertyCertificateDetails = (values) => ({
+    type: AddPropertyActionTypes.PropertyCertificateDetails,
+    payload: values
+})
+
+export const addedRoomDetails = (values) => ({
+    type: AddPropertyActionTypes.AddedRoomsDetails,
+    payload: values
+})
+
+export const addAmenities = (values) => ({
+    type: AddPropertyActionTypes.AddAmenities,
+    payload: values
+})

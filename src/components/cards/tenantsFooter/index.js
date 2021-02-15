@@ -18,9 +18,9 @@ const TenantsFooter = (props) => {
     }
 
     return (
-            <View style={{marginBottom:20}}>
+            <View style={{marginBottom:30}}>
             { props.isNotOccupied && (
-                <View >
+                <View>
                     <Text style={[props.styles.headText,{marginTop:20,marginBottom:20}]}>When is property available for rent?</Text>
                     <TouchableOpacity
                         onPress={() => setShowCalendar(true)}
@@ -42,8 +42,10 @@ const TenantsFooter = (props) => {
                         }}
                         />
                     )}
-                    <Text style={[props.styles.headText, {marginTop:20}]}>We will post your completed property on our listing portal all year round to help you avoid the tenant void!</Text>
-                    <View style={props.styles.buttonContainer}>
+                    <Text style={[props.styles.headText, {marginTop:20}]}>We will post your completed property on our listing portal all year round to help you avoid the tenant void!</Text> 
+                </View>
+            )}
+            <View style={props.styles.buttonContainer}>
                                 <Button
                                     icon={
                                         <Icon
@@ -59,9 +61,7 @@ const TenantsFooter = (props) => {
                                     buttonStyle={props.styles.nextButton}
                                     title="Next"
                                     onPress={props.onHandleSubmit}/>
-                    </View>
-                </View>
-            )}
+            </View>
         </View>
     )
 }

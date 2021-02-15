@@ -8,5 +8,8 @@ export default {
     PropertyRentalDetails: 'Property_Rental_Details',
     PropertyBillDetails: 'Property_Bill_Details',
     RoomsDetails: 'Rooms_Details',
-    SecurityDepositDetails: 'Security_Deposit_Details'
+    SecurityDepositDetails: 'Security_Deposit_Details',
+    PropertyCertificateDetails: 'Property_Certificate_Details',
+    AddedRoomsDetails: 'Added_Rooms_Details',
+    AddAmenities: 'Add_Amenities'
 }

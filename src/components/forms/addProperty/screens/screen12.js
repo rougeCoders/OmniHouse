@@ -6,7 +6,7 @@ import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import {launchCamera,launchImageLibrary} from 'react-native-image-picker';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPropertyImages } from '../../../../store/actions/addPropertyAction.js';
+
 
 const Screen12 = (props) => {
  
@@ -64,8 +64,6 @@ const Screen12 = (props) => {
         let isStoragePermitted = await requestExternalWritePermission();
         if (isCameraPermitted && isStoragePermitted) {
             launchCamera(options, (response) => {
-              console.log('Response = ', response);
-      
               if (response.didCancel) {
                 alert('User cancelled camera picker');
                 return;
@@ -79,15 +77,11 @@ const Screen12 = (props) => {
                 alert(response.errorMessage);
                 return;
               }
-              console.log('base64 -> ', response.base64);
-              console.log('uri -> ', response.uri);
-              console.log('width -> ', response.width);
-              console.log('height -> ', response.height);
-              console.log('fileSize -> ', response.fileSize);
-              console.log('type -> ', response.type);
-              console.log('fileName -> ', response.fileName);
-              dispatch(addPropertyImages(response));
-              props.navigation.navigate('Screen11');
+              if(props.route.params.additionalParams){
+                response = {...response, ...props.route.params.additionalParams};
+              }
+              props.route.params.onGoBack(response);
+              props.navigation.goBack();
             });
         }
       };
@@ -100,30 +94,25 @@ const Screen12 = (props) => {
           quality: 1,
         };
         launchImageLibrary(options, (response) => {
-          console.log('Response = ', response);
     
           if (response.didCancel) {
-            console.log('User cancelled camera picker');
+            alert('User cancelled camera picker');
             return;
           } else if (response.errorCode == 'camera_unavailable') {
-            console.log('Camera not available on device');
+            alert('Camera not available on device');
             return;
           } else if (response.errorCode == 'permission') {
-            console.log('Permission not satisfied');
+            alert('Permission not satisfied');
             return;
           } else if (response.errorCode == 'others') {
-            console.log(response.errorMessage);
+            alert(response.errorMessage);
             return;
           }
-          console.log('base64 -> ', response.base64);
-          console.log('uri -> ', response.uri);
-          console.log('width -> ', response.width);
-          console.log('height -> ', response.height);
-          console.log('fileSize -> ', response.fileSize);
-          console.log('type -> ', response.type);
-          console.log('fileName -> ', response.fileName);
-          dispatch(addPropertyImages(response));
-          props.navigation.navigate('Screen11');
+          if(props.route.params.additionalParams){
+            response = {...response, ...props.route.params.additionalParams};
+          }
+          props.route.params.onGoBack(response);
+          props.navigation.goBack();
         });
       };
     

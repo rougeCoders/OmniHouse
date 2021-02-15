@@ -6,14 +6,23 @@ import CircleButton from '../../../cards/circleButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
+import { addPropertyImages } from '../../../../store/actions/addPropertyAction.js';
+
 
 
 const Screen11 = (props) => {
 
     const dispatch = useDispatch();
+
+    const addPropertyImageCallBack = (response) => {
+        dispatch(addPropertyImages(response));
+    }
+
     const propertyImages = useSelector(state => state.addProperty.propertyImages);
     const showCameraScreen = () => {
-        props.navigation.navigate('Screen12');
+        props.navigation.navigate('Screen12',{
+            onGoBack: addPropertyImageCallBack,
+        });
     }
    
     

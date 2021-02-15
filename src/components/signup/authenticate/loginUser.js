@@ -41,7 +41,6 @@ const LoginUser = (props) => {
         try {
           await confirm.confirm(code);
         } catch (error) {
-          console.log('Invalid code.');
         }
       }
 

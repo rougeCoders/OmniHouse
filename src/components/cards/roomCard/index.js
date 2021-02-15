@@ -39,7 +39,6 @@ const RoomCard = (props) => {
     }
 
     const deleteRoom = () => {
-        console.log(props.index);
         props.deleteSelectedRoom(props.value);
     }
 
