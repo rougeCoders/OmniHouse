@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableOpacity } from "react-native";
-import { Icon, Image, Text } from 'react-native-elements';
+import { Icon, Text } from 'react-native-elements';
 import styles from './iconButton.style.js';
 
 const IconButton = (props) => {
@@ -24,12 +24,6 @@ const IconButton = (props) => {
                             type={props.icon.type}
                             color={props.icon.color? props.icon.color : 'white'}
                             />
-                    )
-                }
-                {    
-                    props.Image && (
-                        <Image source={props.image.imageUri}
-                            style={styles.imageIcon} />
                     )
                 }
                 <Text h5 style={styles.titleText}>{props.title}</Text>

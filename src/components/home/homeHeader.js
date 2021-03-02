@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Image, Badge, Icon } from 'react-native-elements';
-import image from './../../assets/logo.png';
+import { Badge, Icon } from 'react-native-elements';
+import CustomIcon from '../iconSet/customIcon.js';
 import styles from './homeHeader.styles.js';
 import OmniHouseTheme from "../../styles/theme.js";
 
@@ -12,12 +12,13 @@ const HomeHeader = () => {
             <View style={{
                 flexDirection: 'row',
             }}>
-                <View>
-                    <Image source={image}
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems:'center'
+                    }}>
+                    <CustomIcon name='omnigem'
                         style={styles.imageIcon}/>
-                </View>
-                <View>
-                    <Image source={image}
+                    <CustomIcon name='raffle'
                         style={styles.imageIcon}/>
                 </View>
             </View>

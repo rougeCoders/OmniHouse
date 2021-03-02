@@ -1,6 +1,8 @@
 import React from 'react';
-import { View } from "react-native";
-import { Image, Text } from 'react-native-elements';
+import PropTypes from 'prop-types';
+import { View, TouchableHighlight } from "react-native";
+import { Text } from 'react-native-elements';
+import CustomIcon from '../../iconSet/customIcon.js';
 import styles from './imageCard.style.js';
 
 const ImageCard = (props) => {
@@ -12,12 +14,43 @@ const ImageCard = (props) => {
     } 
     return(
         <View style={styles.buttonContainer} >
-                <Image source={props.ImageUri}
-                    style={styles.imageIcon}
-                    onPress={handlePress} />
-            <Text style={styles.buttonText}>{props.Title}</Text>
+                <TouchableHighlight style={[styles.imageIcon,
+                    {...(props.backgroundColor !== undefined
+                        && { backgroundColor: props.backgroundColor})}]}
+                        onPress={handlePress} >
+                        {    
+                            props.icon && (
+                                <CustomIcon name={props.icon.name}/>
+                            )
+                        }
+                    </TouchableHighlight>
+            <Text style={styles.buttonText}>{props.title}</Text>
         </View>
     )
 }
+
+ImageCard.propTypes = {
+    /**
+     * title of the card
+     */
+    title: PropTypes.string,
+    /**
+     * icon details
+     */
+    icon: PropTypes.shape({
+        /**
+        * name of icon
+        */
+        name: PropTypes.string,
+        /**
+        * color of icon
+        */
+        color: PropTypes.string,
+    }),
+    /**
+     * backgroundColor of component
+     */
+    backgroundColor: PropTypes.string,
+  };
 
 export default ImageCard;
