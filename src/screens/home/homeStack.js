@@ -6,12 +6,14 @@ import PropertyListing from './../propertyListing/index.js';
 import constants from '../../constants';
 import stackStyle from '../../styles/stack.style.js';
 import OmniHouseTheme from '../../styles/theme.js';
+import Footer from '../../components/footer/footer.js';
 
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
     return(
+        <>
         <NavigationContainer independent={true}>
           <Stack.Navigator initialRouteName="HomeScreen"
             screenOptions={{
@@ -30,7 +32,8 @@ const HomeStack = () => {
                  />
           </Stack.Navigator>  
         </NavigationContainer>
-
+        <Footer />
+        </>
     )
 }
 
