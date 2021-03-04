@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import {LogBox} from 'react-native';
-import RNBootSplash from 'react-native-bootsplash';
 import RegisterUser from './components/signup/authenticate/registerUser.js';
 import SelectSignUpType from './components/signup/signuptype/index.js';
 import { autoSignIn } from './store/actions/authActions.js';
@@ -20,9 +19,6 @@ const App = (props) => {
   // props.dispatch(autoSignIn());
 
   LogBox.ignoreAllLogs("value");
-  useEffect(() => {
-    RNBootSplash.hide({ duration: 250 });
-  },[]);
 
   return(
         props.auth.isAuth && props.auth.userType !== null?
