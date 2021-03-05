@@ -3,29 +3,44 @@ import { View } from "react-native";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ScrollView } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
+import constants from '../../../constants.js';
 import showToast from './../../../utils/showToast.js';
 import { registerUser, clearAuthError } from '../../../store/actions/authActions.js';
+import CustomIcon from '../../iconSet/customIcon.js';
+import OmniHouseTheme from './../../../styles/theme.js';
+import styles from './style.js';
+import style from './style.js';
 
 const RegisterUser = (props) => {
 
+    const signInMode = props.route.params.signInMode;
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(false);
 
-    const SignUpSchema = Yup.object().shape({
-        firstName: Yup.string()
-            .required('First Name is required'),
-        lastName: Yup.string()
-            .required('Last Name is required'),
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
+    const PhoneSignUpSchema = Yup.object().shape({
+        name: Yup.string()
+            .required('Name is required'),
         phone: Yup.string()
             .min(6, 'Mobile must be at least 7 characters')
             .max(10, 'Mobile must be at max 10 characters')
             .required('Mobile is required'),
+        password: Yup.string()
+            .min(6, 'Password must be at least 6 characters')
+            .required('Password is required'),
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+            .required('Confirm Password is required')
+    });
+
+    const EmailSignUpSchema = Yup.object().shape({
+        name: Yup.string()
+            .required('Name is required'),
+        email: Yup.string()
+            .email('Email is invalid')
+            .required('Email is required'),
         password: Yup.string()
             .min(6, 'Password must be at least 6 characters')
             .required('Password is required'),
@@ -52,85 +67,145 @@ const RegisterUser = (props) => {
     }
 
     return(
-        <ScrollView>
+        <ScrollView style={{alignContent:'center'}}>
+            <View style={styles.iconContainer}>
+                <CustomIcon name='homebutton' width={OmniHouseTheme.spacing(10)}
+                    height={OmniHouseTheme.spacing(10)} />
+            </View>
             <Formik
                 initialValues={{
-                    firstName:'',
-                    lastName:'',
+                    name:'',
                     phone:'',
                     email:'',
                     password:'',
                     confirmPassword:''
                 }}
-                validationSchema={ SignUpSchema } 
+                //validationSchema={ signInMode === constants.Phone ? PhoneSignUpSchema: EmailSignUpSchema } 
                 onSubmit={values => handleSubmit(values)}>
-                    {({handleChange, handleBlur, handleSubmit, values, touched, errors})=>(
+                    {({handleChange, handleBlur, handleSubmit, setFieldValue, values, touched, errors})=>(
                         <View style={{padding:'10%'}}>
                             <Input
-                                placeholder="Enter your firstname"
-                                leftIcon={{type:'MaterialIcons', name:'email'}}
-                                onChangeText={handleChange('firstName')}
-                                onBlur={handleBlur('firstName')}
-                                value={values.firstName}
-                                renderErrorMessage={errors.firstName && touched.firstName}
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                placeholder="Your Name"
+                                onChangeText={handleChange('name')}
+                                onBlur={handleBlur('name')}
+                                value={values.name}
+                                rightIcon={values.name !== '' && (
+                                    <Icon
+                                        name='close'
+                                        type='ionicons'
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
+                                        onPress={() => setFieldValue('name', '')}
+                                    />
+                                )}
+                                renderErrorMessage={errors.name && touched.name}
                                 errorStyle={{ color: 'red' }}
-                                errorMessage={errors.firstName} />
+                                errorMessage={errors.name} />
                             
+                            {signInMode === constants.Email && (
                             <Input
-                                placeholder="Enter your lastName"
-                                leftIcon={{type:'MaterialIcons', name:'email'}}
-                                onChangeText={handleChange('lastName')}
-                                onBlur={handleBlur('lastName')}
-                                value={values.lastName}
-                                renderErrorMessage={errors.lastName && touched.lastName}
-                                errorStyle={{ color: 'red' }}
-                                errorMessage={errors.lastName} />
-
-                            <Input
-                                placeholder="Enter your email"
-                                leftIcon={{type:'MaterialIcons', name:'email'}}
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                placeholder="Email"
                                 onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
                                 value={values.email}
+                                rightIcon={values.email !== '' && (
+                                    <Icon
+                                        name='close'
+                                        type='ionicons'
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
+                                        onPress={() => setFieldValue('email', '')}
+                                    />
+                                )}
                                 renderErrorMessage={errors.email && touched.email}
                                 errorStyle={{ color: 'red' }}
                                 errorMessage={errors.email} />
+                            )}
 
+                            {signInMode === constants.Phone && (
                             <Input
-                                placeholder="Enter your phone"
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                placeholder="Phone"
                                 keyboardType='phone-pad'
-                                leftIcon={{type:'Ionicons', name:'call'}}
                                 onChangeText={handleChange('phone')}
                                 onBlur={handleBlur('phone')}
                                 value={values.phone}
+                                rightIcon={values.phone !== '' && (
+                                    <Icon
+                                        name='close'
+                                        type='ionicons'
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
+                                        onPress={() => setFieldValue('phone', '')}
+                                    />
+                                )}
                                 renderErrorMessage={errors.phone && touched.phone}
                                 errorStyle={{ color: 'red' }}
                                 errorMessage={errors.phone} />
+                            )}
 
                             <Input
-                                placeholder="Enter your password"
-                                leftIcon={{type:'MaterialIcons', name:'fingerprint'}}
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                placeholder="Password"
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
                                 value={values.password}
+                                rightIcon={values.password !== '' && (
+                                    <Icon
+                                        name='close'
+                                        type='ionicons'
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
+                                        onPress={() => setFieldValue('password', '')}
+                                    />
+                                )}
                                 secureTextEntry={true}
                                 renderErrorMessage={errors.password && touched.password}
                                 errorStyle={{ color: 'red' }}
                                 errorMessage={errors.password} />
 
                             <Input
-                                placeholder="Confirm your password"
-                                leftIcon={{type:'MaterialIcons', name:'fingerprint'}}
+                                containerStyle={styles.inputContainer}
+                                inputContainerStyle={styles.inputBoxContainer}
+                                labelStyle={styles.inputLabelStyle}
+                                style={styles.inputBoxText}
+                                placeholder="Repeat password"
                                 onChangeText={handleChange('confirmPassword')}
                                 onBlur={handleBlur('confirmPassword')}
                                 value={values.confirmPassword}
+                                rightIcon={values.confirmPassword !== '' && (
+                                    <Icon
+                                        name='close'
+                                        type='ionicons'
+                                        size={OmniHouseTheme.spacing(4)}
+                                        color={OmniHouseTheme.palette.primary.font}
+                                        onPress={() => setFieldValue('confirmPassword', '')}
+                                    />
+                                )}
                                 secureTextEntry={true}
                                 renderErrorMessage={errors.confirmPassword && touched.confirmPassword}
                                 errorStyle={{ color: 'red' }}
                                 errorMessage={errors.confirmPassword} />
 
                             <Button
+                                buttonStyle={[styles.signupButton,signInMode === constants.Phone && styles.signupButtonMobile]}
+                                titleStyle={styles.signupButtonIconTitle}
                                 title="Sign up"
+                                icon={<CustomIcon name={signInMode === constants.Phone? 'phone':'email'} />}
                                 loading={loading}
                                 onPress={handleSubmit}/>
                         </View>

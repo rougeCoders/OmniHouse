@@ -15,6 +15,8 @@ import CalenderLarge from '../../assets/svgIcons/Calender-Large.svg';
 import SearchLarge from '../../assets/svgIcons/Search-Large.svg';
 import HomeButton from '../../assets/svgIcons/HomeButton.svg';
 import AddBox from '../../assets/svgIcons/AddBox.svg';
+import Phone from '../../assets/svgIcons/Phone.svg';
+import Email from '../../assets/svgIcons/Email.svg';
 
 const icon = (props) => {
 
@@ -50,7 +52,13 @@ const icon = (props) => {
         case 'homebutton':
             return <HomeButton {...iconProps} />
         case 'addbox':
-            return <AddBox {...iconProps} />     
+            return <AddBox {...iconProps} />
+        case 'phone':
+            return <Phone {...iconProps} />  
+        case 'email':
+            return <Email {...iconProps} />  
+        default:
+            return <Omnigem {...iconProps} /> 
     }
 }
 

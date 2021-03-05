@@ -10,6 +10,7 @@ import { autoSignIn } from './store/actions/authActions.js';
 import LoginUser from './components/signup/authenticate/loginUser.js';
 import RegisterUserType from './components/signup/authenticate/userType.js';
 import HomeStack from './screens/home/homeStack.js';
+import stackStyle from './styles/stack.style.js';
 import OmniHouseTheme from './styles/theme.js';
 
 const Stack = createStackNavigator();
@@ -25,8 +26,17 @@ const App = (props) => {
         <HomeStack />
         :
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SelectSignUpType">
-                <Stack.Screen name="Sign In" component={SelectSignUpType} />
+          <Stack.Navigator initialRouteName="SelectSignUpType"
+            screenOptions={{
+              headerTitle:'',
+              headerBackTitle: 'Back',
+              headerBackTitleVisible: 'true',
+              headerStyle: stackStyle.headerStyle,
+              headerTintColor: OmniHouseTheme.palette.primary.font,
+              cardStyle:stackStyle.cardStyle
+            }}>
+                <Stack.Screen name="Sign In" component={SelectSignUpType}
+                  options={{headerShown: false}} />
                 <Stack.Screen name="LoginUser" component={LoginUser} />
                 <Stack.Screen name="RegisterUser" component={RegisterUser} />
                 <Stack.Screen name="RegisterUserType" component={RegisterUserType} />
