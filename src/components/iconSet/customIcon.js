@@ -17,6 +17,7 @@ import HomeButton from '../../assets/svgIcons/HomeButton.svg';
 import AddBox from '../../assets/svgIcons/AddBox.svg';
 import Phone from '../../assets/svgIcons/Phone.svg';
 import Email from '../../assets/svgIcons/Email.svg';
+import Microwave from '../../images/Microwave.svg';
 
 const icon = (props) => {
 
@@ -57,6 +58,8 @@ const icon = (props) => {
             return <Phone {...iconProps} />  
         case 'email':
             return <Email {...iconProps} />  
+        case 'microwave':
+            return <Microwave {...iconProps} />  
         default:
             return <Omnigem {...iconProps} /> 
     }

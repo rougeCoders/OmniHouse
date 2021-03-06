@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './home';
 import PropertyListing from './../propertyListing/index.js';
+import Maintenance from './../maintenance/index.js';
 import constants from '../../constants';
 import stackStyle from '../../styles/stack.style.js';
 import OmniHouseTheme from '../../styles/theme.js';
@@ -29,6 +30,9 @@ const HomeStack = () => {
                 options={{headerShown: false}}/>
               <Stack.Screen name={constants.ScreenNames.MyProperty}
                 component={PropertyListing}
+                 />
+              <Stack.Screen name={constants.ScreenNames.Maintenance}
+                component={Maintenance}
                  />
           </Stack.Navigator>  
         </NavigationContainer>

@@ -12,7 +12,6 @@ import TenantsHeader  from '../../../cards/tenantsHeader/index.js';
 import TenantsFooter  from '../../../cards/tenantsFooter/index.js';
 
 const Screen4 = (props) => {
-    console.log('chirag');
     const [isNotOccupied, setIsNotOccupied] = useState(false);
     const [isTenants, setIsTenants] = useState('')
     console.log(isNotOccupied);

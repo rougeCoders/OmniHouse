@@ -66,6 +66,7 @@ export default {
 
     ScreenNames: {
         MyProperty: 'My Properties',
+        Maintenance : 'Maintenance',
         AddProperty: 'Add Property'
     },
 
@@ -75,5 +76,16 @@ export default {
             errorCode:'test',
             errorMsg: 'test'
         }
-    ]
+    ],
+    Maintenance:{
+        RaiseIssue : 'Raise Issue',
+        EmergencyIssue : 'Emergency Issue',
+        Electricians: 'Electricians',
+        Plumbers: 'Plumbers',
+        ApplianceRepair: 'Appliance Repair',
+        Painters: 'Painters & Decorators',
+        Carpenters: 'Carpenters',
+        Gardening: 'Gardening'
+    },
+
 }
