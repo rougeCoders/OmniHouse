@@ -11,7 +11,6 @@ import { registerUser, clearAuthError } from '../../../store/actions/authActions
 import CustomIcon from '../../iconSet/customIcon.js';
 import OmniHouseTheme from './../../../styles/theme.js';
 import styles from './style.js';
-import style from './style.js';
 
 const RegisterUser = (props) => {
 
@@ -52,18 +51,24 @@ const RegisterUser = (props) => {
 
     const handleSubmit = (values) => {
         setLoading(true);
-        dispatch(registerUser(values)).then(({payload})=>{
-            setLoading(false);
-            if(payload.error){
-                showToast('error','Ups !!','Try again later');
-                dispatch(clearAuthError());
-            } else {
-                showToast('success','Congratulations','Your profile was updated');
-                props.navigation.navigate('RegisterUserType',{
-                    user:payload.user
-                })
-            }
-        });
+
+        if(signInMode === constants.Phone)
+        {}
+        else
+        {
+            dispatch(registerUser(values)).then(({payload})=>{
+                setLoading(false);
+                if(payload.error){
+                    showToast('error', payload.error);
+                    dispatch(clearAuthError());
+                } else {
+                    showToast('success', 'Congrats! You are register now.');
+                    props.navigation.navigate('RegisterUserType',{
+                        user:payload.user
+                    })
+                }
+            });
+        }
     }
 
     return(

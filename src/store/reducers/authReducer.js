@@ -1,11 +1,9 @@
 import AuthActionTypes from '../actionTypes/authActionTypes.js';
 
 const INITIAL_STATE = {
-    user:{
-        displayName: 'Gaurav'
-    },
-    isAuth: true,
-    userType: 'tenant',
+    user:{},
+    isAuth: false,
+    userType: '',
     error: null
 }
 

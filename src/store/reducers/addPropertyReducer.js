@@ -56,7 +56,7 @@ export default function AddPropertyReducer(state= INITIAL_STATE, action){
         case AddPropertyActionTypes.PropertyType:
             return {...state, ...action.payload}
         case AddPropertyActionTypes.PropertyFurnished:
-            return {...state, propertyFurnished: action.payload}
+            return {...state, propertyFurnishing: action.payload}
         case AddPropertyActionTypes.PropertyImages:
             const propertyUpdatedImages = [...state.propertyImages]
             propertyUpdatedImages.push(action.payload);

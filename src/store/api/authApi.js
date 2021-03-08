@@ -4,6 +4,7 @@ export const registerUser = async({ firstName,lastName,phone,email,password }) =
     try{
         const response = await firebase.auth()
         .createUserWithEmailAndPassword(email,password);
+        console.log(response);
         const {user} = response;
         const userProfile = {
             uid: user.uid,

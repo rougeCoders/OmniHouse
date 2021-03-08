@@ -3,10 +3,11 @@ import constants from'../constants.js';
 
 const getErrorMessage = (error) => {
     const errorObj = constants.Errors.filter(er => er.errorCode === error)[0];
+    console.log(constants.Errors,errorObj, error);
     return errorObj !== undefined ? errorObj.errorMsg : error;
 }
 
-const showToast = (type,text1,text2) => {
+const showToast = (type,text2) => {
     switch(type){
         case 'info':
             Toast.show({

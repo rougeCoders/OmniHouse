@@ -73,8 +73,12 @@ export default {
 
     Errors: [
         {
-            errorCode:'test',
-            errorMsg: 'test'
+            errorCode:"auth/email-already-in-use",
+            errorMsg: 'Email already registered'
+        },
+        {
+            errorCode:"auth/email-already-exists",
+            errorMsg: 'Email already registered'
         }
     ],
     Maintenance:{
