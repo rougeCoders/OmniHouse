@@ -3,7 +3,7 @@ import AuthActionTypes from '../actionTypes/authActionTypes.js';
 const INITIAL_STATE = {
     user:{},
     isAuth: false,
-    userType: '',
+    userType: null,
     error: null
 }
 

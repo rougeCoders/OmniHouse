@@ -1,6 +1,6 @@
 import { firebase, usersCollection } from '../../firebase/firebase.js';
 
-export const registerUser = async({ firstName,lastName,phone,email,password }) =>{
+export const registerUser = async({ name,phone,email,password }) =>{
     try{
         const response = await firebase.auth()
         .createUserWithEmailAndPassword(email,password);
@@ -9,7 +9,7 @@ export const registerUser = async({ firstName,lastName,phone,email,password }) =
         const userProfile = {
             uid: user.uid,
             email: email,
-            displayName: firstName + " " + lastName,
+            name: name,
             phoneNumber: phone
         };
         await usersCollection.doc(user.uid).set(userProfile);

@@ -14,7 +14,7 @@ const HomeScreen = (props) => {
             <HomeHeader />
             <ScrollView style={styles.container}>
                 <View>
-                    <Text h4 style={styles.welcomeText}>Hey {user.displayName},</Text>
+                    <Text h4 style={styles.welcomeText}>Hey {user.name},</Text>
                 </View>
                 <HomeNavigation {...props} />
             </ScrollView>

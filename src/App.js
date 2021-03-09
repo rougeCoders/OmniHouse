@@ -22,7 +22,8 @@ const App = (props) => {
   LogBox.ignoreAllLogs("value");
 
   return(
-        props.auth.isAuth && props.auth.userType !== null?
+        props.auth.isAuth && props.auth.userType !== undefined 
+          && props.auth.userType !== null?
         <HomeStack />
         :
         <NavigationContainer>

@@ -12,7 +12,7 @@ const showToast = (type,text2) => {
         case 'info':
             Toast.show({
                 type: 'info',
-                text1,
+                text1: '',
                 text2,
                 position: 'bottom',
                 visibilityTime: 4000,
@@ -23,7 +23,7 @@ const showToast = (type,text2) => {
         case 'success':
             Toast.show({
                 type: 'success',
-                text1,
+                text1: '',
                 text2,
                 position: 'bottom',
                 visibilityTime: 4000,
@@ -34,7 +34,7 @@ const showToast = (type,text2) => {
         case 'error':
             Toast.show({
                 type: 'error',
-                text1,
+                text1: '',
                 text2: getErrorMessage(text2),
                 position: 'bottom',
                 visibilityTime: 4000,

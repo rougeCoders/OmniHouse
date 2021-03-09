@@ -1,35 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, TextInput } from "react-native";
 import { Formik } from 'formik';
 import { firebase } from './../../../firebase/firebase.js';
 import * as Yup from 'yup';
 import { Input, Button } from 'react-native-elements';
 import constants from './../../../constants.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import showToast from './../../../utils/showToast.js';
+import CustomIcon from '../../iconSet/customIcon.js';
 import { loginUser, clearAuthError } from './../../../store/actions/authActions.js';
+import OmniHouseTheme from './../../../styles/theme.js';
+import styles from './style.js';
 
 const LoginUser = (props) => {
 
     const dispatch = useDispatch();
-    const loginError = useSelector(state => state.auth.error);
 
     const [confirm, setConfirm] = useState(null);
     const [code, setCode] = useState('');
     const [securEntry, setSecurEntry] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        if(loginError !== null){
-            showToast('error',loginError, loginError);
-            setLoading(false);
-            dispatch(clearAuthError());
-        }
-    },[loginError]);
-
     const handleSubmit = (values) => {
         setLoading(true);
-        dispatch(loginUser(values));
+        dispatch(loginUser(values)).then(({payload})=>{
+            setLoading(false);
+            if(payload.error){
+                showToast('error', payload.error);
+                dispatch(clearAuthError());
+            } else {
+                showToast('success', 'Congrats! Login successful.');
+                props.navigation.navigate('RegisterUserType',{
+                    user:payload.user
+                })
+            }
+        });
     }
 
     async function handleMobileSubmit(phoneNumber) {
@@ -47,26 +52,34 @@ const LoginUser = (props) => {
     return(
         props.route.params.signInMode === constants.Email?
         <>
+        <View style={styles.iconContainer}>
+                <CustomIcon name='homebutton' width={OmniHouseTheme.spacing(10)}
+                    height={OmniHouseTheme.spacing(10)} />
+        </View>
         <Formik
             initialValues={{
                 email:'',
                 password:''
             }}
-            validationSchema={
-                Yup.object().shape({
-                email: Yup.string()
-                    .email('Email is invalid')
-                    .required('Email is required'),
-                password: Yup.string()
-                    .required('Password is required')
-            })}
+            // validationSchema={
+            //     Yup.object().shape({
+            //     email: Yup.string()
+            //         .email('Email is invalid')
+            //         .required('Email is required'),
+            //     password: Yup.string()
+            //         .required('Password is required')
+            // })}
             onSubmit={ values => handleSubmit(values)}>
                  {({handleChange, handleBlur, handleSubmit, values, touched, errors})=>(
                     <View style={{padding:'10%'}}>
 
                         <Input
+                            containerStyle={styles.inputContainer}
+                            inputContainerStyle={styles.inputBoxContainer}
+                            labelStyle={styles.inputLabelStyle}
+                            style={styles.inputBoxText}
                             placeholder="Enter your email"
-                            leftIcon={{type:'MaterialIcons', name:'email'}}
+                            leftIcon={{type:'MaterialIcons', name:'email', color:'white'}}
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
                             value={values.email}
@@ -75,11 +88,16 @@ const LoginUser = (props) => {
                             errorMessage={errors.email} />
 
                         <Input
+                            containerStyle={styles.inputContainer}
+                            inputContainerStyle={styles.inputBoxContainer}
+                            labelStyle={styles.inputLabelStyle}
+                            style={styles.inputBoxText}
                             placeholder="Enter your password"
-                            leftIcon={{type:'MaterialIcons', name:'fingerprint'}}
+                            leftIcon={{type:'MaterialIcons', name:'fingerprint', color:'white'}}
                             rightIcon={{
                                 type:'antdesign',
                                 name:securEntry ? 'eye':'eyeo',
+                                color: 'white',
                                 onPress:()=> setSecurEntry(!securEntry)
                             }}
                             onChangeText={handleChange('password')}

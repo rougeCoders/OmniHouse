@@ -42,4 +42,21 @@ export default StyleSheet.create({
     signupButtonIconTitle:{
         paddingLeft: OmniHouseTheme.spacing(1),
     },
+    headText:{
+        marginBottom: OmniHouseTheme.spacing(1.5),
+        color: OmniHouseTheme.palette.primary.font,
+    },
+    flatListContainer:{
+        alignSelf: 'center',
+        marginBottom: OmniHouseTheme.spacing(0.25),
+    },
+    buttonContainer:{
+        flexDirection:'row-reverse'
+    },
+    nextButton:{
+        color: OmniHouseTheme.palette.primary.font,
+    },
+    nextButtonTitle:{
+        color: OmniHouseTheme.palette.primary.font,
+    },
 });
