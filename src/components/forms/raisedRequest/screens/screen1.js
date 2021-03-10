@@ -86,7 +86,7 @@ const Screen1 = (props) => {
                         <FlatList
                         data={raisedMaintainenceRequest}
                         renderItem={({ item,index }) => (
-                            <View style={{ width:'100%', height:'100%'}}>
+                            <View style={{ width:'100%', marginBottom:25}}>
                                 <View style={{flexDirection:'row', backgroundColor:'#595C56',flex:1, padding: 8, borderRadius:5}}>
                                     <View style={{alignSelf:'center'}}>
                                         <Image  
@@ -108,7 +108,7 @@ const Screen1 = (props) => {
                             </View>
                         )}
                         keyExtractor={item => item.index}
-                        numColumns={2}
+                        numColumns={1}
                     />
                 )}
             </View>

@@ -22,6 +22,7 @@ const ActiveSection = (props) => {
             <FlatList
                 data={props.activeStagesData}
                 style={{marginTop:20, marginBottom:10}}
+                listKey={item => item.index}
                 renderItem={({ item,index }) => (
                     <View key={index} style={activeSectionStyle.parentContainerStyle}>
                         <TouchableOpacity style={activeSectionStyle.childContainerStyle} onPress={() => onStageClick(item)}>
@@ -38,7 +39,7 @@ const ActiveSection = (props) => {
                         </TouchableOpacity>
                     </View>
                 )}
-                keyExtractor={item => item.index}
+               keyExtractor={item => item.index}
                numColumns={4}
             />
         </View>
@@ -50,8 +51,6 @@ const activeSectionStyle = StyleSheet.create({
         flex:1
     },
     childContainerStyle:{
-        width:'100%', 
-        height:'100%', 
         alignItems:'center'
     },
     subChildContainerStyle:{
