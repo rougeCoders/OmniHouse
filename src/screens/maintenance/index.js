@@ -5,17 +5,37 @@ import styles from './maintenance.style.js';
 import IconButton from './../../components/cards/iconButton/index.js';
 import constants from './../../constants.js';
 import OmniHouseTheme from './../../styles/theme.js';
-import MaintenanceNavigator from '../../navigation/maintenanceRaiseReqest.js';
+import MaintenanceRaiseIssueNavigator from '../../navigation/maintenanceRaiseReqest.js';
+import MaintenanceRaisedIssueNavigator from '../../navigation/maintenanceRaisedReqest.js';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Maintenance = (props) => {
 
+    const [raisedRequestModalVisible, setRaisedRequestModalVisible] = useState(false);
     const [raiseRequestModalVisible, setRaiseRequestModalVisible] = useState(false);
 
+    const handleRaisedRequestCloseCallback = () => {
+        setRaisedRequestModalVisible(false);
+    }
     const handleRaiseRequestCloseCallback = () => {
         setRaiseRequestModalVisible(false);
     }
     const disableBackButton = () => {}
+
+    const user = useSelector(state => state.auth.user);
+    console.log(user);
+
+    const setModalVisibleBasedOnuserType = () => {
+        if(user.userType== "Landlord"){
+            setRaiseRequestModalVisible(false);
+            setRaisedRequestModalVisible(true);
+        }else{
+            setRaisedRequestModalVisible(false);
+            setRaiseRequestModalVisible(true);
+        }
+    }
+
 
     const maintainceTypeData = [
                 {
@@ -49,9 +69,14 @@ const Maintenance = (props) => {
                             <TouchableOpacity style={{
                                 width:'100%',height:'100%',padding:10,
                                 justifyContent: 'flex-end' }}
-                                onPress={() => setRaiseRequestModalVisible(true)}
+                                onPress={setModalVisibleBasedOnuserType}
                             >
-                                <Text style={{color:'#fff'}}>Raise Issue</Text>
+                            {user.userType == "Landlord" &&(
+                                    <Text style={{color:'#fff'}}>Raised Requests</Text>
+                            )}
+                            {user.userType == "Tenant" &&(
+                                    <Text style={{color:'#fff'}}>Raise Issue</Text>
+                            )}
                             </TouchableOpacity>
                     </View>
                     <View style={[{backgroundColor:'#BA1515',
@@ -64,8 +89,13 @@ const Maintenance = (props) => {
                                 width:'100%',height:'100%', padding:10,
                                 justifyContent: 'flex-end' }}
                                 onPress={() => alert('chirag')}
-                            >        
-                                <Text style={{color:'#fff'}}>Emergency Request</Text>
+                            >    
+                            {user.userType == "Landlord" &&(
+                                    <Text style={{color:'#fff'}}>Emergency Request</Text>
+                            )}
+                            {user.userType == "Tenant" &&(
+                                    <Text style={{color:'#fff'}}>Emergency Issue</Text>
+                            )}   
                             </TouchableOpacity>
                     </View>
                 </View>
@@ -73,9 +103,16 @@ const Maintenance = (props) => {
                     <Modal 
                         animationType="slide"
                         transparent={false}
+                        visible={raisedRequestModalVisible}
+                        onRequestClose={disableBackButton}>
+                        <MaintenanceRaisedIssueNavigator handleCallback={handleRaisedRequestCloseCallback}/>
+                    </Modal> 
+                    <Modal 
+                        animationType="slide"
+                        transparent={false}
                         visible={raiseRequestModalVisible}
                         onRequestClose={disableBackButton}>
-                        <MaintenanceNavigator handleCallback={handleRaiseRequestCloseCallback}/>
+                        <MaintenanceRaiseIssueNavigator handleCallback={handleRaiseRequestCloseCallback}/>
                     </Modal>    
                 </View>
             </View>

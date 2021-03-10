@@ -56,6 +56,7 @@ const RegisterUser = (props) => {
         {}
         else
         {
+            console.log(values);
             dispatch(registerUser(values)).then(({payload})=>{
                 setLoading(false);
                 if(payload.error){

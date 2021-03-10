@@ -5,17 +5,24 @@ import constants from './../../../../constants.js';
 import styles from './raiseRequest.style.js';
 import ServiceCards from './../../../cards/serviceCards/index.js';
 import ServiceCardsWithIcon from './../../../cards/serviceCardsWithIcon/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addRaiseRequestSubCategory } from '../../../../store/actions/addRaiseRequest.js';
 
 const Screen2 = (props) => {
     let selectedService = props.route.params.response;
 
-    const [selectedServiceSubType, setSelectedServiceSubType] = useState('');
+    const dispatch = useDispatch();
+
+    const [selectedServiceSubType, setSelectedServiceSubType] = useState('');   
 
     const handleSelectedServiceSubTypeSelection = (content) => {
         setSelectedServiceSubType(content.value);
+        dispatch(addRaiseRequestSubCategory(content.value));
+        props.navigation.navigate('Screen3');
     }
 
     console.log(selectedService);
+
 
     return (
         <View style={{padding:'10%', marginBottom:20, width:'100%'}}>
@@ -25,7 +32,6 @@ const Screen2 = (props) => {
                         ListHeaderComponent={
                             <Text h3 style={{color:'#fff',marginBottom: 20}}>{selectedService.headingTitle}</Text>
                         }
-                        style={[styles.flatListContainer]}
                         data={selectedService.items}
                         contentContainerStyle = {{flexGrow: 1, justifyContent: 'center'}}
                         renderItem={({ item,index }) => (
@@ -52,7 +58,6 @@ const Screen2 = (props) => {
                         ListHeaderComponent={
                             <Text h3 style={{color:'#fff',marginBottom: 20}}>{selectedService.headingTitle}</Text>
                         }
-                        style={[styles.flatListContainer]}
                         data={selectedService.items}
                         contentContainerStyle = {{flexGrow: 1, justifyContent: 'center'}}
                         renderItem={({ item,index }) => (

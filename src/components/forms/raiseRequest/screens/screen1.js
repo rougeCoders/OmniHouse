@@ -4,13 +4,19 @@ import { Text, Input, Button, Icon } from 'react-native-elements';
 import constants from './../../../../constants.js';
 import styles from './raiseRequest.style.js';
 import ServiceCards from './../../../cards/serviceCards/index.js';
+import { useDispatch } from 'react-redux';
+import { addRaiseRequestCategory, addRaiseRequestCategoryImage } from '../../../../store/actions/addRaiseRequest.js';
 
 const Screen1 = (props) => {
 
     const [raiseRequestServiceType, setRaiseRequestServiceType] = useState('');
 
+    const dispatch = useDispatch();
+
     const handleRaiseRequestServiceTypeSelection = (content) => {
         setRaiseRequestServiceType(content.value);
+        dispatch(addRaiseRequestCategory(content.value));
+        dispatch(addRaiseRequestCategoryImage(content.categoryImageDetails));
         props.navigation.navigate('Screen2',{
             response: content
         });
@@ -26,6 +32,11 @@ const Screen1 = (props) => {
             layoutType:'Grid',
             headingTitle: 'Select Issue',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
             items:[
                 {
                     index:1,
@@ -74,6 +85,11 @@ const Screen1 = (props) => {
             layoutType:'Grid',
             headingTitle: 'Select Issue',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
             items:[
                 {
                     index:1,
@@ -122,6 +138,11 @@ const Screen1 = (props) => {
             layoutType:'Stack',
             headingTitle: 'Select Applicance',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
             items:[
                 {
                     index:1,
@@ -158,7 +179,7 @@ const Screen1 = (props) => {
                     title:'Dryers',
                     value:'Dryers',
                     backgroundColor: '#BD8B8B',
-                    iconType:'refrigerator',
+                    iconType:'dryer',
                     width:20,
                     height:16,
                     fillColor: '#F2F0F0'
@@ -178,10 +199,10 @@ const Screen1 = (props) => {
                     title:'Chimney/Cooker Food',
                     value:'Chimney/Cooker Food',
                     backgroundColor: '#BD8B8B',
-                    iconType:'tv',
+                    iconType:'chimney',
                     width:22,
                     height:20,
-                    fillColor: '#F2F0F0'
+                    fillColor: 'none'
                 },
                 {
                     index:7,
@@ -208,7 +229,7 @@ const Screen1 = (props) => {
                     title:'Electric Shower',
                     value:'Electric Shower',
                     backgroundColor: '#BD8B8B',
-                    iconType:'airconditioner',
+                    iconType:'electricShower',
                     width:20,
                     height:21,
                     fillColor: '#FFF'
@@ -234,6 +255,12 @@ const Screen1 = (props) => {
             layoutType:'Grid',
             headingTitle: 'Select Issue',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
+            categoryImageHeight:48,
             items:[
                 {
                     index:1,
@@ -282,6 +309,11 @@ const Screen1 = (props) => {
             layoutType:'Grid',
             headingTitle: 'Select Issue',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
             items:[
                 {
                     index:1,
@@ -330,6 +362,11 @@ const Screen1 = (props) => {
             layoutType:'Grid',
             headingTitle: 'Select Issue',
             nextBtnText: 'Other',
+            categoryImageDetails:{
+                categoryImage: require('./../../../../images/Plumber.png'),
+                categoryImageWidth: 48,
+                categoryImageHeight:48,
+            },
             items:[
                 {
                     index:1,
