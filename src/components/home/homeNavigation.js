@@ -13,9 +13,9 @@ const HomeNavigation = (props) => {
             <ImageCard icon={{name:'myproperties'}} title='My Properties'
                 backgroundColor='#93227F' ScreenLink={constants.ScreenNames.MyProperty} {...props} />
             <ImageCard icon={{name:'marketplace'}} title='Marketplace'
-                backgroundColor='#2A9D8F' ScreenLink={constants.ScreenNames.Maintenance} {...props} />
+                backgroundColor='#2A9D8F' ScreenLink={constants.ScreenNames.MyProperty} {...props} />
             <ImageCard icon={{name:'maintenancelarge'}} title='Maintenance'
-                backgroundColor='#A75DD4' ScreenLink={constants.ScreenNames.MyProperty} {...props} />
+                backgroundColor='#A75DD4' ScreenLink={constants.ScreenNames.Maintenance} {...props} />
             <ImageCard icon={{name:'inventory'}} title='Inventory'
                 backgroundColor='#D38C55' ScreenLink={constants.ScreenNames.MyProperty} {...props} />
             <ImageCard icon={{name:'docs'}} title='Documents'

@@ -4,6 +4,7 @@ import { View, TouchableHighlight } from "react-native";
 import { Text } from 'react-native-elements';
 import CustomIcon from '../../iconSet/customIcon.js';
 import styles from './imageCard.style.js';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ImageCard = (props) => {
     
@@ -14,7 +15,7 @@ const ImageCard = (props) => {
     } 
     return(
         <View style={styles.buttonContainer} >
-                <TouchableHighlight style={[styles.imageIcon,
+                <TouchableOpacity style={[styles.imageIcon,
                     {...(props.backgroundColor !== undefined
                         && { backgroundColor: props.backgroundColor})}]}
                         onPress={handlePress} >
@@ -23,7 +24,7 @@ const ImageCard = (props) => {
                                 <CustomIcon name={props.icon.name}/>
                             )
                         }
-                    </TouchableHighlight>
+                    </TouchableOpacity>
             <Text style={styles.buttonText}>{props.title}</Text>
         </View>
     )
