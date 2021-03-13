@@ -13,10 +13,20 @@ const ServiceCards = (props) => {
         <View style={[serviceCardsStyle.cardStyleContiner,
             {...(props.backgroundColor !== undefined
                 && { backgroundColor: props.backgroundColor})},
-                (props.index%2 ==0) ? serviceCardsStyle.marginRightContainer : serviceCardsStyle.marginLeftContainer
+                (props.index%2 ==0) ? serviceCardsStyle.marginRightContainer : serviceCardsStyle.marginLeftContainer,
+                (props.count%2 !=0 && (props.index == props.count)) ? serviceCardsStyle.marginZero:""
         ]}>
-            <TouchableOpacity style={serviceCardsStyle.cardStyle} onPress={handlePress}>
-                    <Text style={serviceCardsStyle.textContainerStyle}>{props.title}</Text>
+            <TouchableOpacity style={[serviceCardsStyle.cardStyle, 
+                {...props.textAlignmentVertical!== undefined  && props.textAlignmentVertical=="bottom" &&{justifyContent:'flex-end'}},
+                {...props.textAlignmentHorizontal!== undefined  && props.textAlignmentHorizontal=="left" &&{alignItems:'flex-start'}}
+            ]} onPress={handlePress}>
+                    <Text style={[serviceCardsStyle.textContainerStyle,
+                        {...props.fontColor !== undefined && {color: props.fontColor}},
+                        {...props.textAlignmentHorizontal!== undefined  && props.textAlignmentHorizontal=="left" &&{ textAlign:'left'}}
+                    ]}>{props.title}</Text>
+                    { props.subTitle != undefined && (
+                    <Text style={{position:'absolute',top:0,right:0, color:'#FFF'}}>{props.subTitle}</Text>
+                    )}
             </TouchableOpacity>
         </View>
     )
@@ -27,7 +37,8 @@ const serviceCardsStyle = StyleSheet.create({
         height:110, 
         marginBottom: 15,
         flex: 1,
-        borderRadius: 10
+        borderRadius: 10,
+        padding:8
     },
     marginLeftContainer:{
         marginRight:7.5
@@ -45,6 +56,10 @@ const serviceCardsStyle = StyleSheet.create({
         color:'#000', 
         fontSize: 16, 
         textAlign:'center'
+    },
+    marginZero:{
+        marginRight:0,
+        marginLeft:0
     }
 });
 

@@ -67,6 +67,7 @@ export default {
     ScreenNames: {
         MyProperty: 'My Properties',
         Maintenance : 'Maintenance',
+        MarketPlace : 'MarketPlace',
         AddProperty: 'Add Property'
     },
 
