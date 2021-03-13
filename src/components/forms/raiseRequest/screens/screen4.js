@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import { View, FlatList,StyleSheet,TouchableOpacity, Platform,PermissionsAndroid } from 'react-native';
+import { View, FlatList,StyleSheet,TouchableOpacity, Platform,PermissionsAndroid,ActivityIndicator } from 'react-native';
 import { Text, Button, Icon } from 'react-native-elements';
 import {launchCamera,launchImageLibrary} from 'react-native-image-picker';
 import { useDispatch, useSelector } from 'react-redux';
-
+import {firebase} from '../../../../firebase/firebase.js';
+import RNFetchBlob from 'react-native-fetch-blob'
+import storage from '@react-native-firebase/storage';
 
 const Screen4 = (props) => {
  
     const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.user);
+
+    const Blob = RNFetchBlob.polyfill.Blob
+    const fs = RNFetchBlob.fs
+
+    const [isLoading ,setIsLoading] = useState(false);
+    
 
     const requestCameraPermission = async () => {
       if (Platform.OS === 'android') {
@@ -47,6 +56,18 @@ const Screen4 = (props) => {
         return false;
       } else return true;
     };
+
+    const uploadImagesToFirebase = async (response,imageName) => {
+        let uploadUri = Platform.OS === 'ios' ? response.uri.replace('file://', '') : response.uri;
+        let uploadedImage = storage().ref(imageName)
+        await uploadedImage.putFile(uploadUri);
+        let downloadUrl = await uploadedImage.getDownloadURL();
+        console.log(downloadUrl);
+        setIsLoading(false)
+        response = {...response,imageUrl: downloadUrl};
+        props.route.params.onGoBack(response);
+        props.navigation.goBack();
+    }
     
     const captureImage = async (type) => {
         let options = {
@@ -74,16 +95,20 @@ const Screen4 = (props) => {
                 alert(response.errorMessage);
                 return;
               }
+              setIsLoading(true)
+              let imageName = user.uid + response.fileName;
               if(props.route.params.additionalParams){
                 response = {...response, ...props.route.params.additionalParams};
               }
-              props.route.params.onGoBack(response);
-              props.navigation.goBack();
+
+              response = {...response,imageName: imageName};
+
+              uploadImagesToFirebase(response,imageName)
             });
         }
       };
 
-      const chooseFile = (type) => {
+      const chooseFile = async (type) => {
         let options = {
           mediaType: type,
           maxWidth: 300,
@@ -105,17 +130,27 @@ const Screen4 = (props) => {
             alert(response.errorMessage);
             return;
           }
+          setIsLoading(true)
+          let imageName = user.uid+ response.fileName;
           if(props.route.params.additionalParams){
             response = {...response, ...props.route.params.additionalParams};
           }
-          props.route.params.onGoBack(response);
-          props.navigation.goBack();
+
+          response = {...response,imageName: imageName};
+
+          uploadImagesToFirebase(response,imageName)
+
         });
       };
     
     return (
         <View style={takeGalleryScreenStyles.formContainer}>
             <View style={{padding:'10%'}}>
+                 { isLoading && (
+                    <View style={takeGalleryScreenStyles.preloader}>
+                        <ActivityIndicator size="large" color="#9E9E9E"/>
+                     </View>
+                )}
                 <TouchableOpacity
                     style={takeGalleryScreenStyles.buttonStyles}
                     onPress={() => chooseFile('photo')}>
@@ -151,6 +186,11 @@ const takeGalleryScreenStyles = StyleSheet.create({
     },
     buttonTextStyles:{
         fontSize: 16
+    },
+    preloader: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexGrow:1
     }
 })
 

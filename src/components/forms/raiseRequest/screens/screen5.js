@@ -11,6 +11,8 @@ import { addRaiseRequestImages } from '../../../../store/actions/addRaiseRequest
 import { ScrollView } from 'react-native-gesture-handler';
 import  ActiveSection  from '../../../cards/activeSection/index.js';
 import {firebase} from '../../../../firebase/firebase.js';
+import moment from 'moment';
+
 
 const Screen3 = (props) => {
 
@@ -18,8 +20,10 @@ const Screen3 = (props) => {
     const raiseRequestTypes = useSelector(state => state.addRaiseRequest);
     const user = useSelector(state => state.auth.user);
 
+    const currentTime = moment().utcOffset('+05:30').format('hh:mm a DD/MM/YYYY');
+
     useEffect(() => {
-        const userRaisedMaintainenceRequest = {...raiseRequestTypes, ...user }
+        const userRaisedMaintainenceRequest = {...raiseRequestTypes, ...user , requestRaisedTime:currentTime }
         const raisedRequestTable = firebase.firestore().collection('raisedMaintainenceRequest');
         raisedRequestTable.add(userRaisedMaintainenceRequest);
     },[])

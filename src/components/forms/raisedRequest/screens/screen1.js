@@ -50,6 +50,13 @@ const Screen1 = (props) => {
             backGroundColorChecked:'#1CB145'
         }
     ];
+
+    const expandRaisedIssueDetail = (itemDetail)  => {
+        console.log(itemDetail);
+        props.navigation.navigate('Screen2',{
+            response: itemDetail
+        });
+    }
     
     useEffect(() => {
         const raisedRequestTable = firebase.firestore().collection('raisedMaintainenceRequest').get()
@@ -58,13 +65,15 @@ const Screen1 = (props) => {
           console.log('Total raise request: ', querySnapshot.size);
           querySnapshot.forEach(documentSnapshot => {
             console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-            const {raiseRequestCategoryType,raiseRequestCategorySubType,raiseRequestIssueDescription,raiseRequestCategoryTypeImage}  = documentSnapshot.data()
+            const {raiseRequestCategoryType,raiseRequestCategorySubType,raiseRequestIssueDescription,raiseRequestCategoryTypeImage,raiseRequestImages,requestRaisedTime}  = documentSnapshot.data()
             raisedRequest.push({
                 index : documentSnapshot.id,
                 raiseRequestCategoryType,
                 raiseRequestCategorySubType,
                 raiseRequestIssueDescription,
-                raiseRequestCategoryTypeImage
+                raiseRequestCategoryTypeImage,
+                raiseRequestImages,
+                requestRaisedTime
             })
           });
           setIsLoading(false)
@@ -87,24 +96,26 @@ const Screen1 = (props) => {
                         data={raisedMaintainenceRequest}
                         renderItem={({ item,index }) => (
                             <View style={{ width:'100%', marginBottom:25}}>
-                                <View style={{flexDirection:'row', backgroundColor:'#595C56',flex:1, padding: 8, borderRadius:5}}>
-                                    <View style={{alignSelf:'center'}}>
-                                        <Image  
-                                            source={item.raiseRequestCategoryTypeImage.categoryImage}
-                                            style={{width:item.raiseRequestCategoryTypeImage.categoryImageWidth,height:item.raiseRequestCategoryTypeImage.categoryImageHeight, borderRadius:item.raiseRequestCategoryTypeImage.categoryImageWidth/2}}
-                                        />
+                                <TouchableOpacity onPress={() => expandRaisedIssueDetail(item)} style={{width:'100%'}}>
+                                    <View style={{flexDirection:'row', backgroundColor:'#595C56',flex:1, padding: 8, borderRadius:5}}>
+                                        <View style={{alignSelf:'center'}}>
+                                            <Image  
+                                                source={item.raiseRequestCategoryTypeImage.categoryImage}
+                                                style={{width:item.raiseRequestCategoryTypeImage.categoryImageWidth,height:item.raiseRequestCategoryTypeImage.categoryImageHeight, borderRadius:item.raiseRequestCategoryTypeImage.categoryImageWidth/2}}
+                                            />
+                                        </View>
+                                        <View style={{flexDirection:'column', marginLeft: 20, flex: 2}}>
+                                            <Text style={{color:'#fff', fontSize:20, marginBottom:5}}>{item.raiseRequestCategoryType}</Text>
+                                            <Text style={{color:'#fff', marginBottom:5}}>{item.raiseRequestCategorySubType}</Text>
+                                        </View>
+                                        <View style={{alignSelf:'center', marginRight:4}}>
+                                            <OmniHouseIcon name="textBook" fill="#F2F0F0" width={20} height={20}  />
+                                        </View>
                                     </View>
-                                    <View style={{flexDirection:'column', marginLeft: 20, flex: 2}}>
-                                        <Text style={{color:'#fff', fontSize:20, marginBottom:5}}>{item.raiseRequestCategoryType}</Text>
-                                        <Text style={{color:'#fff', marginBottom:5}}>{item.raiseRequestCategorySubType}</Text>
+                                    <View>
+                                        <ActiveSection activeStagesData={activeStages} backGroundColor="#3A3339"/>
                                     </View>
-                                    <View style={{alignSelf:'center', marginRight:4}}>
-                                        <OmniHouseIcon name="textBook" fill="#F2F0F0" width={20} height={20}  />
-                                    </View>
-                                </View>
-                                <View>
-                                    <ActiveSection activeStagesData={activeStages} backGroundColor="#3A3339"/>
-                                </View>
+                                </TouchableOpacity>
                             </View>
                         )}
                         keyExtractor={item => item.index}

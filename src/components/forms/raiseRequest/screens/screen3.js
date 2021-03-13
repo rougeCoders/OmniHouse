@@ -9,11 +9,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GasSafe,Delete,Plumber } from '../../../../images/index.js';
 import { addRaiseRequestImages,addRaiseRequestIssueDescription } from '../../../../store/actions/addRaiseRequest.js';
 import { ScrollView } from 'react-native-gesture-handler';
+import moment from 'moment';
 
 const Screen3 = (props) => {
 
     const dispatch = useDispatch();
     const raiseRequestTypes = useSelector(state => state.addRaiseRequest);
+
+    const user = useSelector(state => state.auth.user);
+    console.log(user);
+   
 
     const raiseRequestImages = useSelector(state => state.addRaiseRequest.raiseRequestImages);
 

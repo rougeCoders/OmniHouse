@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "259465446534",
+    "firebase_url": "https://omnihouse-c5518-default-rtdb.firebaseio.com",
+    "project_id": "omnihouse-c5518",
+    "storage_bucket": "omnihouse-c5518.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259465446534:android:7b1b15aa75e616b494bd07",
+        "android_client_info": {
+          "package_name": "cloud.omnihouse1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259465446534-k9ful1klcjd92cvidr379mdokobcvnpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3-4lU5lmAwcL-S_s4zOFxt7mc6pI0tic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259465446534-k9ful1klcjd92cvidr379mdokobcvnpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259465446534:android:3282fda21be5557c94bd07",
+        "android_client_info": {
+          "package_name": "com.omnihouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259465446534-k9ful1klcjd92cvidr379mdokobcvnpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3-4lU5lmAwcL-S_s4zOFxt7mc6pI0tic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259465446534-k9ful1klcjd92cvidr379mdokobcvnpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
