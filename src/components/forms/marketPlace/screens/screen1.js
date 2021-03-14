@@ -1,17 +1,87 @@
 import React,{ useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity,StyleSheet,ActivityIndicator,FlatList } from "react-native";
+import { View, TouchableOpacity,StyleSheet,ActivityIndicator,FlatList,TouchableWithoutFeedback } from "react-native";
 import { Image, Text,Icon } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import {firebase} from '../../../../firebase/firebase.js';
 import OmniHouseIcon from '../../../../images/OmniHouseIcon.js';
 import  ActiveSection  from '../../../cards/activeSection/index.js';
 import { GasSafe,Delete,OmniHouse } from '../../../../images/index.js';
+import Accordion from 'react-native-collapsible/Accordion';
 
 const Screen1 = (props) => {
 
     const [raisedMaintainenceRequest ,setRaisedMaintainenceRequest] = useState();
     const [isLoading ,setIsLoading] = useState(true);
+
+    const [selectedMarketPlaceAccordion, setSelectedMarketPlaceAccordion] =  useState([0]);
+
+    
+
+    const addAmenitiesHandler = (section,isActive) => {
+    }
+
+    const renderAccHeader = (section,_, isActive) => {
+        return (
+            <View style={screeen1Style.accordionItemHeaderStyle}>
+                    <Text style={screeen1Style.accordionItemHeaderTextStyle}>{section.title}</Text>
+                    <Icon 
+                        name={isActive?'keyboard-arrow-up':'keyboard-arrow-down'} 
+                        size={30}
+                        type = 'materialicons'
+                        color = '#fff'
+                    />
+            </View>
+        )
+    }
+
+    const renderAccContent = (section,_, isActive) => {
+        return ( 
+            <View>
+                <FlatList
+                    data={section.items}
+                    contentContainerStyle = {{flexGrow: 1, justifyContent: 'center', marginBottom:10}}
+                    renderItem={({ item,index }) => (
+                        <View style={{flex:1,alignItems:'center'}}>
+                            <Text style={{color:'#FFF'}}>{item.title}</Text>
+                        </View>
+                    )}
+                    keyExtractor={item => item.index}
+                    numColumns={3}
+                />
+                <FlatList
+                    data={section.subItems}
+                    contentContainerStyle = {{flexGrow: 1, justifyContent: 'center', marginBottom:30}}
+                    renderItem={({ item,index }) => (
+                        <View style={{marginBottom:20}}>
+                            <Text style={{color:'#FFF', textAlign:'center', marginBottom:10}}>{item.title}</Text>
+                            <FlatList
+                                data={item.items}
+                                renderItem={({ item,index }) => (
+                                    <View style={{flex:1}}>
+                                        <Text style={{color:'#FFF', textAlign:'center'}}>{item.title}</Text>
+                                    </View>
+                                )}
+                                keyExtractor={item => item.index}
+                                numColumns={3}
+                                listKey={item => item.index}
+                            />
+                        </View>
+                        
+                    )}
+                    keyExtractor={item => item.index}
+                    numColumns={1}
+                />
+            </View>
+        )
+    }
+
+    const onChangeAccordionItem = (section) => {
+        setSelectedMarketPlaceAccordion(section);
+    }
+
+
+    
 
     const expandRaisedIssueDetail = (itemDetail)  => {
         console.log(itemDetail);
@@ -31,7 +101,7 @@ const Screen1 = (props) => {
 
               <FlatList
                         data={selectedMarketPlaceCategory.agencies}
-                        contentContainerStyle = {{flexGrow: 1, justifyContent: 'center'}}
+                        contentContainerStyle = {{flexGrow: 1, justifyContent: 'center', marginBottom:30}}
                         renderItem={({ item,index }) => (
                             <View style={{flex:1,alignItems:'center'}}>
                                 <OmniHouseIcon name={item.iconType} width={item.iconWidth} height={item.iconHeight}  />
@@ -44,6 +114,13 @@ const Screen1 = (props) => {
                         )}
                         keyExtractor={item => item.index}
                         numColumns={3}
+                    />
+                 <Accordion
+                        sections={selectedMarketPlaceCategory.agencyCategries}
+                        activeSections={selectedMarketPlaceAccordion}
+                        renderHeader={renderAccHeader}
+                        renderContent={renderAccContent}
+                        onChange = {onChangeAccordionItem}
                     />
             </View>
         </ScrollView>
@@ -64,6 +141,19 @@ const screeen1Style = StyleSheet.create({
         borderRadius:20,
         alignItems:'center',
         marginTop: 25
+    },
+    accordionItemHeaderStyle:{
+        flexDirection:'row',
+        padding:10,
+        backgroundColor:'#5C4B58',
+        borderRadius:5,
+        marginBottom:25
+    },
+    accordionItemHeaderTextStyle:{
+        color:'#fff', 
+        fontSize:20, 
+        flexGrow:1,
+        textAlign:'center'
     }
 })
 export default Screen1;

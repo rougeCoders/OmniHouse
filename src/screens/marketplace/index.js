@@ -60,6 +60,124 @@ const MarketPlace = (props) => {
                     iconWidth: 97,
                     iconHeight : 70
                 }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -90,6 +208,124 @@ const MarketPlace = (props) => {
                     iconType:'veriCheck',
                     iconWidth: 97,
                     iconHeight : 70
+                }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -122,6 +358,140 @@ const MarketPlace = (props) => {
                     iconWidth: 97,
                     iconHeight : 70
                 }
+            ],
+            agencyCategries:[
+                {
+                    title:'Photography',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'2 Rooms',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'3 Rooms',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'3D Scans',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'2 Rooms',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'3 Rooms',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Floorplans',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'2 Rooms',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'3 Rooms',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -152,6 +522,124 @@ const MarketPlace = (props) => {
                     iconType:'veriCheck',
                     iconWidth: 97,
                     iconHeight : 70
+                }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -184,6 +672,124 @@ const MarketPlace = (props) => {
                     iconWidth: 97,
                     iconHeight : 70
                 }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -215,6 +821,124 @@ const MarketPlace = (props) => {
                     iconWidth: 97,
                     iconHeight : 70
                 }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -245,6 +969,125 @@ const MarketPlace = (props) => {
                     iconType:'veriCheck',
                     iconWidth: 97,
                     iconHeight : 70
+                }
+            ],
+            agencyCategries:[
+                {
+                    title:'Comprehensive Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
+                    
+                },
+                {
+                    title:'Speedy Check',
+                    items:[
+                        {
+                            title: 'Omnihouse'
+                        },
+                        {
+                            title: 'Rentprofile'
+                        },
+                        {
+                            title: 'Veri-check'
+                        }
+                    ],
+                    subItems:[
+                        {
+                            title:'Price',
+                            items:[
+                                {
+                                    title:'£100'
+                                },
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£200'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Affordability',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        },
+                        {
+                            title:'Employment',
+                            items:[
+                                {
+                                    title:'£300'
+                                },
+                                {
+                                    title:'£400'
+                                },
+                                {
+                                    title:'£400'
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
