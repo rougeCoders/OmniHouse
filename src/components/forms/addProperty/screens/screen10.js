@@ -16,6 +16,7 @@ const Screen10 = (props) => {
     const [roomsList, setRoomsList] = useState(rooms);
 
     const handleRoomAddition = (content) => {
+        content.uniqueKey = content.roomType + Math.random().toString(16).substring(4, 8) + Math.random().toString(16).substring(4, 8);
         roomsList.push(content);
         setRoomsList(roomsList);
     }

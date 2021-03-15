@@ -6,7 +6,7 @@ import CircleButton from '../../../cards/circleButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { registerProperty } from './../../../store/actions/registerProperty.js';
 import {propertyCertificateData} from '../../../../data/propertyCertificates.js';
 
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
@@ -28,10 +28,26 @@ const CustomIcon = createIconSetFromIcoMoon(
 
 const Screen16 = (props) => {
 
-   
+    const propertyDetails = useSelector(state => state.addProperty);
+    const userid = useSelector(state => state.auth.user.uid);
+    const propertyData = {
+        propertyDetails: propertyDetails,
+        userid: userid,
+    }
     const dispatch = useDispatch();
     const handleSubmit = () => {
-        props.navigation.navigate('Screen16');
+        console.log(propertyData, 'submit');
+        dispatch(registerProperty(propertyData)).then(({payload})=>{
+            if(payload.error){
+                showToast('error', payload.error);
+                dispatch(clearAuthError());
+            } else {
+                showToast('success', 'Congrats! Login successful.');
+                props.navigation.navigate('RegisterUserType',{
+                    user:payload.user
+                })
+            }
+        });
     }
 
     const AddAnotherItem = () =>{

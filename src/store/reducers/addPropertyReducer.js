@@ -47,6 +47,8 @@ export default function AddPropertyReducer(state= INITIAL_STATE, action){
     console.log(action.type);
     console.log(action.payload);
     switch(action.type){
+        case AddPropertyActionTypes.RegisterProperty:
+            return {...state, ...action.payload}
         case AddPropertyActionTypes.AddPostCode:
             return {...state, address: action.payload}
         case AddPropertyActionTypes.AddPropertyAddress:
@@ -66,7 +68,7 @@ export default function AddPropertyReducer(state= INITIAL_STATE, action){
         case AddPropertyActionTypes.PropertyBillDetails:
             return {...state, propertyBillDetails: action.payload}
         case AddPropertyActionTypes.RoomsDetails:
-            return {...state, roomDetails: action.payload}
+            return {...state, roomsDetails: action.payload}
         case AddPropertyActionTypes.SecurityDepositDetails:
             return {...state, propertyBillDetails: action.payload}
         case AddPropertyActionTypes.PropertyCertificateDetails:

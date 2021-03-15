@@ -110,6 +110,8 @@ const LoginUser = (props) => {
 
                         <Button
                             title="Log In"
+                            buttonStyle={styles.signupButton}
+                            titleStyle={styles.signupButtonIconTitle}
                             loading={loading}
                             onPress={handleSubmit}/>
                     </View>

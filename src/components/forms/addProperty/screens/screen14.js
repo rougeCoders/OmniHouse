@@ -23,6 +23,8 @@ const CustomIcon = createIconSetFromIcoMoon(
 
 const Screen14 = (props) => {
 
+    const roomsDetails = useSelector(state => state.addProperty.roomsDetails);
+    console.log(roomsDetails);
     const dispatch = useDispatch();
     const handleSubmit = () => {
         props.navigation.navigate('Screen16');
@@ -30,38 +32,11 @@ const Screen14 = (props) => {
 
     const [selectedAccordion, setSelectedAccordion] =  useState([0]);
 
-    const addedRooms = [
-        {
-            title:'Bedroom 1',
-            key:'bedroom1',
-            type:'Bedroom',
-            expanded:true
-        },
-        {
-            title:'Bedroom 2',
-            type:'Bedroom',
-            key:'bedroom2',
-            expanded:false
-        },
-        {
-            title:'Bathroom',
-            type:'Bathroom',
-            key:'bathroom',
-            expanded:false
-        },
-        {
-            title:'Living Room',
-            type:'LivingRoom',
-            key:'livingroom',
-            expanded:false
-        }
-    ];
-
     const addAmenitiesHandler = (section,isActive) => {
         props.navigation.navigate('Screen15',{
-            selectedAmenityType:section.type,
+            selectedAmenityType:section.roomType,
             selectedAmenity: section.title,
-            selectedAmenityKey: section.key
+            selectedAmenityKey: section.uniqueKey
         });
     }
 
@@ -110,7 +85,7 @@ const Screen14 = (props) => {
                     <Text style={{color:'#fff', marginTop:15, marginBottom:15}}>Any items added will be autofilled to an inventory check report to save you adding it twice - you will still need to add the condition of the items later.</Text>
                     
                     <Accordion
-                        sections={addedRooms}
+                        sections={roomsDetails}
                         activeSections={selectedAccordion}
                         renderHeader={renderAccHeader}
                         renderContent={renderAccContent}

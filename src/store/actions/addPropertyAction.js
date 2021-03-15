@@ -1,4 +1,5 @@
 import AddPropertyActionTypes from '../actionTypes/addPropertyActionTypes.js';
+import * as api from '../api/propertyApi.js';
 
 export const addPostcode = (values) => ({
     type: AddPropertyActionTypes.AddPostCode,
@@ -63,4 +64,9 @@ export const addedRoomDetails = (values) => ({
 export const addAmenities = (values) => ({
     type: AddPropertyActionTypes.AddAmenities,
     payload: values
+})
+
+export const registerProperty = (values) => ({
+    type: AddPropertyActionTypes.RegisterProperty,
+    payload: api.registerProperty(values)
 })
