@@ -8,7 +8,7 @@ const HomeNavigation = (props) => {
     return (
         <ScrollView horizontal={true} style={{
             marginTop:10,
-            marginBottom:10,
+            marginBottom:10
         }}>
             <ImageCard icon={{name:'myproperties'}} title='My Properties'
                 backgroundColor='#93227F' ScreenLink={constants.ScreenNames.MyProperty} {...props} />
