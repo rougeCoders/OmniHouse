@@ -20,7 +20,10 @@ const HomeScreen = (props) => {
             iconType:'',
             iconWidth:'',
             iconHeight:'',
-            backgroundColor:'#981C45',
+            backgroundColorGradient:[
+                '#E74C3C',
+                'rgba(231,76,60,0.3)'
+            ],
             backgroundIconColor:'#C11853',
             variationType:'stack'
         },
@@ -33,7 +36,10 @@ const HomeScreen = (props) => {
             iconWidth:'36',
             iconHeight:'40',
             fillColor:'#F2F0F0',
-            backgroundColor:'#3B637D',
+            backgroundColorGradient:[
+                '#457B9D',
+                'rgba(69,123,157,0.6)'
+            ],
             backgroundIconColor:'#457B9D',
             variationType:'stackwithicon'
         },
@@ -46,7 +52,10 @@ const HomeScreen = (props) => {
             iconWidth:'40',
             iconHeight:'32',
             fillColor:'#F2F0F0',
-            backgroundColor:'#B1764A',
+            backgroundColorGradient:[
+                '#C88552',
+                'rgba(211,140,85,0.6)'
+            ],
             backgroundIconColor:'#D38C55',
             variationType:'stackwithicon'
         },
@@ -59,7 +68,10 @@ const HomeScreen = (props) => {
             iconWidth:'40',
             iconHeight:'40',
             fillColor:'#F2F0F0',
-            backgroundColor:'#36394F',
+            backgroundColorGradient:[
+                '#3D405B',
+                'rgba(61,64,91,0.6)'
+            ],
             backgroundIconColor:'#3D405B',
             variationType:'stackwithicon'
         },
@@ -72,7 +84,10 @@ const HomeScreen = (props) => {
             iconWidth:'41',
             iconHeight:'43',
             fillColor:'#F2F0F0',
-            backgroundColor:'#894FAD',
+            backgroundColorGradient:[
+                '#A75DD4',
+                'rgba(167,93,212,0.6)'
+            ],
             backgroundIconColor:'#A75DD4',
             variationType:'stackwithicon'
         },
@@ -85,7 +100,10 @@ const HomeScreen = (props) => {
             iconWidth:'40',
             iconHeight:'37',
             fillColor:'#F2F0F0',
-            backgroundColor:'#278277',
+            backgroundColorGradient:[
+                '#2A9D8F',
+                'rgba(42,157,143,0.6)'
+            ],
             backgroundIconColor:'#2A9D8F',
             variationType:'stackwithicon'
         },
@@ -94,11 +112,14 @@ const HomeScreen = (props) => {
             subTitle:'19 Arthur Road',
             description:'Viewing Request Accepted',
             dateText:'Date confirmed: 16:00 07/03/2021',
-            iconType:'inventory',
-            iconWidth:'42',
-            iconHeight:'30',
+            iconType:'documents',
+            iconWidth:'43',
+            iconHeight:'32',
             fillColor:'#F2F0F0',
-            backgroundColor:'#1B943D',
+            backgroundColorGradient:[
+                '#1CB145',
+                'rgba(28,177,69,0.6)'
+            ],
             backgroundIconColor:'#1CB145',
             variationType:'stackwithicon'
         },
@@ -111,7 +132,10 @@ const HomeScreen = (props) => {
             iconWidth:'38',
             iconHeight:'36',
             fillColor:'#F2F0F0',
-            backgroundColor:'#B13377',
+            backgroundColorGradient:[
+                '#C33682',
+                'rgba(195,54,130,0.6)'
+            ],
             backgroundIconColor:'#C33682',
             variationType:'stackwithicon'
         }
@@ -122,7 +146,7 @@ const HomeScreen = (props) => {
         <>
             <HomeHeader />
             <ScrollView style={styles.container}>
-                <View>
+                <View style={{marginLeft:8}}>
                     <Text h4 style={styles.welcomeText}>Hey {user.name},</Text>
                 </View>
                 <HomeNavigation {...props} />
