@@ -6,7 +6,7 @@ import CircleButton from '../../../cards/circleButton/index.js';
 import constants from '../../../../constants.js';
 import styles from './forms.Style.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerProperty } from './../../../store/actions/registerProperty.js';
+import { registerProperty } from './../../../../store/actions/addPropertyAction.js';
 import {propertyCertificateData} from '../../../../data/propertyCertificates.js';
 
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
